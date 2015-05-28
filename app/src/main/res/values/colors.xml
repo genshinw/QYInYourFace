@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="myblack">#2B2C2D</color>
+    <color name="myred">#a21f25</color>
+    <color name="black">#000000</color>
+    <color name="mygreylighter">#a9a9a9</color>
+    <color name="mygrey">#969495</color>
+    <color name="mygreydarker">#444041</color>
+    <color name="mywhite">#fefeff</color>
+
+
+    <color name="custom_theme_darker">#090506</color>
+    <color name="custom_theme_dark">#090506</color>
+    <color name="custom_theme_primary">#2B2C2D</color>
+    <color name="custom_theme_light">#4D4D4C</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

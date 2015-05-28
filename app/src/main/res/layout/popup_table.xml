@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:background="@color/myblack"
+    android:paddingBottom="10dp"
+    >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_table_city"
+        >
+
+        <TableRow>
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="南山区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:editable="false"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="福田区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="盐田区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+        </TableRow>
+
+        <TableRow>
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="龙岗区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:editable="false"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="宝安区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+
+            <com.cengalabs.flatui.views.FlatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:text="盐田区"
+                flatui:fl_fieldStyle="fl_flat"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme" />
+        </TableRow>
+
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/aline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line_red"
+        android:layout_margin="10dp"
+        android:layout_below="@id/id_table_city"
+        />
+
+    <ImageView
+        android:layout_below="@id/aline"
+        android:id="@+id/icalocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location"
+        android:padding="10dp"
+        android:layout_alignBottom="@+id/id_txt_city_now" />
+
+    <TextView
+        android:layout_toRightOf="@id/icalocation"
+        android:layout_below="@id/aline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="深圳"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:id="@+id/id_txt_city_now" />
+
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/aline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20sp"
+        />
+
+
+</RelativeLayout>

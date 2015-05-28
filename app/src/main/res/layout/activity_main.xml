@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mygreylighter"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/banner_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/myblack"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1">
+
+            />
+
+            <ImageView
+                android:id="@+id/menu_0"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m1" />
+
+            <ImageView
+                android:id="@+id/menu_press_0"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m1_press" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/menu_press_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m2_press" />
+
+            <ImageView
+                android:id="@+id/menu_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m2" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/menu_press_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m3_press" />
+
+            <ImageView
+                android:id="@+id/menu_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m3" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/menu_press_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m4_press" />
+
+            <ImageView
+                android:id="@+id/menu_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m4" />
+
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/banner_bar_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@id/banner_bar"
+        android:src="@drawable/line" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_above="@id/banner_bar_line"
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none" />
+
+</RelativeLayout>
