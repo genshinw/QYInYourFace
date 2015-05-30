@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.activities;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.cengalabs.flatui.FlatUI;
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
+import com.lzxxteam.qyinyourface.ui.FightWithViewControler;
+import com.lzxxteam.qyinyourface.ui.ViewAdapter;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;

@@ -9,7 +9,7 @@ public class UserBaseData {
 
     public Drawable userPortrait;
     public String userName;
-
+    public String userPortraitUtl;
 
     public UserBaseData(Drawable userPortrait,String userName){
 
@@ -18,7 +18,9 @@ public class UserBaseData {
 
     }
 
+    public UserBaseData(){
 
+    }
     public Drawable getUserPortrait() {
         return userPortrait;
     }
@@ -27,7 +29,15 @@ public class UserBaseData {
         return userName;
     }
 
+    public String getUserPortraitUtl() {
+        return userPortraitUtl;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-
+    public void setUserPortraitUtl(String userPortraitUtl) {
+        this.userPortraitUtl = userPortraitUtl;
+    }
 }

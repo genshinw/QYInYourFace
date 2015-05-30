@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.model;
 
 import java.util.ArrayList;
 

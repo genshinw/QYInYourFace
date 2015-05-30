@@ -114,12 +114,20 @@
         android:layout_height="2dp"
         android:layout_above="@id/banner_bar"
         android:src="@drawable/line" />
+    <ImageView
+        android:id="@+id/viewpager_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:src="@drawable/line_red" />
 
     <android.support.v4.view.ViewPager
         android:layout_above="@id/banner_bar_line"
+        android:layout_below="@id/viewpager_line"
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadingEdge="none" />
+
+
 
 </RelativeLayout>

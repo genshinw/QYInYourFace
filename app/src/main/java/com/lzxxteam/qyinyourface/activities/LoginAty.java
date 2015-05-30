@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

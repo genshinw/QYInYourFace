@@ -2,13 +2,25 @@ package com.lzxxteam.qyinyourface.ui;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.demievil.swiperefreshlayout.RefreshLayout;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.model.FightWithData;
+import com.lzxxteam.qyinyourface.net.GetHttpCilent;
+import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
+
+import org.apache.http.Header;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +30,7 @@ import java.util.List;
 public class FightWithViewControler {
 
 
-    private  List<FightWithData> datas;
+    private  ArrayList<FightWithData> datas;
     private  FightWithAdapter adapter;
     private Context context;
     private ListView fightWithView;
@@ -27,25 +39,7 @@ public class FightWithViewControler {
     public FightWithViewControler(Context context,List<FightWithData> dataList){
 
         this.context = context;
-        this.datas = dataList;
-        if(datas==null){
-            datas = new ArrayList<FightWithData>();
-            String fightTime = "4月15日/4月20日";
-            String space = "深圳体育馆/福田体育馆";
-            int[] porttraits = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,
-            R.drawable.p5,R.drawable.p1
-            };
-
-            for(int i=0;i<6;i++) {
-                FightWithData data = new FightWithData(new UserBaseData(
-                        AppGlobalMgr.getAppResources().getDrawable(porttraits[i]), "User"),
-                        space,
-                        fightTime
-                );
-                datas.add(data);
-            }
-
-        }
+        datas = new ArrayList<FightWithData>();
         adapter = new FightWithAdapter(context,datas);
 
 
@@ -63,6 +57,8 @@ public class FightWithViewControler {
 
         }
         fightWithView.setAdapter(adapter);
+
+
         refreshLayout = new RefreshLayout(context);
         refreshLayout.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -70,45 +66,73 @@ public class FightWithViewControler {
         ));
         refreshLayout.addView(fightWithView);
         refreshLayout.setFooterView(context, fightWithView, R.layout.lv_footer_fresh);
+
+
+        refreshLayout.setColorSchemeResources(R.color.google_blue,
+                R.color.google_green,
+                R.color.google_red,
+                R.color.google_yellow);
+
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataFromNet(true);
+            }
+        });
         refreshLayout.setOnLoadListener(new RefreshLayout.OnLoadListener() {
             @Override
             public void onLoad() {
+                getDataFromNet(false);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        String fightTime = "4月10日/4月20日";
-                        String space = "深圳体育馆/福田体育馆";
-                        int[] porttraits = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4,
-                                R.drawable.p5, R.drawable.p1
-                        };
-
-                        for (int i = 5; i >= 0; i--) {
-                            FightWithData data = new FightWithData(new UserBaseData(
-                                    AppGlobalMgr.getAppResources().getDrawable(porttraits[i]), "User"),
-                                    space,
-                                    fightTime
-                            );
-                            datas.add(data);
-                            adapter.notifyDataSetChanged();
-                            refreshLayout.setLoading(false);
-                        }
-                    }
-                }, 2000);
             }
         });
-
-
+        getDataFromNet(true);
         return refreshLayout;
+    }
+
+    private void getDataFromNet(final boolean isRefresh) {
+        new GetHttpCilent(context).execRequest("http://172.30.66.158/abc.html", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse,ArrayList<FightWithData> response) {
+
+                if(refreshLayout.isRefreshing())
+                    refreshLayout.setRefreshing(false);
+                refreshLayout.setLoading(false);
+                refreshView();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, ArrayList<FightWithData> errorResponse) {
+
+            }
+
+            @Override
+            protected ArrayList<FightWithData> parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                ObjectMapper mapper = new ObjectMapper();
+                JsonParser jp = new JsonFactory().createParser(rawJsonData);
+                //跳过JsonToken.START_ARRAY
+                jp.nextToken();
+
+
+                //刷新则要将数据清空
+                if(isRefresh)
+                    datas.clear();
+
+                while (jp.nextToken()== JsonToken.START_OBJECT){
+
+                    datas.add(mapper.readValue(jp,FightWithData.class));
+                }
+
+                return  datas;
+            }
+        });
     }
 
     public void refreshView(){
 
         adapter.notifyDataSetChanged();
     }
-
-
-
 
 
 }

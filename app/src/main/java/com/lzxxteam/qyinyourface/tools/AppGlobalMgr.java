@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.tools;
 
 import android.app.Application;
 import android.content.res.Resources;
