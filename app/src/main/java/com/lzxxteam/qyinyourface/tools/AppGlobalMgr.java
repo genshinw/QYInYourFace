@@ -3,6 +3,9 @@ package com.lzxxteam.qyinyourface.tools;
 import android.app.Application;
 import android.content.res.Resources;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 /**
  * Created by Elvis on 15/5/22.
  */
@@ -14,6 +17,7 @@ public class AppGlobalMgr extends Application{
     public void onCreate() {
         super.onCreate();
         instance = this;
+
     }
 
     public static AppGlobalMgr getAppContext(){

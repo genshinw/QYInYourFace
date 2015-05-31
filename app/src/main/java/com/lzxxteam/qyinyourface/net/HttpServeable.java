@@ -41,4 +41,6 @@ public interface HttpServeable {
              String URL,
              Header[] headers,
              ResponseHandlerInterface responseHandler);
+
+    String getServerUrl();
 }

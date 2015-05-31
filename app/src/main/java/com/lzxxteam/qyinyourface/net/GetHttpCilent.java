@@ -36,7 +36,12 @@ public class GetHttpCilent extends BaseHttpCilent{
     public RequestHandle executeRequest(
             AsyncHttpClient client, String URL, Header[] headers, ResponseHandlerInterface responseHandler) {
 
-        return  client.get(context,URL,headers,null,responseHandler);
+        return  client.get(context,getServerUrl()+URL,headers,null,responseHandler);
 
+    }
+
+    @Override
+    public String getServerUrl() {
+        return PROTOCOL+URL_SERVER;
     }
 }

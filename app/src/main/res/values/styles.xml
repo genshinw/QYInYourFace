@@ -36,4 +36,20 @@
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton" />
 
+    <style name="style_tv_user_centre">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/mywhite</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="style_tv2_user_centre">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/myred</item>
+    </style>
+
+
 </resources>

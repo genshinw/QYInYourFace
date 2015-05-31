@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.model.FightWithData;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
+import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -25,7 +26,6 @@ import java.util.List;
 public class FightWithAdapter extends BaseAdapter {
 
     //头像载入地址
-    private static  final String URL_PORTTRAIT = "http://172.30.66.158/profile/";
     private final ImageLoader imageLoader;
 
     private  List<FightWithData> dataList;
@@ -39,9 +39,7 @@ public class FightWithAdapter extends BaseAdapter {
         /**
          * 对imageLoader加载网络头像
          */
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
         imageLoader = ImageLoader.getInstance();
-        imageLoader.init(config);
     }
 
     @Override
@@ -95,7 +93,7 @@ public class FightWithAdapter extends BaseAdapter {
             TextView userName = (TextView) convertView.findViewById(R.id.plist_user_name);
             TextView fightTime = (TextView) convertView.findViewById(R.id.plist_game_time);
             TextView fightSpace = (TextView) convertView.findViewById(R.id.plist_game_space);
-            imageLoader.displayImage(URL_PORTTRAIT + data.getUserName()+".png",portrait);
+            GetImageFromNet.setProfileToImageView( data.getUserName() + ".png", portrait);
 
             userName.setText(data.getUserName());
             fightSpace.setText(data.getFightSpace());

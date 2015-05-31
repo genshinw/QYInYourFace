@@ -36,7 +36,8 @@ public class PostHttpCilent extends BaseHttpCilent {
         if (null==entity) {
             Log.e(LOG_TAG,"must setRequetEnity() first");
         }
-        return  client.post(context,URL,headers,entity,null,responseHandler);
+        Log.i("Test", "loc" + entity.toString());
+        return  client.post(context,getServerUrl()+URL,headers,entity,null,responseHandler);
     }
 
 
@@ -53,5 +54,11 @@ public class PostHttpCilent extends BaseHttpCilent {
             }
         }
 
+    }
+
+
+    @Override
+    public String getServerUrl() {
+        return PROTOCOL+URL_SERVER;
     }
 }

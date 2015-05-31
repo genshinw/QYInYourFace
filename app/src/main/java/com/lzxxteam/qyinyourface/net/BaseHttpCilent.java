@@ -9,6 +9,7 @@ import com.loopj.android.http.AsyncHttpRequest;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.ResponseHandlerInterface;
+import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -31,6 +32,7 @@ public abstract class BaseHttpCilent implements  HttpServeable{
 
     protected static final String PROTOCOL_HTTP = "http://";
     protected static final String PROTOCOL_HTTPS = "https://";
+    protected static final String URL_SERVER = AppConstantValue.URL_SERVER;
     protected  Throwable throwable = new Throwable();
     protected  String LOG_TAG = getClass().getName()+throwable.getStackTrace()[0];
 

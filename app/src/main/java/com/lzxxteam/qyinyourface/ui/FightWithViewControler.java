@@ -36,7 +36,7 @@ public class FightWithViewControler {
     private ListView fightWithView;
     private RefreshLayout refreshLayout;
 
-    public FightWithViewControler(Context context,List<FightWithData> dataList){
+    public FightWithViewControler(Context context){
 
         this.context = context;
         datas = new ArrayList<FightWithData>();
@@ -92,7 +92,7 @@ public class FightWithViewControler {
     }
 
     private void getDataFromNet(final boolean isRefresh) {
-        new GetHttpCilent(context).execRequest("http://172.30.66.158/abc.html", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
+        new GetHttpCilent(context).execRequest("abc.html", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse,ArrayList<FightWithData> response) {
 
@@ -113,7 +113,6 @@ public class FightWithViewControler {
                 JsonParser jp = new JsonFactory().createParser(rawJsonData);
                 //跳过JsonToken.START_ARRAY
                 jp.nextToken();
-
 
                 //刷新则要将数据清空
                 if(isRefresh)

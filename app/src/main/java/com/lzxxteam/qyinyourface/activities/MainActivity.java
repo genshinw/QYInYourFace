@@ -18,6 +18,7 @@ import com.cengalabs.flatui.FlatUI;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
 import com.lzxxteam.qyinyourface.ui.FightWithViewControler;
+import com.lzxxteam.qyinyourface.ui.UserCentreViewControl;
 import com.lzxxteam.qyinyourface.ui.ViewAdapter;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -76,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         viewList = new ArrayList<View>();
-        fightWithView = new FightWithViewControler(this, null).getFightWithView();
-        view2 = LayoutInflater.from(this).inflate(R.layout.pageview2, null);
+        fightWithView = new FightWithViewControler(this).getFightWithView();
+        view2 = new UserCentreViewControl(this).getUserCentreView();
         view3 = LayoutInflater.from(this).inflate(R.layout.pageview3, null);
         userCentreView = LayoutInflater.from(this).inflate(R.layout.pageview_user_centre, null);
         viewList.add(fightWithView);

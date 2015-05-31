@@ -10,6 +10,7 @@ import com.lzxxteam.qyinyourface.R;
 public class LoginAty extends ActionBarActivity {
 
     private View login;
+    private View btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,17 @@ public class LoginAty extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginAty.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnRegister = findViewById(R.id.id_tv_register);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginAty.this, RegisterAty.class);
                 startActivity(intent);
             }
         });

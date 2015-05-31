@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/myblack"
+    android:gravity="center"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_succ"
+        android:layout_margin="10dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册成功"
+        android:textColor="@color/mywhite"
+        android:textSize="25sp"
+        android:layout_margin="20dp"
+        />
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启篮球之旅"
+        flatui:fl_theme="@array/myredtheme"
+        android:layout_margin="30dp"
+        />
+
+
+</LinearLayout>

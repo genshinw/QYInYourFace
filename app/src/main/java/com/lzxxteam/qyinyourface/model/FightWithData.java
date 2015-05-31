@@ -1,7 +1,6 @@
 package com.lzxxteam.qyinyourface.model;
 
 import com.lzxxteam.qyinyourface.R;
-import com.lzxxteam.qyinyourface.ui.UserBaseData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**

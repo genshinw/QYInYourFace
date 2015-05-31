@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/myblack"
+    android:gravity="center_horizontal"
+    android:padding="25dp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile"
+        android:layout_margin="20dp"
+        />
+
+    <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_regist_name"
+        android:hint="Name:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        flatui:fl_fieldStyle="fl_transparent"
+        flatui:theme="@array/myredtheme"
+        flatui:fl_borderWidth="0dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_regist_sex"
+        android:hint="Sex:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        flatui:fl_fieldStyle="fl_transparent"
+        flatui:theme="@array/myredtheme"
+        flatui:fl_borderWidth="0dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_regist_email"
+        android:hint="E-mail:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        flatui:fl_fieldStyle="fl_transparent"
+        android:inputType="textEmailAddress"
+        flatui:theme="@array/myredtheme"
+        flatui:fl_borderWidth="0dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_regist_psw"
+        android:hint="Password:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        flatui:fl_fieldStyle="fl_transparent"
+        flatui:theme="@array/myredtheme"
+        flatui:fl_borderWidth="0dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+    <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_regist_psw_confirm"
+        android:hint="Password Confirm:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        flatui:fl_fieldStyle="fl_transparent"
+        flatui:theme="@array/myredtheme"
+        flatui:fl_borderWidth="0dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用第三方（推荐)"
+        android:layout_margin="15dp"
+        android:textSize = "12sp"
+        android:textColor="@color/mywhite"
+        android:layout_gravity="left"
+        />
+
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/weixin_logo"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="left"
+        />
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_btn_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_margin="15dp"
+        flatui:fl_theme="@array/myredtheme"
+         />
+</LinearLayout>
+
+</ScrollView>
