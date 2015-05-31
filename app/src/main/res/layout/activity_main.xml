@@ -16,96 +16,30 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_weight="1">
 
-            />
-
-            <ImageView
-                android:id="@+id/menu_0"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m1" />
-
-            <ImageView
-                android:id="@+id/menu_press_0"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m1_press" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/menu_press_1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m2_press" />
-
-            <ImageView
-                android:id="@+id/menu_1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m2" />
+        <ImageView
+            android:id="@+id/menu_0"
+            style="@style/style_aty_main_banner_logo"
+            android:src="@drawable/m1" />
 
 
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/menu_press_2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m3_press" />
-
-            <ImageView
-                android:id="@+id/menu_2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m3" />
+        <ImageView
+            android:id="@+id/menu_1"
+            style="@style/style_aty_main_banner_logo"
+            android:src="@drawable/m2" />
 
 
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/menu_2"
+            style="@style/style_aty_main_banner_logo"
+            android:src="@drawable/m3" />
 
-        <FrameLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-
-
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/menu_press_3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m4_press" />
-
-            <ImageView
-                android:id="@+id/menu_3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/m4" />
+        <ImageView
+            android:id="@+id/menu_3"
+            style="@style/style_aty_main_banner_logo"
+            android:src="@drawable/m4" />
 
 
-        </FrameLayout>
     </LinearLayout>
 
 
@@ -115,20 +49,21 @@
         android:layout_height="2dp"
         android:layout_above="@id/banner_bar"
         android:src="@drawable/line" />
+
     <ImageView
         android:id="@+id/viewpager_line"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:src="@drawable/line_red" />
 
-    <android.support.v4.view.ViewPager
-        android:layout_above="@id/banner_bar_line"
-        android:layout_below="@id/viewpager_line"
-        android:id="@+id/viewpager"
+    <LinearLayout
+        android:id="@+id/id_ll_main_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadingEdge="none" />
-
+        android:layout_above="@id/banner_bar_line"
+        android:layout_below="@id/viewpager_line"
+        android:fadingEdge="none"
+        android:orientation="horizontal" />
 
 
 </RelativeLayout>

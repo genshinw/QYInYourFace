@@ -41,12 +41,12 @@ public class UserCentreViewControl {
         userCentreView = LayoutInflater.from(context).inflate(R.layout.aty_user_centre,null);
 
 
-        getDataFromNet();
+
         return userCentreView;
     }
 
 
-    private void getDataFromNet(){
+    public void getDataFromNet(){
 
         new GetHttpCilent(context).execRequest("userData.html", new BaseJsonHttpResponseHandler<UserData>() {
             @Override

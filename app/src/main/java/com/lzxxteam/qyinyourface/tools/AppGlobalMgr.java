@@ -3,6 +3,7 @@ package com.lzxxteam.qyinyourface.tools;
 import android.app.Application;
 import android.content.res.Resources;
 
+import com.cengalabs.flatui.FlatUI;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -18,6 +19,9 @@ public class AppGlobalMgr extends Application{
         super.onCreate();
         instance = this;
 
+        //初始化FLATUI主题
+        FlatUI.initDefaultValues(this);
+        FlatUI.setDefaultTheme(FlatUI.CANDY);
     }
 
     public static AppGlobalMgr getAppContext(){

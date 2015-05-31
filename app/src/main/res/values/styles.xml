@@ -51,5 +51,12 @@
         <item name="android:textColor">@color/myred</item>
     </style>
 
+    <style name="style_aty_main_banner_logo">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
 
 </resources>

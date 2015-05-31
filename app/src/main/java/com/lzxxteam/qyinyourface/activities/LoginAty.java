@@ -23,7 +23,7 @@ public class LoginAty extends ActionBarActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginAty.this, MainActivity.class);
+                Intent intent = new Intent(LoginAty.this, FightWithAty.class);
                 startActivity(intent);
             }
         });

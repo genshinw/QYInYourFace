@@ -39,12 +39,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.FightWithAty"
             android:label="@string/app_name" ></activity>
 
         <activity
             android:name=".activities.RegisterAty"
-            android:label="@string/app_name" ></activity>
+            android:label="@string/aty_name_register" ></activity>
+
+        <activity
+            android:name=".activities.UserCentreAty"
+            android:label="@string/aty_name_user_centre" ></activity>
 
     </application>
 
