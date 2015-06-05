@@ -17,7 +17,7 @@ public abstract class BaseAty extends ActionBarActivity {
         actionBar = getSupportActionBar();
         //		隐藏logo
         actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(false);
+     //   actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
     }
 }

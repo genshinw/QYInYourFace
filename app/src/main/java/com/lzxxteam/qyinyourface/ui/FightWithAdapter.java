@@ -30,7 +30,7 @@ public class FightWithAdapter extends BaseAdapter {
 
     private  List<FightWithData> dataList;
     private  Context context;
-
+    private  int dataSize = 0;
     public FightWithAdapter(Context context,List<FightWithData> dataList){
 
         this.context = context;
@@ -46,11 +46,14 @@ public class FightWithAdapter extends BaseAdapter {
 
     public int getCount() {
 
-        int count = 0;
-        if(dataList!=null)
-            count = dataList.size();
 
-        return count;
+        return dataSize;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        dataSize = dataList.size();
+        super.notifyDataSetChanged();
     }
 
     @Override

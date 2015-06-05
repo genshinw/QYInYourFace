@@ -8,27 +8,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class FightWithData {
 
-
+    public static int minId;
+    private int id;
     private String fightSpace;
     private String fightTime;
     private String userName;
 
 
+    @JsonProperty("name")
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
 
-    @JsonProperty("fight-time")
+    @JsonProperty("id")
+    public void setId(int id) {
+        this.id = id;
+
+    }
+
+    @JsonProperty("time")
     public void setFightTime(String fightTime) {
         this.fightTime = fightTime;
     }
 
-    @JsonProperty("fight-space")
+    @JsonProperty("space")
     public void setFightSpace(String fightSpace) {
         this.fightSpace = fightSpace;
     }
-    @JsonProperty("user-name")
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+
 
     public String getFightTime() {
         return fightTime;
@@ -40,5 +48,9 @@ public class FightWithData {
 
     public String getUserName() {
         return userName;
+    }
+
+    public int getId() {
+        return id;
     }
 }

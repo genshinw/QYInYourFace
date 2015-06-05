@@ -2,12 +2,13 @@
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/myblack"
     >
 <LinearLayout
     xmlns:flatui="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myblack"
+
     android:orientation="vertical"
     android:padding="35dp"
     >
@@ -27,7 +28,7 @@
         android:src="@drawable/line"
         />
     <com.cengalabs.flatui.views.FlatEditText
-        android:id="@+id/edittext_box"
+        android:id="@+id/id_et_login_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -44,6 +45,7 @@
 
 
     <com.cengalabs.flatui.views.FlatEditText
+        android:id="@+id/id_et_login_psw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -59,7 +61,7 @@
 
 
     <com.cengalabs.flatui.views.FlatButton
-        android:id="@+id/id_login"
+        android:id="@+id/id_btn_login_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="logIN"

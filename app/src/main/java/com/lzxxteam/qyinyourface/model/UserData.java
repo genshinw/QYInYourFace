@@ -17,42 +17,42 @@ public class UserData {
     private String team;
     private String userAddr;
 
-    @JsonProperty("user-id")
+    @JsonProperty("id")
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    @JsonProperty("user-name")
+    @JsonProperty("name")
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    @JsonProperty("user-email")
+    @JsonProperty("email")
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @JsonProperty("user-sex")
+    @JsonProperty("sex")
     public void setSex(String sex) {
         this.sex = sex;
     }
 
-    @JsonProperty("user-team")
+    @JsonProperty("team")
     public void setTeam(String team) {
         this.team = team;
     }
 
-    @JsonProperty("user-height")
+    @JsonProperty("height")
     public void setHeight(String height) {
         this.height = height;
     }
 
-    @JsonProperty("user-weight")
+    @JsonProperty("weight")
     public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    @JsonProperty("user-addr")
+    @JsonProperty("addr")
     public void setUserAddr(String userAddr) {
         this.userAddr = userAddr;
     }

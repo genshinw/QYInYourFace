@@ -34,7 +34,7 @@ public abstract class BaseHttpCilent implements  HttpServeable{
     protected static final String PROTOCOL_HTTPS = "https://";
     protected static final String URL_SERVER = AppConstantValue.URL_SERVER;
     protected  Throwable throwable = new Throwable();
-    protected  String LOG_TAG = getClass().getName()+throwable.getStackTrace()[0];
+    protected  String LOG_TAG = getClass().getName();
 
     /**
      *默认的是基于HTTP的服务
@@ -154,20 +154,6 @@ public abstract class BaseHttpCilent implements  HttpServeable{
         }
     }
 
-    public static void getDataFromNet(final Context context){
 
-        new AsyncHttpClient().get(context,"http://172.30.66.158/abc.html", null, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        Toast.makeText(context,new String(responseBody),Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                    }
-                });
-
-    }
 
 }

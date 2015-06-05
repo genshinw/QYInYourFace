@@ -14,6 +14,7 @@
     >
 
     <ImageView
+        android:id="@+id/id_iv_regist_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/profile"
@@ -116,6 +117,7 @@
 
 
     <ImageView
+        android:id="@+id/id_iv_regist_wx"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/weixin_logo"

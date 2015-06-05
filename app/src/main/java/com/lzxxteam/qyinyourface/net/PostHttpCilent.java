@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 
 import org.apache.http.Header;
@@ -21,6 +22,8 @@ public class PostHttpCilent extends BaseHttpCilent {
 
     private HttpEntity entity;
 
+    private RequestParams requestParm;
+    private String requestType;
 
     /**
      * 构造函数传入context变量便于控制
@@ -33,11 +36,14 @@ public class PostHttpCilent extends BaseHttpCilent {
 
     @Override
     public RequestHandle executeRequest(AsyncHttpClient client, String URL, Header[] headers, ResponseHandlerInterface responseHandler) {
-        if (null==entity) {
-            Log.e(LOG_TAG,"must setRequetEnity() first");
+
+        if(requestParm==null){
+            Log.e(LOG_TAG,"You must set RequetsParam first");
+            return null;
         }
-        Log.i("Test", "loc" + entity.toString());
-        return  client.post(context,getServerUrl()+URL,headers,entity,null,responseHandler);
+        String postURl = getServerUrl()+URL;
+        Log.i(LOG_TAG, "POST To " + postURl + " ,Data: " + requestParm.toString());
+        return  client.post(context,postURl,headers,requestParm,requestType,responseHandler);
     }
 
 
@@ -60,5 +66,16 @@ public class PostHttpCilent extends BaseHttpCilent {
     @Override
     public String getServerUrl() {
         return PROTOCOL+URL_SERVER;
+    }
+
+    public void setRequestParm(RequestParams requestParm,boolean isJson) {
+        if(isJson) {
+            requestType = RequestParams.APPLICATION_JSON;
+            requestParm.setUseJsonStreamer(true);
+        }
+        else {
+            requestType = RequestParams.APPLICATION_OCTET_STREAM;
+        }
+        this.requestParm = requestParm;
     }
 }

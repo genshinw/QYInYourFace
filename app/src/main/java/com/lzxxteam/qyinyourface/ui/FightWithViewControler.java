@@ -92,7 +92,7 @@ public class FightWithViewControler {
     }
 
     public void getDataFromNet(final boolean isRefresh) {
-        new GetHttpCilent(context).execRequest("abc.html", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
+        new GetHttpCilent(context).execRequest("testFightWith.json", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse,ArrayList<FightWithData> response) {
 

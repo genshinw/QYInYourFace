@@ -25,6 +25,7 @@
         />
 
     <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_btn_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="开启篮球之旅"
