@@ -58,8 +58,9 @@ public class LoginAty extends ActionBarActivity {
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
 
                             progDialog.dismiss();
-                            Intent intent = new Intent(LoginAty.this, FightWithAty.class);
+                            Intent intent = new Intent(LoginAty.this, FragmentMainAty.class);
                             startActivity(intent);
+                            finish();
 
                         }
 

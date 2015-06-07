@@ -1,1 +1,1 @@
-include ':app',':extras:SwipeRefresh'
+include ':app'

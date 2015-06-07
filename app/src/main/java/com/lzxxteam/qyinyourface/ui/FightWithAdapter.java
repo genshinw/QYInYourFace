@@ -1,14 +1,17 @@
 package com.lzxxteam.qyinyourface.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
 import com.lzxxteam.qyinyourface.model.FightWithData;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
@@ -45,8 +48,6 @@ public class FightWithAdapter extends BaseAdapter {
     @Override
 
     public int getCount() {
-
-
         return dataSize;
     }
 
@@ -92,6 +93,7 @@ public class FightWithAdapter extends BaseAdapter {
         }
 
         public void setHolder(FightWithData data){
+
             ImageView portrait = (ImageView) convertView.findViewById(R.id.plist_logo);
             TextView userName = (TextView) convertView.findViewById(R.id.plist_user_name);
             TextView fightTime = (TextView) convertView.findViewById(R.id.plist_game_time);

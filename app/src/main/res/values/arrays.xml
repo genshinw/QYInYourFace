@@ -12,17 +12,17 @@
 
 
     <integer-array name="mygreytheme">
-        <item>@color/mygreydarker</item>
-        <item>@color/mygreydarker</item>
+        <item>@color/custom_theme_dark</item>
+        <item>@color/custom_theme_primary</item>
         <item>@color/mygreydarker</item>
         <item>@color/mywhite</item>
     </integer-array>
 
 
     <integer-array name="myredtheme">
+        <item>@color/myred_darker</item>
+        <item>@color/myred_dark</item>
         <item>@color/myred</item>
-        <item>@color/myred</item>
-        <item>@color/myred</item>
-        <item>@color/mywhite</item>
+        <item>@color/myred_light</item>
     </integer-array>
 </resources>

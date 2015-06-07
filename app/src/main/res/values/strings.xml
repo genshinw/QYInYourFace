@@ -2,8 +2,9 @@
 <resources>
 
     <string name="app_name">InYourFace</string>
-    <string name="aty_name_user_centre">个人中心</string>
+    <string name="fgmt_name_user_centre">个人中心</string>
     <string name="aty_name_register">注册</string>
+    <string name="aty_name_fight_with_detail">约战信息</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

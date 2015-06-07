@@ -52,6 +52,7 @@
         android:maxLines="1"
         android:gravity="center_vertical"
         android:hint="password"
+        android:inputType="textPassword"
         android:includeFontPadding="true"
         flatui:fl_textAppearance="fl_none"
         flatui:fl_fieldStyle="fl_flat"

@@ -21,10 +21,10 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-        android:allowBackup="true"
         android:label="@string/app_name"
         android:name=".tools.AppGlobalMgr"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        >
         <!--腾讯地图所用KEY-->
         <meta-data android:name="TencentMapSDK" android:value="WZFBZ-ADYAD-T4M4M-PJWZ2-PFZLS-ZQBZV" />
 
@@ -37,17 +37,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.FightWithAty"
-            android:label="@string/app_name" ></activity>
 
+        <activity android:name=".activities.FragmentMainAty"
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".activities.RegisterAty"
             android:label="@string/aty_name_register" ></activity>
 
+
+
         <activity
-            android:name=".activities.UserCentreAty"
-            android:label="@string/aty_name_user_centre" ></activity>
+            android:name=".activities.FightWithDetailAty"
+            android:label="@string/aty_name_fight_with_detail" ></activity>
 
     </application>
 

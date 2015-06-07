@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="mybackgroudColor">#ffffff</color>
     <color name="myblack">#2B2C2D</color>
-    <color name="myred">#a21f25</color>
+    <color name="myred">#a11e23</color>
+    <color name="myred_light">#ed97a9</color>
+    <color name="myred_dark">#76161e</color>
+    <color name="myred_darker">#56101A</color>
+
+
+
     <color name="black">#000000</color>
     <color name="mygreylighter">#a9a9a9</color>
     <color name="mygrey">#969495</color>
     <color name="mygreydarker">#444041</color>
     <color name="mywhite">#fefeff</color>
-
+    <color name="myrealwhite">#ffffff</color>
 
     <color name="custom_theme_darker">#090506</color>
     <color name="custom_theme_dark">#090506</color>

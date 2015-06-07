@@ -1,20 +1,23 @@
 package com.lzxxteam.qyinyourface.ui;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.demievil.swiperefreshlayout.RefreshLayout;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
 import com.lzxxteam.qyinyourface.model.FightWithData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
@@ -23,6 +26,7 @@ import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Elvis on 15/5/22.
@@ -45,7 +49,7 @@ public class FightWithViewControler {
 
     }
 
-    public View getFightWithView() {
+    public ViewGroup getFightWithView() {
 
         if(fightWithView==null) {
             fightWithView = new ListView(context);
@@ -57,7 +61,13 @@ public class FightWithViewControler {
 
         }
         fightWithView.setAdapter(adapter);
-
+        fightWithView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                  Intent intent = new Intent((Activity)context,FightWithDetailAty.class);
+                ((Activity)context).startActivity(intent);
+            }
+        });
 
         refreshLayout = new RefreshLayout(context);
         refreshLayout.setLayoutParams(new ViewGroup.LayoutParams(
@@ -68,11 +78,7 @@ public class FightWithViewControler {
         refreshLayout.setFooterView(context, fightWithView, R.layout.lv_footer_fresh);
 
 
-        refreshLayout.setColorSchemeResources(R.color.google_blue,
-                R.color.google_green,
-                R.color.google_red,
-                R.color.google_yellow);
-
+        refreshLayout.setColorSchemeResources(R.color.myred);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -122,7 +128,8 @@ public class FightWithViewControler {
 
                     datas.add(mapper.readValue(jp,FightWithData.class));
                 }
-
+                //做一个1s延迟
+                TimeUnit.SECONDS.sleep(1);
                 return  datas;
             }
         });

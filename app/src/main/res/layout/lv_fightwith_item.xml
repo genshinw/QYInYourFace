@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:flatui="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="@drawable/sel_lv_item_color_cge"
     android:id="@+id/p1"
     android:layout_width="match_parent"
     android:layout_height="90dp"
+    android:descendantFocusability="blocksDescendants"
     android:padding="10dp">
 
     <ImageView

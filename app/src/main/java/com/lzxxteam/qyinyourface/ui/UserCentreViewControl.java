@@ -38,7 +38,8 @@ public class UserCentreViewControl {
 
     public View getUserCentreView() {
 
-        userCentreView = LayoutInflater.from(context).inflate(R.layout.aty_user_centre,null);
+        if(userCentreView==null)
+            userCentreView = LayoutInflater.from(context).inflate(R.layout.aty_user_centre,null);
 
 
 
