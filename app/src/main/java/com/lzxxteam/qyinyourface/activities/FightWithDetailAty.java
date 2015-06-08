@@ -28,21 +28,15 @@ public class FightWithDetailAty extends BaseAty{
                         .setTitleText("是否和User1球队约战")
                         .setConfirmText("约起")
                         .setCancelText("不约")
+                        .showCancelButton(true)
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.setTitleText("请求已发送")
                                         .setConfirmText("确定")
-                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                            @Override
-                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                                sweetAlertDialog.dismiss();
-                                            }
-                                        })
-                                        .setCancelText(null)
-                                        .setCancelable(false);
-
-                                sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                        .setConfirmClickListener(null)
+                                        .showCancelButton(false)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             }
                         }).show();
             }
