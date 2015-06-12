@@ -1,124 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mybackgroudColor"
-    >
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:padding="20dp"
-    >
-    <LinearLayout
-        android:id="@+id/id_iv_user_centre_baseData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        >
-    <ImageView
-        android:padding="15dp"
-        android:id="@+id/id_iv_user_centre_profile"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:src="@drawable/profile"
-
-         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_tv_user_centre_name"
-        android:layout_gravity="center"
-        android:textColor="@color/myblack"
-        android:text="圈圈源源"
-       />
-    </LinearLayout>
+    android:background="@color/mybackgroudColor">
 
     <LinearLayout
-        android:id="@+id/id_ll_user_centre_msg"
-        android:layout_toRightOf="@id/id_iv_user_centre_baseData"
-        android:padding="8dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:text="个人信息"
-            style="@style/style_tv2_user_centre" />
-        <TextView
-            android:text="男"
-            style="@style/style_tv_user_centre" />
-        <TextView
-            android:text="180CM"
-            style="@style/style_tv_user_centre"
-            />
-        <TextView
-            style="@style/style_tv_user_centre"
-            android:text="60KG"
-            />
-        <TextView
-            style="@style/style_tv_user_centre"
-            android:text="深圳"
-            />
-        <TextView
-            style="@style/style_tv_user_centre"
-            android:text="来自猩猩的球队"
-            />
-        <TextView
-            style="@style/style_tv_user_centre"
-            android:text="554659766@qq.com"
-            />
-
-    </LinearLayout>
-
-    <ImageView
-
-        android:id="@+id/id_user_centre_line"
-        android:layout_below="@id/id_ll_user_centre_msg"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
-        android:layout_marginTop="30dp"
-        />
-    <LinearLayout
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/id_user_centre_line"
-        android:layout_alignLeft="@+id/id_user_centre_line"
-        android:layout_alignStart="@+id/id_user_centre_line">
 
-        <TextView
-            android:text="约战记录"
-            style="@style/style_tv2_user_centre"
-            android:padding="10dp"
-            />
+        >
 
-        <TextView
-            android:text="安全"
-            style="@style/style_tv2_user_centre"
-            android:padding="10dp"
+        <RelativeLayout
+            android:id="@+id/id_iv_user_centre_baseData"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/bg_user_centre"
+            android:paddingTop="10dp">
 
-            />
-        <TextView
-            android:text="设置"
-            style="@style/style_tv2_user_centre"
-            android:padding="10dp"
 
-            />
-        <TextView
-            android:text="分享"
-            style="@style/style_tv2_user_centre"
-            android:padding="10dp"
+            <FrameLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/frameLayout">
 
-            />
+             <!--   <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/profile" />-->
+
+                <ImageView
+                    android:id="@+id/id_iv_user_centre_profile"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/picnone" />
+            </FrameLayout>
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/id_tv_user_centre_team"
+                android:text="银河护卫队"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                style="@style/name_city"
+                android:textSize="12sp"
+                android:layout_alignBottom="@+id/frameLayout"
+                android:layout_toLeftOf="@+id/frameLayout"
+                android:layout_toStartOf="@+id/frameLayout"
+                android:layout_marginBottom="47dp" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_margin="5dp"
+                android:id="@+id/id_tv_user_centre_name"
+                android:text="圈圈源源"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_below="@+id/frameLayout"
+                style="@style/name_city"
+                android:textSize="15sp"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/id_tv_user_centre_city"
+                android:text="深圳"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_below="@+id/id_tv_user_centre_name"
+                style="@style/name_city"
+                android:textSize="12sp"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/mygreytransparent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    >
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/id_tv_user_centre_age"
+                        android:textColor="#DD021B"
+                        android:text="30"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        style="@style/base_four_msgs" />
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#DD021B"
+                        android:textSize="10sp"
+                        android:text="AGE"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/line_grey"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    >
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/id_tv_user_centre_hight"
+                        android:text="180"
+                        android:textColor="#5affda"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        style="@style/base_four_msgs"
+                        />
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#5affda"
+                        android:textSize="10sp"
+                        android:text="CM"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/line_grey"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    >
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/id_tv_user_centre_weight"
+                        style="@style/base_four_msgs"
+                        android:textColor="#28a0ff"
+                        android:text="70"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        />
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#28a0ff"
+                        android:textSize="10sp"
+                        android:text="KG"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/line_grey"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    >
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/id_tv_user_centre_gametimes"
+                        android:textColor="#beeb34"
+                        android:text="35"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        style="@style/base_four_msgs"
+                        />
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#beeb34"
+                        android:textSize="10sp"
+                        android:text="Games"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        flatui:fl_fontFamily="ygy"
+                        flatui:fl_fontWeight="light"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+
+            android:id="@+id/id_user_centre_line"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:src="@drawable/line_red" />
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/id_user_centre_line"
+            android:layout_alignStart="@+id/id_user_centre_line"
+            android:layout_below="@+id/id_user_centre_line"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_user_centre_record" />
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    style="@style/style_tv2_user_centre"
+                    android:padding="10dp"
+                    android:text="约战记录"
+                    flatui:fl_fontFamily="ygy"
+                    flatui:fl_fontWeight="light"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_user_centre_safe" />
+                <com.cengalabs.flatui.views.FlatTextView
+                    style="@style/style_tv2_user_centre"
+                    android:padding="10dp"
+                    android:text="安全"
+                    flatui:fl_fontFamily="ygy"
+                    flatui:fl_fontWeight="light"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_user_centre_set" />
+                <com.cengalabs.flatui.views.FlatTextView
+                    style="@style/style_tv2_user_centre"
+                    android:padding="10dp"
+                    android:text="设置"
+                    flatui:fl_fontFamily="ygy"
+                    flatui:fl_fontWeight="light"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_user_centre_share" />
+                <com.cengalabs.flatui.views.FlatTextView
+                    style="@style/style_tv2_user_centre"
+                    android:padding="10dp"
+                    android:text="分享"
+                    flatui:fl_fontFamily="ygy"
+                    flatui:fl_fontWeight="light"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
-
-</RelativeLayout>
 </ScrollView>

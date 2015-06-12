@@ -48,13 +48,13 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/myred</item>
+        <item name="android:textColor">@color/myblack</item>
     </style>
 
     <style name="style_aty_main_banner_logo">
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">38dp</item>
+        <item name="android:layout_height">38dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -72,6 +72,20 @@
         <item name="android:layout_marginRight">40dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/mywhite</item>
+    </style>
+
+    <style name="register_list">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
     </style>
 
 

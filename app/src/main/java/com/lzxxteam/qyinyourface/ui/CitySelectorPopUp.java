@@ -34,7 +34,6 @@ public class CitySelectorPopUp {
         popwin.setOutsideTouchable(true);
         popwin.setFocusable(true);
         View view = LayoutInflater.from(context).inflate(R.layout.popup_table, null);
-        TextView tv_city = (TextView) view.findViewById(R.id.id_txt_city_now);
 
         popwin.setContentView(
                 LayoutInflater.from(context).inflate(R.layout.popup_table, null)

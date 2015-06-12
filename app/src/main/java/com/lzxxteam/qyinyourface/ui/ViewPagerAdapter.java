@@ -6,10 +6,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-public class ViewAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends PagerAdapter {
 	public List<View> views = null;
 
-	public ViewAdapter(List<View> view) {
+	public ViewPagerAdapter(List<View> view) {
 		views = view;
 	}
 

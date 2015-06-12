@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.getbase.floatingactionbutton.FloatingActionsMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/multiple_actions"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginRight="16dp"
+    fab:fab_addButtonColorNormal="@color/mywhite"
+    fab:fab_addButtonColorPressed="@color/mywhite"
+    fab:fab_addButtonPlusIconColor="@color/myblack"
+    fab:fab_addButtonSize="mini"
+    fab:fab_labelStyle="@style/menu_labels_style">
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_colorNormal="@color/mywhite"
+        fab:fab_colorPressed="@color/myred"
+        fab:fab_size="mini"
+        fab:fab_title="发起自由区约战" />
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_colorNormal="@color/mywhite"
+        fab:fab_colorPressed="@color/myred"
+        fab:fab_size="mini"
+        fab:fab_title="发起正式区约战" />
+
+</com.getbase.floatingactionbutton.FloatingActionsMenu>

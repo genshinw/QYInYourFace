@@ -8,93 +8,96 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserData {
 
 
-    private String userId;
-    private String userName;
-    private String email;
-    private String sex;
-    private String height;
-    private String weight;
+    private int userAge;
+    private int userGameTimes;
+    private int userId;
+    private int sex;
+    private int height;
+    private int weight;
+
     private String team;
     private String userAddr;
+    private String userName;
+    private String email;
 
-    @JsonProperty("id")
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getUserName() {
+        return userName;
     }
-
     @JsonProperty("name")
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    public String getEmail() {
+        return email;
+    }
     @JsonProperty("email")
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @JsonProperty("sex")
-    public void setSex(String sex) {
-        this.sex = sex;
+    public String getTeam() {
+        return team;
     }
-
     @JsonProperty("team")
     public void setTeam(String team) {
         this.team = team;
     }
 
+    public int getHeight() {
+        return height;
+    }
     @JsonProperty("height")
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
+    public int getUserAge() {
+        return userAge;
+    }
+    @JsonProperty("age")
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+
+    public int getUserGameTimes() {
+        return userGameTimes;
+    }
+    @JsonProperty("gtimes")
+    public void setUserGameTimes(int userGameTimes) {
+        this.userGameTimes = userGameTimes;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+    @JsonProperty("id")
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+    @JsonProperty("sex")
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
     @JsonProperty("weight")
-    public void setWeight(String weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
+    public String getUserAddr() {
+        return userAddr;
+    }
     @JsonProperty("addr")
     public void setUserAddr(String userAddr) {
         this.userAddr = userAddr;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public String[] getUserMsgsArray(){
-
-        String[] userMsgsArray = new String[7];
-        userMsgsArray[0] = userName;
-        userMsgsArray[1] = sex;
-        userMsgsArray[2] = height;
-        userMsgsArray[3] = weight;
-        userMsgsArray[4] = userAddr;
-        userMsgsArray[5] = team;
-        userMsgsArray[6] = email;
-        return userMsgsArray;
-    }
 }

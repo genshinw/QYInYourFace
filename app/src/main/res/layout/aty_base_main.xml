@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/myblack"
+        android:background="@color/mymenucolor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -20,48 +20,34 @@
         <ImageView
             android:id="@+id/menu_0"
             style="@style/style_aty_main_banner_logo"
-            android:src="@drawable/m1" />
+            android:src="@drawable/ic_menu0" />
 
 
         <ImageView
             android:id="@+id/menu_1"
             style="@style/style_aty_main_banner_logo"
-            android:src="@drawable/m2" />
+            android:src="@drawable/ic_menu1" />
 
 
         <ImageView
             android:id="@+id/menu_2"
             style="@style/style_aty_main_banner_logo"
-            android:src="@drawable/m3" />
+            android:src="@drawable/ic_menu2" />
 
         <ImageView
             android:id="@+id/menu_3"
             style="@style/style_aty_main_banner_logo"
-            android:src="@drawable/m4" />
+            android:src="@drawable/ic_menu3" />
 
 
     </LinearLayout>
-
-
-    <ImageView
-        android:id="@+id/banner_bar_line"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_above="@id/banner_bar"
-        android:src="@drawable/line" />
-
-    <ImageView
-        android:id="@+id/viewpager_line"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:src="@drawable/line_red" />
 
     <FrameLayout
         android:id="@+id/id_fl_main_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/banner_bar_line"
-        android:layout_below="@id/viewpager_line"
+        android:layout_above="@id/banner_bar"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal" />
 
 

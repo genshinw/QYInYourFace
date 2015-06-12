@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.presenters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -28,6 +28,9 @@ public class UserCentreViewControl {
     private Context context;
     private View userCentreView;
     private UserData data;
+    private TextView usernNameText,userTeamText,userAgeText,userCityText
+            ,userHightText,userWeightText,userGameTimesText;
+    private ImageView userProfileImage;
 
     public UserCentreViewControl(Context context){
 
@@ -38,9 +41,17 @@ public class UserCentreViewControl {
 
     public View getUserCentreView() {
 
-        if(userCentreView==null)
-            userCentreView = LayoutInflater.from(context).inflate(R.layout.fgmt_user_centre,null);
-
+        if(userCentreView==null) {
+            userCentreView = LayoutInflater.from(context).inflate(R.layout.fgmt_user_centre, null);
+            usernNameText =  ((TextView)userCentreView.findViewById(R.id.id_tv_user_centre_name));
+            userTeamText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_team);
+            userAgeText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_age);
+            userCityText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_city);
+            userHightText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_hight);
+            userWeightText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_weight);
+            userGameTimesText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_gametimes);
+            userProfileImage = (ImageView) userCentreView.findViewById(R.id.id_iv_user_centre_profile);
+        }
 
 
         return userCentreView;
@@ -71,18 +82,16 @@ public class UserCentreViewControl {
 
     public void setData(UserData data) {
         this.data = data;
-        String[] userMsgArray = data.getUserMsgsArray();
 
+        usernNameText.setText(data.getUserName());
+        userTeamText.setText(data.getTeam());
+        userCityText.setText(data.getUserAddr());
+        userAgeText.setText(data.getUserAge()+"");
+        userHightText.setText(data.getHeight()+"");
+        userWeightText.setText(data.getWeight()+"");
+        userGameTimesText.setText(data.getUserGameTimes()+"");
 
-        ((TextView)userCentreView.findViewById(R.id.id_tv_user_centre_name)).setText(userMsgArray[0]);
-        ImageView peopleProfile = (ImageView) userCentreView.findViewById(R.id.id_iv_user_centre_profile);
-        GetImageFromNet.setProfileToImageView(data.getUserId()+".png",peopleProfile);
-        ViewGroup userMsgs = (ViewGroup) userCentreView.findViewById(R.id.id_ll_user_centre_msg);
-
-        for(int i=1;i<=6;i++){
-            TextView tvUserMsg = (TextView) userMsgs.getChildAt(i);
-            tvUserMsg.setText(userMsgArray[i]);
-        }
+        GetImageFromNet.setProfileToImageView(data.getUserId()+".png",userProfileImage);
 
     }
 }

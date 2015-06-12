@@ -2,7 +2,7 @@
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myblack"
+    android:background="@color/myrealwhite"
     >
 <LinearLayout
     xmlns:flatui="http://schemas.android.com/apk/res-auto"
@@ -18,7 +18,7 @@
         android:layout_width="189dp"
         android:layout_height="91dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/enlogo"
+        android:src="@drawable/banner"
         android:layout_marginBottom="30dp"
         />
     <ImageView
@@ -36,9 +36,10 @@
         android:gravity="center_vertical"
         android:hint="e-mail or username"
         android:includeFontPadding="true"
-        flatui:fl_fieldStyle="fl_flat"
-        flatui:fl_textAppearance="fl_none"
-        flatui:fl_theme="@array/mygreytheme"
+        flatui:fl_fieldStyle="fl_box"
+        flatui:fl_theme="@array/mygreydarkertheme"
+        flatui:fl_cornerRadius="8dp"
+        flatui:fl_borderWidth="1dp"
         />
 
 
@@ -54,9 +55,11 @@
         android:hint="password"
         android:inputType="textPassword"
         android:includeFontPadding="true"
-        flatui:fl_textAppearance="fl_none"
-        flatui:fl_fieldStyle="fl_flat"
-        flatui:fl_theme="@array/mygreytheme" />
+        flatui:fl_fieldStyle="fl_box"
+        flatui:fl_theme="@array/mygreydarkertheme"
+        flatui:fl_cornerRadius="8dp"
+        flatui:fl_borderWidth="1dp"
+        />
 
 
 
@@ -68,14 +71,14 @@
         android:text="logIN"
         android:layout_margin="10dp"
         flatui:fl_theme="@array/myredtheme"
-
-        flatui:fl_blockButtonEffectHeight="3dp" />
+        />
 
     <TextView
         android:id="@+id/id_tv_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册    "
+        android:textSize="18sp"
         android:layout_margin="10dp"
         android:textColor="@color/mygrey"
         android:layout_gravity="right"

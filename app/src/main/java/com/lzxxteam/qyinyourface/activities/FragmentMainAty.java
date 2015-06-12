@@ -1,6 +1,5 @@
 package com.lzxxteam.qyinyourface.activities;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +27,8 @@ public  class FragmentMainAty extends BaseAty{
     private FragmentManager fragmentManager;
     private FightWithFgmt fightWithFgmt;
     private UserCentreFgmt userCentreFgmt;
+    private DiscoverFgmt discoverFgmt;
+    private ChatWithFgmt chatWithFgmt;
 
     private long mExitTime = 0;//控制双击退出程序
 
@@ -84,6 +85,22 @@ public  class FragmentMainAty extends BaseAty{
                         transaction.replace(R.id.id_fl_main_view_container, fightWithFgmt);
                         break;
 
+                    case R.id.menu_1:
+
+                        menu1.setImageDrawable(menu1_press);
+                        if(discoverFgmt ==null){
+                            discoverFgmt = new DiscoverFgmt();
+                        }
+                        transaction.replace(R.id.id_fl_main_view_container, discoverFgmt);
+                        break;
+                    case R.id.menu_2:
+
+                        menu2.setImageDrawable(menu2_press);
+                        if(chatWithFgmt ==null){
+                            chatWithFgmt = new ChatWithFgmt();
+                        }
+                        transaction.replace(R.id.id_fl_main_view_container, chatWithFgmt);
+                        break;
                     case R.id.menu_3:
 
 
@@ -112,10 +129,10 @@ public  class FragmentMainAty extends BaseAty{
         menu3.setOnClickListener(changeMenu);
 
 
-        menu0_press = AppGlobalMgr.getResImg(R.drawable.m1_press);
-        menu1_press = AppGlobalMgr.getResImg(R.drawable.m2_press);
-        menu2_press = AppGlobalMgr.getResImg(R.drawable.m3_press);
-        menu3_press = AppGlobalMgr.getResImg(R.drawable.m4_press);
+        menu0_press = AppGlobalMgr.getResImg(R.drawable.ic_menu0_press);
+        menu1_press = AppGlobalMgr.getResImg(R.drawable.ic_menu1_press);
+        menu2_press = AppGlobalMgr.getResImg(R.drawable.ic_menu2_press);
+        menu3_press = AppGlobalMgr.getResImg(R.drawable.ic_menu3_press);
     }
 
 

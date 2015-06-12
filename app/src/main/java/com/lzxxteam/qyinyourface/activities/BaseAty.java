@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
+import com.cengalabs.flatui.FlatUI;
 import com.lzxxteam.qyinyourface.R;
 
 /**
@@ -22,7 +23,7 @@ public abstract class BaseAty extends ActionBarActivity {
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
+        actionBar.setBackgroundDrawable(FlatUI.getActionBarDrawable(this,R.array.myredtheme,false));
 
 
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);

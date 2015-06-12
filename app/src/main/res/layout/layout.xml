@@ -13,7 +13,7 @@
         android:layout_width="189dp"
         android:layout_height="91dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/enlogo"
+        android:src="@drawable/banner"
         android:layout_marginBottom="30dp"
          />
     <ImageView

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
@@ -14,14 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
 import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
-import com.lzxxteam.qyinyourface.ui.FightWithViewControler;
-import com.lzxxteam.qyinyourface.ui.ViewAdapter;
+import com.lzxxteam.qyinyourface.presenters.FightWithViewControler;
+import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
+import com.lzxxteam.qyinyourface.ui.ViewPagerAdapter;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
@@ -32,7 +34,7 @@ import java.util.List;
 /**
  *
  */
-public class FightWithFgmt extends Fragment {
+public class FightWithFgmt extends BaseFgmt {
 
 
     List<View> viewList;
@@ -40,20 +42,19 @@ public class FightWithFgmt extends Fragment {
     private ViewGroup fightWithView;
 
 
-    private ViewPager viewPager;
 
-    private ViewAdapter viewAdapter;
+    private ViewPagerAdapter viewAdapter;
     private TencentLocationManager mLocationManager;
     private Listener_Location lisloc;
     private FightWithViewControler fvc;
-    private Activity atyToAttach;
     private View selCity;
+    private IndicaterViewPagerFactory viewPagerFactory;
+    private View selArea;
 
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        atyToAttach = activity;
 
         //避免每次重新replace这个fragment的资源的重新申请，都对nul进行判断
         if(fvc==null)
@@ -83,6 +84,25 @@ public class FightWithFgmt extends Fragment {
                     mPopuWindow.showAsDropDown(selCity);
                 }
              });
+            selArea = actionBar.getCustomView().findViewById(R.id.id_tv_sel_fight_area);
+            selArea.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PopupWindow popwin = new PopupWindow(atyToAttach);
+                    popwin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+                    popwin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+                    popwin.setOutsideTouchable(true);
+                    popwin.setFocusable(true);
+
+                    popwin.setContentView(
+                            LayoutInflater.from(atyToAttach)
+                                    .inflate(R.layout.popup_sel_fight_area, null)
+                    );
+                    popwin.update();
+                    popwin.showAsDropDown(selArea);
+
+                }
+            });
 
 
         }else{
@@ -90,21 +110,22 @@ public class FightWithFgmt extends Fragment {
         }
 
 
-        viewList = new ArrayList<View>();
 
 
-      /*  viewList.add(fightWithView);
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        viewAdapter = new ViewAdapter(viewList);
-
-        viewPager.setAdapter(viewAdapter);
-
-        viewPager.setOnPageChangeListener(new Listener_PageChange());*/
+        viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
+        View view1 = inflater.inflate(R.layout.pageview2,null);
+        ArrayList<View> listView = new ArrayList<View>();
+        listView.add(fightWithView);
+        listView.add(view1);
 
 
-        return fightWithView;
+        viewPagerFactory.addViewPagerViews(listView,null);
+
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"});
+
+
+
+        return container;
     }
 
     @Override
@@ -125,7 +146,6 @@ public class FightWithFgmt extends Fragment {
 
         @Override
         public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
-            Log.i("whats", "wrong");
             if (error == TencentLocation.ERROR_OK) {
                 Toast.makeText(atyToAttach, "loc" + tencentLocation.getAddress(),Toast.LENGTH_LONG).show();
             }
@@ -137,33 +157,7 @@ public class FightWithFgmt extends Fragment {
         }
     }
 
-    class Listener_PageChange implements OnPageChangeListener {
 
-        public void onPageSelected(int arg0) {
-            // TODO Auto-generated method stub
-
-
-        }
-
-        public void onPageScrolled(int curPosition, float progress, int deltaPx) {
-            // TODO Auto-generated method stub
-
-            int nextPos;
-            if (deltaPx > 0) {
-                nextPos = curPosition + 1;
-            } else {
-                nextPos = curPosition - 1;
-            }
-
-
-
-        }
-
-        public void onPageScrollStateChanged(int arg0) {
-            // TODO Auto-generated method stub
-
-        }
-    }
 
 
 }

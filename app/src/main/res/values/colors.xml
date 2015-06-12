@@ -6,15 +6,20 @@
     <color name="myred_light">#ed97a9</color>
     <color name="myred_dark">#76161e</color>
     <color name="myred_darker">#56101A</color>
-
+    <color name="mymenucolor">#D8D8D8</color>
 
 
     <color name="black">#000000</color>
     <color name="mygreylighter">#a9a9a9</color>
+    <color name="mygreylighter2">#D9D9D9</color>
+    <color name="mygreyliter3">#BABAB9</color>
+
     <color name="mygrey">#969495</color>
     <color name="mygreydarker">#444041</color>
+    <color name="mygreydarker2">#333333</color>
     <color name="mywhite">#fefeff</color>
     <color name="myrealwhite">#ffffff</color>
+    <color name="mygreytransparent">#3DD8D8D8</color>
 
     <color name="custom_theme_darker">#090506</color>
     <color name="custom_theme_dark">#090506</color>
@@ -22,4 +27,6 @@
     <color name="custom_theme_light">#4D4D4C</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="black_semi_transparent">#B2000000</color>
 </resources>

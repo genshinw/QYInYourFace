@@ -18,6 +18,12 @@
         <item>@color/mywhite</item>
     </integer-array>
 
+    <integer-array name="mygreydarkertheme">
+        <item>@color/custom_theme_dark</item>
+        <item>@color/mygreylighter</item>
+        <item>@color/mygreydarker2</item>
+        <item>@color/mygreydarker2</item>
+    </integer-array>
 
     <integer-array name="myredtheme">
         <item>@color/myred_darker</item>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">InYourFace</string>
+    <string name="app_name">球约</string>
     <string name="fgmt_name_user_centre">个人中心</string>
+    <string name="fgmt_name_discover">发现</string>
+    <string name="fgmt_name_chat_with">私信</string>
     <string name="aty_name_register">注册</string>
     <string name="aty_name_fight_with_detail">约战信息</string>
 

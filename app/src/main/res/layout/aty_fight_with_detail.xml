@@ -174,7 +174,7 @@
             android:layout_margin="30dp"
             android:text="接受挑战"
             flatui:fl_fontExtension="ttf"
-            flatui:fl_fontFamily="huayun"
+            flatui:fl_fontFamily="ygy"
             flatui:fl_fontWeight="light"
             flatui:fl_theme="@array/myredtheme" />
     </LinearLayout>

@@ -12,41 +12,32 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
-import com.lzxxteam.qyinyourface.ui.UserCentreViewControl;
+import com.lzxxteam.qyinyourface.presenters.UserCentreViewControl;
 
 /**
  * Created by Elvis on 2015/5/31.
  */
-public class UserCentreFgmt extends Fragment {
+public class UserCentreFgmt extends BaseFgmt {
 
     private UserCentreViewControl ucvc;
-    private Activity atyToAttach;
 
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        atyToAttach = activity;
         if(ucvc==null)
             ucvc = new UserCentreViewControl(atyToAttach);
-        
+
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(atyToAttach instanceof ActionBarActivity) {
-            ActionBar actionBar = ((ActionBarActivity) atyToAttach).getSupportActionBar();
-            actionBar.setCustomView(R.layout.actionbar_base);
-            ((TextView)actionBar.getCustomView().findViewById(R.id.id_tv_bar_name))
-            .setText(R.string.fgmt_name_user_centre);
 
-        }else{
-            LogMsgUtil.e("Fragment's activity not actionBarActivity");
-        }
-
+        setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_user_centre));
         
         return ucvc.getUserCentreView();
 
@@ -56,7 +47,7 @@ public class UserCentreFgmt extends Fragment {
     public void onStart() {
         super.onStart();
 
-        ucvc.getDataFromNet();
+       ucvc.getDataFromNet();
     }
 
 

@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.ui;
+package com.lzxxteam.qyinyourface.presenters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,6 +21,8 @@ import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
 import com.lzxxteam.qyinyourface.model.FightWithData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
+import com.lzxxteam.qyinyourface.ui.FightWithAdapter;
+import com.lzxxteam.qyinyourface.ui.RefreshLayout;
 
 import org.apache.http.Header;
 
@@ -35,7 +37,7 @@ public class FightWithViewControler {
 
 
     private  ArrayList<FightWithData> datas;
-    private  FightWithAdapter adapter;
+    private FightWithAdapter adapter;
     private Context context;
     private ListView fightWithView;
     private RefreshLayout refreshLayout;
@@ -128,8 +130,6 @@ public class FightWithViewControler {
 
                     datas.add(mapper.readValue(jp,FightWithData.class));
                 }
-                //做一个1s延迟
-                TimeUnit.SECONDS.sleep(1);
                 return  datas;
             }
         });

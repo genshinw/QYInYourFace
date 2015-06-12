@@ -2,107 +2,165 @@
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/myrealwhite"
     >
 <LinearLayout
     xmlns:flatui="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/myblack"
     android:gravity="center_horizontal"
-    android:padding="25dp"
     >
 
     <ImageView
         android:id="@+id/id_iv_regist_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_regist_profile"
         android:layout_margin="20dp"
         />
 
-    <com.cengalabs.flatui.views.FlatEditText
-        android:id="@+id/id_et_regist_name"
-        android:hint="Name:"
+    <LinearLayout
+        style="@style/register_list"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_regist_user"
+            />
+        <com.cengalabs.flatui.views.FlatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/id_et_regist_name"
+            android:hint="Name:"
+            android:inputType="textPersonName"
+            flatui:fl_fieldStyle="fl_box"
+            flatui:fl_theme="@array/mygreydarkertheme"
+            flatui:fl_cornerRadius="10dp"
+            flatui:fl_borderWidth="1dp"
+
+    />
+    </LinearLayout>
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        flatui:fl_fieldStyle="fl_transparent"
-        flatui:theme="@array/myredtheme"
-        flatui:fl_borderWidth="0dp"
-        />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
-        />
-
-    <com.cengalabs.flatui.views.FlatEditText
-        android:id="@+id/id_et_regist_sex"
-        android:hint="Sex:"
+        style="@style/register_list"
+        >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        flatui:fl_fieldStyle="fl_transparent"
-        flatui:theme="@array/myredtheme"
-        flatui:fl_borderWidth="0dp"
-        />
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_regist_sex"
+            />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
-        />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="male"
+            flatui:fl_size="20sp"
+            android:textSize="20sp"
+            flatui:fl_theme="@array/mygreydarkertheme"
+            android:layout_weight="1"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="female"
+            android:layout_gravity="center"
+            flatui:fl_size="20sp"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            flatui:fl_theme="@array/mygreydarkertheme"
+            />
 
+    </LinearLayout>
+    </RadioGroup>
+
+
+    <LinearLayout
+        style="@style/register_list"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_regist_email"
+            />
     <com.cengalabs.flatui.views.FlatEditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/id_et_regist_email"
         android:hint="E-mail:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        flatui:fl_fieldStyle="fl_transparent"
+        flatui:fl_fieldStyle="fl_box"
+        flatui:fl_cornerRadius="10dp"
+        flatui:fl_borderWidth="1dp"
+
         android:inputType="textEmailAddress"
-        flatui:theme="@array/myredtheme"
-        flatui:fl_borderWidth="0dp"
+        flatui:fl_theme="@array/mygreydarkertheme"
         />
+    </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
-        />
 
+    <LinearLayout
+        style="@style/register_list"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_regist_password"
+            />
     <com.cengalabs.flatui.views.FlatEditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/id_et_regist_psw"
         android:hint="Password:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:inputType="textPassword"
-        flatui:fl_fieldStyle="fl_transparent"
-        flatui:theme="@array/myredtheme"
-        flatui:fl_borderWidth="0dp"
-        />
+        flatui:fl_fieldStyle="fl_box"
+        flatui:fl_cornerRadius="10dp"
+        flatui:fl_borderWidth="1dp"
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
+        flatui:fl_theme="@array/mygreydarkertheme"
         />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/register_list"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_regist_confirm"
+            />
     <com.cengalabs.flatui.views.FlatEditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/id_et_regist_psw_confirm"
         android:hint="Password Confirm:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:inputType="textPassword"
-        flatui:fl_fieldStyle="fl_transparent"
-        flatui:theme="@array/myredtheme"
-        flatui:fl_borderWidth="0dp"
-        />
+        flatui:fl_fieldStyle="fl_box"
+        flatui:fl_theme="@array/mygreydarkertheme"
+        flatui:fl_cornerRadius="10dp"
+        flatui:fl_borderWidth="1dp"
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line"
         />
+</LinearLayout>
 
 
     <TextView

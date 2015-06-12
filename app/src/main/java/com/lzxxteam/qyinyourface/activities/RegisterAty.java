@@ -66,7 +66,7 @@ public class RegisterAty extends BaseAty{
         registByWXBtn = (ImageView)findViewById(R.id.id_iv_regist_wx);
 
         registNameEditText = (EditText) findViewById(R.id.id_et_regist_name);
-        registSexEditText =  (EditText) findViewById(R.id.id_et_regist_sex);
+//        registSexEditText =  (EditText) findViewById(R.id.id_et_regist_sex);
         registEmailEditText = (EditText) findViewById(R.id.id_et_regist_email);
         registPswEditText = (EditText) findViewById(R.id.id_et_regist_psw);
         registPswConfirmEditText = (EditText) findViewById(R.id.id_et_regist_psw_confirm);
