@@ -19,6 +19,7 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.presenters.TeamListViewControler;
 import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
 import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
 import com.lzxxteam.qyinyourface.presenters.FightWithViewControler;
@@ -50,6 +51,8 @@ public class FightWithFgmt extends BaseFgmt {
     private View selCity;
     private IndicaterViewPagerFactory viewPagerFactory;
     private View selArea;
+    private TeamListViewControler fvc2;
+    private ViewGroup teamListView;
 
 
     @Override
@@ -62,6 +65,12 @@ public class FightWithFgmt extends BaseFgmt {
 
         if (fightWithView==null)
             fightWithView =  fvc.getFightWithView();
+
+        if(fvc2==null)
+            fvc2 = new TeamListViewControler(atyToAttach);
+
+        if (teamListView==null)
+            teamListView =  fvc2.getTeamLsitView();
 
     }
 
@@ -85,6 +94,9 @@ public class FightWithFgmt extends BaseFgmt {
                 }
              });
             selArea = actionBar.getCustomView().findViewById(R.id.id_tv_sel_fight_area);
+            final View selAreaIndicate = actionBar.getCustomView()
+                    .findViewById(R.id.id_iv_sel_area_indicate);
+
             selArea.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -113,10 +125,9 @@ public class FightWithFgmt extends BaseFgmt {
 
 
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        View view1 = inflater.inflate(R.layout.pageview2,null);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(fightWithView);
-        listView.add(view1);
+        listView.add(teamListView);
 
 
         viewPagerFactory.addViewPagerViews(listView,null);
@@ -132,6 +143,7 @@ public class FightWithFgmt extends BaseFgmt {
     public void onStart() {
         super.onStart();
         fvc.getDataFromNet(true);
+        fvc2.getDataFromNet(true);
     }
 
 

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         applicationId "com.lzxxteam.qyinyourface"
@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.github.eluleci:flatui:3.0.0'
@@ -36,4 +36,8 @@ dependencies {
     compile files('libs/TencentLocationSDK_v4.1.1_r175129.jar')
     compile files('libs/libammsdk.jar')
     compile 'com.getbase:floatingactionbutton:1.9.1'
+    repositories {
+        mavenCentral()
+    }
+    compile 'com.github.chrisbanes.actionbarpulltorefresh:library:+'
 }

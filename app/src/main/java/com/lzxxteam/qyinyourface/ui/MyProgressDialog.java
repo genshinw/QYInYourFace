@@ -19,7 +19,7 @@ public class MyProgressDialog {
     public MyProgressDialog(Context context,String title){
         pDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.setTitleText(title);
-        pDialog.getProgressHelper().setBarWidth(10);
+        pDialog.getProgressHelper().setBarWidth(25);
         pDialog.getProgressHelper()
                 .setBarColor(AppGlobalMgr.getAppResources().getColor(R.color.myred));
     }

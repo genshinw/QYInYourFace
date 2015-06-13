@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:flatui="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
     >
 
 
         <com.cengalabs.flatui.views.FlatTextView
-            android:layout_alignParentLeft="true"
             android:id="@+id/id_city_select"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="0.7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="深圳"
             flatui:fl_fontFamily="ygy"
             flatui:fl_fontWeight="light"
             android:textColor="@android:color/white"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
             android:textSize="16sp" />
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:src="@drawable/sanjiao"
+            android:layout_toRightOf="@id/id_city_select"
+            android:layout_centerVertical="true"
          />
 
         <com.cengalabs.flatui.views.FlatTextView
             android:id="@+id/id_tv_sel_fight_area"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="自由区"
             android:textColor="@android:color/white"
+            android:paddingRight="5dp"
             flatui:fl_fontFamily="ygy"
             flatui:fl_fontWeight="light"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:id="@+id/id_iv_sel_area_indicate"
+        android:layout_width="15dp"
+        android:layout_height="20dp"
+        android:src="@drawable/sanjiao"
+        android:layout_toRightOf="@id/id_tv_sel_fight_area"
+        android:layout_centerVertical="true"
         />
 
-
-    </LinearLayout>
+    </RelativeLayout>

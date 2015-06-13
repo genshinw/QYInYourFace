@@ -1,17 +1,17 @@
 package com.lzxxteam.qyinyourface.ui;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.lzxxteam.qyinyourface.R;
-import com.lzxxteam.qyinyourface.model.FightWithData;
+import com.lzxxteam.qyinyourface.model.TeamBaseData;
+import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -20,21 +20,21 @@ import java.util.List;
 /**
  * Created by Elvis on 15/5/22.
  */
-public class FightWithAdapter extends BaseAdapter {
+public class TeamListAdapter extends BaseAdapter {
 
     //头像载入地址
     private final ImageLoader imageLoader;
-    private final View headerView;
+    private int[] levelDraws = {R.drawable.level0,R.drawable.level1,
+            R.drawable.level2,R.drawable.level3,
+    R.drawable.level4,R.drawable.level5};
 
-    private  List<FightWithData> dataList;
+    private  List<TeamBaseData> dataList;
     private  Context context;
     private  int dataSize = 0;
-    public FightWithAdapter(Context context,List<FightWithData> dataList){
+    public TeamListAdapter(Context context, List<TeamBaseData> dataList){
 
         this.context = context;
         this.dataList = dataList;
-        headerView = LayoutInflater.from(context).inflate(R.layout.header_view, null);
-//      headerView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,headerHeight));
         /**
          * 对imageLoader加载网络头像
          */
@@ -65,22 +65,17 @@ public class FightWithAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
         ViewHolder holder = null;
-        FightWithData data = dataList.get(position);
-        if (convertView == null || convertView.equals(headerView)) {
-
-            convertView = LayoutInflater.from(context).inflate(R.layout.lv_fightwith_item, null);
+        TeamBaseData data = dataList.get(position);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.lv_teams_item, null);
             holder =  new ViewHolder(convertView,position);
             convertView.setTag(holder);
 
         } else{
             holder = (ViewHolder) convertView.getTag();
         }
-
         holder.setHolder(data);
-
         return convertView;
     }
     private  class ViewHolder{
@@ -93,17 +88,17 @@ public class FightWithAdapter extends BaseAdapter {
 
         }
 
-        public void setHolder(FightWithData data){
+        public void setHolder(TeamBaseData data){
 
-            ImageView portrait = (ImageView) convertView.findViewById(R.id.plist_logo);
-            TextView userName = (TextView) convertView.findViewById(R.id.plist_user_name);
-            TextView fightTime = (TextView) convertView.findViewById(R.id.plist_game_time);
-            TextView fightSpace = (TextView) convertView.findViewById(R.id.plist_game_space);
-            GetImageFromNet.setProfileToImageView( data.getUserName() + ".png", portrait);
-
-            userName.setText(data.getUserName());
-            fightSpace.setText(data.getFightSpace());
-            fightTime.setText(data.getFightTime());
+            ImageView teamPortrait = (ImageView) convertView
+                    .findViewById(R.id.id_iv_team_list_logo);
+            TextView teamName = (TextView) convertView.findViewById(R.id.id_tv_team_list_name);
+            TextView winTimes = (TextView) convertView.findViewById(R.id.id_tv_team_list_wintimes);
+            ImageView teamLevel = (ImageView) convertView.findViewById(R.id.id_iv_team_list_level);
+            GetImageFromNet.setProfileToImageView(data.getId() + ".png", teamPortrait);
+            teamLevel.setImageDrawable(AppGlobalMgr.getResImg(levelDraws[data.getTeamLevel()]));
+            teamName.setText(data.getTeamName());
+            winTimes.setText("获胜率：" + data.getTeamWinLevel() + "%");
          }
 
     }

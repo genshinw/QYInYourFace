@@ -73,6 +73,13 @@
                 android:textSize="12sp"
 
                 />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_boy"
+                android:layout_above="@+id/id_tv_user_centre_team"
+                android:layout_toRightOf="@+id/frameLayout"
+                android:layout_toEndOf="@+id/frameLayout" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

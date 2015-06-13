@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/sel_lv_item_color_cge"
+    android:id="@+id/p1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/id_iv_team_list_logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/t1" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/id_iv_team_list_logo"
+        android:layout_toEndOf="@id/id_iv_team_list_logo"
+        android:id="@+id/linearLayout"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="2dp"
+
+            >
+
+            <TextView
+                android:id="@+id/id_tv_team_list_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="银河护卫队"
+                android:layout_gravity="center"
+                android:textColor="@color/myblack"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_boy"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/id_tv_team_list_wintimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获胜率：80%"
+            android:padding="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/mygreydarker"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="信誉度："
+                android:textColor="@color/mygreydarker"
+                android:textSize="12sp" />
+            <ImageView
+                android:id="@+id/id_iv_team_list_level"
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="15dp"
+                android:src="@drawable/level3"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/button_block"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:text="向他挑战"
+        android:textSize="10sp"
+        flatui:fl_textAppearance="fl_none"
+        flatui:fl_theme="@array/myredtheme"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+         />
+
+
+</RelativeLayout>
+

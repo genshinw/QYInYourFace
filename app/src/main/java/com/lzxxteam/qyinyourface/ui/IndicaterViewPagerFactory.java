@@ -152,7 +152,6 @@ public class IndicaterViewPagerFactory {
 
 
     }
-
     interface PageSelectPresetnters {
         void pageDeal();
     }

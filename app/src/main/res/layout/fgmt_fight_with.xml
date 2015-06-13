@@ -1,37 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.getbase.floatingactionbutton.FloatingActionsMenu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/multiple_actions"
-    android:layout_width="wrap_content"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
-    android:layout_marginBottom="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginRight="16dp"
-    fab:fab_addButtonColorNormal="@color/mywhite"
-    fab:fab_addButtonColorPressed="@color/mywhite"
-    fab:fab_addButtonPlusIconColor="@color/myblack"
-    fab:fab_addButtonSize="mini"
-    fab:fab_labelStyle="@style/menu_labels_style">
+    android:orientation="vertical"
+    >
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/action_a"
-        android:layout_width="wrap_content"
+    <com.lzxxteam.qyinyourface.ui.RefreshLayout
+        android:id="@+id/id_refl_fight_with"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></com.lzxxteam.qyinyourface.ui.RefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/id_ll_filter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        fab:fab_colorNormal="@color/mywhite"
-        fab:fab_colorPressed="@color/myred"
-        fab:fab_size="mini"
-        fab:fab_title="发起自由区约战" />
+        android:orientation="vertical"
+        android:background="@color/mygreylighter2"
+        >
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/action_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        fab:fab_colorNormal="@color/mywhite"
-        fab:fab_colorPressed="@color/myred"
-        fab:fab_size="mini"
-        fab:fab_title="发起正式区约战" />
+        <LinearLayout
+            style="@style/fight_with_filter_line">
 
-</com.getbase.floatingactionbutton.FloatingActionsMenu>
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_filter_loc" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地点"
+                    android:textColor="@color/myred"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/line_red"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="8"
+                android:layout_marginLeft="20dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:text="不限"
+                    style="@style/fight_with_filter_item" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="罗湖区" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="南山区" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="盐田区" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            style="@style/fight_with_filter_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_filter_time" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时间"
+                    android:textColor="@color/myred"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/line_red"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="8"
+                android:layout_marginLeft="20dp"
+                android:weightSum="4">
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="不限" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="三天内" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="一周内" />
+
+                <TextView
+                    style="@style/fight_with_filter_item"
+                    android:text="一个月内" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
