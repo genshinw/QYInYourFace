@@ -38,13 +38,9 @@ import java.util.List;
 public class FightWithFgmt extends BaseFgmt {
 
 
-    List<View> viewList;
 
     private ViewGroup fightWithView;
 
-
-
-    private ViewPagerAdapter viewAdapter;
     private TencentLocationManager mLocationManager;
     private Listener_Location lisloc;
     private FightWithViewControler fvc;

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_border"
+        android:padding="1dp"
+        >
+
+        <org.solo.waterfall.ScaleImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_holder_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@color/myrealwhite"
+            >
+
+            <TextView
+                android:id="@+id/id_fgmt_gym_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="深圳体育馆"
+                android:textSize="15sp"
+                android:padding="2dp"
+                android:textColor="@color/myred" />
+
+            <TextView
+                android:id="@+id/id_fgmt_gym_addr"
+                android:layout_below="@id/id_fgmt_gym_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="深圳市南山区XXXX街道xxx路423号"
+                android:padding="2dp"
+                android:textSize="10sp"
+                android:textColor="@color/mygreydarker" />
+            <!--  <ImageView
+                  android:layout_width="13dp"
+                  android:layout_height="13dp"
+                  android:src="@drawable/ic_filter_loc"
+                  android:layout_alignTop="@+id/id_fgmt_gym_addr" />-->
+        </RelativeLayout>
+    </LinearLayout>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="5dp"
+    android:src="@drawable/line_white"
+    />
+
+</LinearLayout>

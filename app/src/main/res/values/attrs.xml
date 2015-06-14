@@ -8,5 +8,8 @@
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
-
+    <declare-styleable name="WaterfallView">
+        <attr name="column" format="integer" />
+        <attr name="itemMargin" format="dimension" />
+    </declare-styleable>
 </resources>

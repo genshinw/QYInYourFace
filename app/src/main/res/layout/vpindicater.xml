@@ -64,7 +64,8 @@
 
     </android.support.v4.view.ViewPager>
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions"
+
+        android:id="@+id/float_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -77,7 +78,10 @@
         fab:fab_addButtonColorPressed="@color/mywhite"
         fab:fab_addButtonPlusIconColor="@color/myblack"
         fab:fab_addButtonSize="mini"
-        fab:fab_labelStyle="@style/menu_labels_style">
+        fab:fab_labelStyle="@style/menu_labels_style"
+        android:visibility="gone"
+
+        >
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/action_a"

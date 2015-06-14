@@ -110,9 +110,8 @@ public class FightWithViewControler {
         ));*/
         refreshLayout.addView(fightWithView);
         refreshLayout.setFooterView(context, fightWithView, R.layout.lv_footer_fresh);
-
+        refreshLayout.setProgressViewOffset(true,height/2,height+height/5);
         refreshLayout.setColorSchemeResources(R.color.myred);
-
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

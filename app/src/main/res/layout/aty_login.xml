@@ -33,13 +33,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:maxLines="1"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
 
         android:gravity="center_vertical"
         android:hint="e-mail or username"
         android:includeFontPadding="true"
         flatui:fl_fieldStyle="fl_box"
-        flatui:fl_theme="@array/mygreydarkertheme"
+        flatui:fl_theme="@array/mygreylightertheme"
         flatui:fl_cornerRadius="8dp"
         flatui:fl_borderWidth="1dp"
         />
@@ -58,7 +58,7 @@
         android:inputType="textPassword"
         android:includeFontPadding="true"
         flatui:fl_fieldStyle="fl_box"
-        flatui:fl_theme="@array/mygreydarkertheme"
+        flatui:fl_theme="@array/mygreylightertheme"
         flatui:fl_cornerRadius="8dp"
         flatui:fl_borderWidth="1dp"
         />

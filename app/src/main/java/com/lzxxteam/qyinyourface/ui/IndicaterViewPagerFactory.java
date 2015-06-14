@@ -53,7 +53,7 @@ public class IndicaterViewPagerFactory {
 
         container = (ViewGroup) LayoutInflater.from(context)
                 .inflate(R.layout.vpindicater, null);
-
+        container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
      /*   View floatButton =  LayoutInflater.from(context)
                 .inflate(R.layout.fgmt_fight_with, null);
 
