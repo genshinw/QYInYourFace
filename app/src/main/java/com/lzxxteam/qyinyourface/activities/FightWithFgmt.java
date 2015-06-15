@@ -118,8 +118,6 @@ public class FightWithFgmt extends BaseFgmt {
         }
 
 
-
-
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(fightWithView);
@@ -128,7 +126,7 @@ public class FightWithFgmt extends BaseFgmt {
 
         viewPagerFactory.addViewPagerViews(listView,null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"});
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"},true);
 
 
 

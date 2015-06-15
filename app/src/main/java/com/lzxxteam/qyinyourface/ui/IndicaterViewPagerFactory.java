@@ -42,18 +42,20 @@ public class IndicaterViewPagerFactory {
         this.context = context;
     }
 
-    public ViewGroup getIndicaterViewPager(String[] indicateNames) {
+    public ViewGroup getIndicaterViewPager(String[] indicateNames,boolean isShowFloatBottom) {
         this.indicateNames = indicateNames;
         if (container==null)
-            init();
+            init(isShowFloatBottom);
 
         return container;
     }
-    public void init() {
+    public void init(boolean isShowFloatBottom) {
 
         container = (ViewGroup) LayoutInflater.from(context)
                 .inflate(R.layout.vpindicater, null);
-        container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
+        if (isShowFloatBottom) {
+            container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
+        }
      /*   View floatButton =  LayoutInflater.from(context)
                 .inflate(R.layout.fgmt_fight_with, null);
 

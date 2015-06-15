@@ -2,6 +2,7 @@
 <resources>
     <color name="mybackgroudColor">#ffffff</color>
     <color name="myblack">#2B2C2D</color>
+    <color name="mypingred">#E5B3B2</color>
     <color name="myred">#a11e23</color>
     <color name="myred_light">#ed97a9</color>
     <color name="myred_dark">#76161e</color>
@@ -20,6 +21,7 @@
     <color name="mywhite">#fefeff</color>
     <color name="myrealwhite">#ffffff</color>
     <color name="mygreytransparent">#3DD8D8D8</color>
+    <color name="mygreydarkertransparent">#d0333333</color>
 
     <color name="custom_theme_darker">#090506</color>
     <color name="custom_theme_dark">#090506</color>

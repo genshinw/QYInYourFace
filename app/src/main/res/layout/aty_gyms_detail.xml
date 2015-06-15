@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/myrealwhite"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/myblack"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gym5"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mygreydarkertransparent"
+            android:padding="15dp"
+            >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="深圳体育馆"
+                android:textColor="@color/mywhite"
+                android:padding="4dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这是坐落在xxxx地方的体育馆，场地漂亮"
+                android:textColor="@color/mywhite"
+                android:padding="4dp"
+                android:textSize="12sp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_user_centre_record" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:padding="10dp"
+                android:text="可用时间"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_user_centre_safe" />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:padding="10dp"
+                android:text="地点：南山区桃园路（查看地图）"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_user_centre_set" />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:padding="10dp"
+                android:text="场地情况"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_star" />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:padding="10dp"
+                android:text="收藏该场地"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

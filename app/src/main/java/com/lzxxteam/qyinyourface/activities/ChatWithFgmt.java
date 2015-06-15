@@ -29,15 +29,15 @@ public class ChatWithFgmt extends BaseFgmt {
         setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_chat_with));
 
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        View view1 = inflater.inflate(R.layout.pageview2,null);
-        View view2 = inflater.inflate(R.layout.pageview2,null);
+        View view1 = inflater.inflate(R.layout.pageview3,null);
+        View view2 = inflater.inflate(R.layout.pageview3,null);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
         listView.add(view2);
 
         viewPagerFactory.addViewPagerViews(listView,null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"私信","通讯录"});
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"私信","通讯录"},false);
 
 
         return container;

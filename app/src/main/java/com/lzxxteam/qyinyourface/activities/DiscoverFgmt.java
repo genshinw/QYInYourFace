@@ -1,6 +1,7 @@
 package com.lzxxteam.qyinyourface.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
@@ -47,21 +49,27 @@ public class DiscoverFgmt extends BaseFgmt {
         setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_discover));
 
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        View view1 = inflater.inflate(R.layout.pageview2,null);
-        View view2 = inflater.inflate(R.layout.pageview2,null);
+        View view1 = inflater.inflate(R.layout.fgmt_discover_gyms,null);
+        View view2 = inflater.inflate(R.layout.pageview3,null);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
         listView.add(view2);
 
         viewPagerFactory.addViewPagerViews(listView, null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"附近场地","热门球队"});
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地","附近场地"},false);
         mHandler = new Handler();
 
         mAdapter = new PhotoAdapter(atyToAttach);
         mWaterfall = (WaterfallSmartView) view1.findViewById(R.id.waterfall);
         mWaterfall.setAdapter(mAdapter);
-//        mWaterfall.setOnItemClickListener(this);
+        mWaterfall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(atyToAttach,GymsDetailAty.class);
+                startActivity(intent);
+            }
+        });
 
         mImageLoader = GetImageFromNet.getInstance();
         mOptions = GetImageFromNet.getOptions();

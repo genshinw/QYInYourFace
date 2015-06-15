@@ -52,6 +52,9 @@
         <activity
             android:name=".activities.FightWithDetailAty"
             android:label="@string/aty_name_fight_with_detail" ></activity>
+        <activity
+            android:name=".activities.GymsDetailAty"
+            android:label="@string/aty_name_gyms_detail" ></activity>
 
     </application>
 
