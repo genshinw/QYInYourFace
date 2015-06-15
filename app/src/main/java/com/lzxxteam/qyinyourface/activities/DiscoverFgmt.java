@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
+import com.lzxxteam.qyinyourface.tools.HiddenToolBarCtrl;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -51,6 +52,7 @@ public class DiscoverFgmt extends BaseFgmt {
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
         View view1 = inflater.inflate(R.layout.fgmt_discover_gyms,null);
         View view2 = inflater.inflate(R.layout.pageview3,null);
+        View gymFliterView = view1.findViewById(R.id.id_ll_gyms_fliter);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
         listView.add(view2);
@@ -59,18 +61,16 @@ public class DiscoverFgmt extends BaseFgmt {
 
         container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地","附近场地"},false);
         mHandler = new Handler();
-
         mAdapter = new PhotoAdapter(atyToAttach);
         mWaterfall = (WaterfallSmartView) view1.findViewById(R.id.waterfall);
         mWaterfall.setAdapter(mAdapter);
         mWaterfall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(atyToAttach,GymsDetailAty.class);
+                Intent intent = new Intent(atyToAttach, GymsDetailAty.class);
                 startActivity(intent);
             }
         });
-
         mImageLoader = GetImageFromNet.getInstance();
         mOptions = GetImageFromNet.getOptions();
         loadUrl(urls);
@@ -163,6 +163,9 @@ public class DiscoverFgmt extends BaseFgmt {
             "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym1.png",
             "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym2.png",
             "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym3.png",
+            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym4.png",
+            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym3.png",
+            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym2.png",
             "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym4.png"
 
     };

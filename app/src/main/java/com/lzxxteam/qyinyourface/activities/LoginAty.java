@@ -52,21 +52,30 @@ public class LoginAty extends ActionBarActivity {
                     progDialog = new MyProgressDialog(LoginAty.this,"正在登陆...");
                     progDialog.show();
                     RequestParams rps = new RequestParams(loginMap);
+                    rps.put("type",1);
                     postCilent.setRequestParm(rps, true);
-                    postCilent.execRequest("testStatus.json", new BaseJsonHttpResponseHandler<NetPackData>() {
+                    postCilent.execRequest("login/start", new BaseJsonHttpResponseHandler<NetPackData>() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
-
-                            progDialog.dismiss();
-                            Intent intent = new Intent(LoginAty.this, FragmentMainAty.class);
-                            startActivity(intent);
-                            finish();
+                            if(response.getStatus()==101) {
+                                Toast.makeText(LoginAty.this,"登陆id"+response.getOtherData(),
+                                        Toast.LENGTH_LONG).show();
+                                progDialog.dismiss();
+                                Intent intent = new Intent(LoginAty.this, FragmentMainAty.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(LoginAty.this,"登陆失败"+response.getStatus(),
+                                        Toast.LENGTH_LONG).show();
+                            }
 
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, NetPackData errorResponse) {
-
+                            progDialog.dismiss();
+                            Toast.makeText(LoginAty.this, "登陆失败" + statusCode,
+                                    Toast.LENGTH_LONG).show();
                         }
 
                         @Override

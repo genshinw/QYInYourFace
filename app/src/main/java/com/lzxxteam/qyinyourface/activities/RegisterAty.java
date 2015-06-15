@@ -101,8 +101,7 @@ public class RegisterAty extends BaseAty{
                                 null:registNameEditText.getText().toString()
                 );
 
-                registMap.put("sex",registSexEditText.getText()==null?
-                                null:registSexEditText.getText().toString()
+             registMap.put("sex","man"
                 );
                 registMap.put("mail",registEmailEditText.getText()==null?
                                 null:registEmailEditText.getText().toString()
@@ -120,7 +119,7 @@ public class RegisterAty extends BaseAty{
                     progDialog.show();
                     RequestParams rps = new RequestParams(registMap);
                     postCilent.setRequestParm(rps,true);
-                    postCilent.execRequest("testStatus.json", new BaseJsonHttpResponseHandler<NetPackData>() {
+                    postCilent.execRequest("login/register", new BaseJsonHttpResponseHandler<NetPackData>() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
                             Toast.makeText(RegisterAty.this,response.getStatus()+"",Toast.LENGTH_LONG).show();
@@ -136,7 +135,9 @@ public class RegisterAty extends BaseAty{
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, NetPackData errorResponse) {
-
+                            progDialog.dismiss();
+                            Toast.makeText(RegisterAty.this, "注册失败" + statusCode,
+                                    Toast.LENGTH_LONG).show();
                         }
 
                         @Override

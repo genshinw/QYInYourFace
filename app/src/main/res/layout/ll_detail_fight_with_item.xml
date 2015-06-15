@@ -76,6 +76,18 @@
                 android:layout_height="wrap_content"
                 android:text="深圳体育馆"
                 android:textColor="@color/myrealwhite" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/ic_fight_with_detail_gyms" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看详情"
+                android:textSize="11sp"
+                android:textColor="@color/myred" />
+
         </LinearLayout>
 
         <LinearLayout

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myrealwhite"
+
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/id_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/picnone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VS"
+            android:textColor="@color/myred"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/picnone" />
+
+    </LinearLayout>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/rectangle_border2"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+
+        >
+
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="约战详情"
+            android:textColor="@color/myred"
+            android:textSize="20sp"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_gravity="center"
+
+            >
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_fight_with_detail_time" />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:text="约战时间："
+                android:textColor="@color/myred"
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:text="2015年3月29日20:00"
+                android:textColor="@color/mygreydarker"
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_gravity="center"
+
+            >
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_fight_with_detail_loc" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:text="约战地点："
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:textColor="@color/myred"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:text="福田体育馆"
+                android:textColor="@color/mygreydarker"
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_gravity="center"
+
+            >
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_fight_with_detail_service" />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:textColor="@color/myred"
+                android:text="服务选择："
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                android:textColor="@color/mygreydarker"
+                android:text="12只矿泉水，专业裁判"
+                android:layout_marginLeft="4dp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_aty_fight_detail_access"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:text="支付保证金"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        flatui:fl_theme="@array/myredtheme" />
+</LinearLayout>
+    </ScrollView>

@@ -19,6 +19,7 @@ import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
 import com.lzxxteam.qyinyourface.model.TeamBaseData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
+import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.ui.FightWithAdapter;
 import com.lzxxteam.qyinyourface.ui.RefreshLayout;
 import com.lzxxteam.qyinyourface.ui.TeamListAdapter;
@@ -97,7 +98,7 @@ public class TeamListViewControler {
     }
 
     public void getDataFromNet(final boolean isRefresh) {
-        new GetHttpCilent(context).execRequest("testTeamList.json", new BaseJsonHttpResponseHandler<ArrayList<TeamBaseData>>() {
+        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testTeamList.json", new BaseJsonHttpResponseHandler<ArrayList<TeamBaseData>>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse,ArrayList<TeamBaseData> response) {
 

@@ -34,7 +34,13 @@ public class FightWithDetailAty extends BaseAty{
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.setTitleText("请求已发送")
                                         .setConfirmText("确定")
-                                        .setConfirmClickListener(null)
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                sweetAlertDialog.dismiss();
+                                                setContentView(R.layout.aty_fight_with_detail2);
+                                            }
+                                        })
                                         .showCancelButton(false)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             }

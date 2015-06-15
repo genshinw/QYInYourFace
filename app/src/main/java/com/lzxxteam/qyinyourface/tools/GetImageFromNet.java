@@ -19,7 +19,7 @@ import java.io.File;
 public class GetImageFromNet {
 
 
-    private static final String URL_SERVER = "http://"+AppConstantValue.URL_SERVER;
+    private static final String URL_SERVER = "http://"+AppConstantValue.URL_SERVER+AppConstantValue.URL_TEST_DIR;
     private static ImageLoader sInstance;
 
 

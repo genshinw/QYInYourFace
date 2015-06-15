@@ -63,7 +63,10 @@
 
                 <TextView
                     android:text="不限"
-                    style="@style/fight_with_filter_item" />
+                    style="@style/fight_with_filter_item"
+                    android:background="@drawable/bg_pink_rectangle"
+                    android:textColor="@color/myrealwhite"
+                    />
 
                 <TextView
                     style="@style/fight_with_filter_item"

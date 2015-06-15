@@ -13,6 +13,7 @@ import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.model.UserData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
+import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -60,7 +61,7 @@ public class UserCentreViewControl {
 
     public void getDataFromNet(){
 
-        new GetHttpCilent(context).execRequest("testUserData.json", new BaseJsonHttpResponseHandler<UserData>() {
+        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testUserData.json", new BaseJsonHttpResponseHandler<UserData>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, UserData response) {
                 

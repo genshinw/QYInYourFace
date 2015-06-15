@@ -42,13 +42,21 @@ public class NetPackData {
      * 状态默认为失败
      */
     private int status = STATUS_ERROR;
-
+    private String otherData;
 
     @JsonProperty("status")
     public void setStatus(int status) {
         this.status = status;
     }
 
+
+    @JsonProperty("other")
+    public void setOtherData(String otherData) {
+        this.otherData = otherData;
+    }
+    public String getOtherData() {
+        return otherData;
+    }
     public int getStatus() {
         return status;
     }
