@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myrealwhite"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+
+            >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_sel_people" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_marginLeft="4dp"
+                android:text="对手选择"
+                android:textColor="@color/myred" />
+
+
+        </LinearLayout>
+
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="10dp"
+            android:text="不限制对手"
+            android:textColor="@color/mygrey"
+            flatui:fl_theme="@array/grass"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="10dp"
+            android:text="从已收藏的对手中选择"
+            flatui:fl_theme="@array/grass"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+
+            >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_sel_people_num" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_marginLeft="4dp"
+                android:text="设置可接受挑战人数"
+                android:textColor="@color/myred" />
+
+
+        </LinearLayout>
+
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="10dp"
+            android:text="不限制"
+            android:textColor="@color/mygrey"
+            flatui:fl_theme="@array/grass"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="10dp"
+            android:text="2人"
+            android:textColor="@color/mygrey"
+            flatui:fl_theme="@array/grass"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="10dp"
+            android:text="5人"
+            android:textColor="@color/mygrey"
+            flatui:fl_theme="@array/grass"
+            />
+    </LinearLayout>
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_aty_goto_fight_next1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="完成"
+        android:layout_margin="10dp"
+        flatui:fl_theme="@array/myredtheme"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        />
+</LinearLayout>

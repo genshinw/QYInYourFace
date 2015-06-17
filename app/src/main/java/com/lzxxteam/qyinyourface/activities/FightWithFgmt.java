@@ -126,8 +126,8 @@ public class FightWithFgmt extends BaseFgmt {
 
         viewPagerFactory.addViewPagerViews(listView,null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"},true);
-
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"});
+        viewPagerFactory.showGoToFightBtn();
 
 
         return container;

@@ -59,7 +59,9 @@ public class DiscoverFgmt extends BaseFgmt {
 
         viewPagerFactory.addViewPagerViews(listView, null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地","附近场地"},false);
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地","附近场地"});
+        viewPagerFactory.showSearchBtn();
+
         mHandler = new Handler();
         mAdapter = new PhotoAdapter(atyToAttach);
         mWaterfall = (WaterfallSmartView) view1.findViewById(R.id.waterfall);

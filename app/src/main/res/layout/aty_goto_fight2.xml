@@ -17,8 +17,6 @@
         android:layout_marginTop="10dp"
         flatui:fl_fontFamily="ygy"
         flatui:fl_fontWeight="light"
-        android:layout_alignTop="@id/imageView2"
-        android:layout_toRightOf="@id/imageView2"
         android:layout_weight="1"
         />
     <com.cengalabs.flatui.views.FlatTextView

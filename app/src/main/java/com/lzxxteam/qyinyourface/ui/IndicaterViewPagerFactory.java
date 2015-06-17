@@ -44,18 +44,15 @@ public class IndicaterViewPagerFactory {
         this.context = context;
     }
 
-    public ViewGroup getIndicaterViewPager(String[] indicateNames,boolean isShowFloatBottom) {
+    public ViewGroup getIndicaterViewPager(String[] indicateNames) {
         this.indicateNames = indicateNames;
         if (container==null)
-            init(isShowFloatBottom);
+            init();
 
         return container;
     }
-    public void init(boolean isShowFloatBottom) {
-
-        container = (ViewGroup) LayoutInflater.from(context)
-                .inflate(R.layout.vpindicater, null);
-        if (isShowFloatBottom) {
+    public void showGoToFightBtn(){
+        if(container!=null) {
             container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
             View goToFreeBtn = container.findViewById(R.id.action_a);
             goToFreeBtn.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +64,24 @@ public class IndicaterViewPagerFactory {
                 }
             });
         }
+    }
+
+    public void showSearchBtn() {
+        if (container!=null) {
+            View search = container.findViewById(R.id.action_search);
+            search.setVisibility(View.VISIBLE);
+            search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+    }
+    public void init() {
+
+        container = (ViewGroup) LayoutInflater.from(context)
+                .inflate(R.layout.vpindicater, null);
      /*   View floatButton =  LayoutInflater.from(context)
                 .inflate(R.layout.fgmt_fight_with, null);
 

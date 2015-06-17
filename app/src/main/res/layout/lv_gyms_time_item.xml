@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/myrealwhite"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/myrealwhite"
+        android:weightSum="5"
+        android:padding="12dp"
+        >
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+           />
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:text="时间段"
+            android:textColor="@color/myred"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            />
+
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:text="场号"
+            android:textColor="@color/myred"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            >
+
+            <com.cengalabs.flatui.views.FlatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                flatui:fl_size="15dp"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:text="08:00-10:00"
+                android:textColor="@color/mygrey"
+                android:layout_weight="2"
+                android:gravity="center"
+                />
+
+                <Spinner
+                android:id="@+id/id_spin_gym_time_sel_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                android:gravity="center"
+
+                ></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+
+            >
+
+            <com.cengalabs.flatui.views.FlatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                flatui:fl_size="15dp"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:text="08:00-10:00"
+                android:textColor="@color/mygrey"
+                android:layout_weight="2"
+                android:gravity="center"
+                />
+
+            <Spinner
+                android:id="@+id/id_spin_gym_time_sel_num2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                android:gravity="center"
+
+                ></Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+
+            >
+
+            <com.cengalabs.flatui.views.FlatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                flatui:fl_size="15dp"
+                />
+            <com.cengalabs.flatui.views.FlatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:text="08:00-10:00"
+                android:textColor="@color/mygrey"
+                android:layout_weight="2"
+                android:gravity="center"
+
+                />
+
+            <Spinner
+                android:id="@+id/id_spin_gym_time_sel_num3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                android:gravity="center"
+
+                ></Spinner>
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_aty_goto_fight_next1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择"
+        android:layout_margin="10dp"
+        flatui:fl_theme="@array/mygreylightertheme"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        />
+
+
+</LinearLayout>

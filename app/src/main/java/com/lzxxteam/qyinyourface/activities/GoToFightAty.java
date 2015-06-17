@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.model.GymData;
+import com.lzxxteam.qyinyourface.presenters.FightGymTimeSelControler;
 import com.lzxxteam.qyinyourface.tools.LBSHelper;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -44,6 +45,18 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.aty_goto_fight2);
+                findViewById(R.id.id_aty_goto_fight_next1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setContentView(R.layout.aty_goto_fight3);
+                    }
+                });
+            }
+        });
+        findViewById(R.id.id_sel_the_gym_time).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new FightGymTimeSelControler(GoToFightAty.this).showGymTimeDialog();
             }
         });
         gymdatas = new ArrayList<GymData>();
@@ -67,12 +80,7 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
         mMapView.setScalControlsEnable(true);
         mLocationManager = TencentLocationManager.getInstance(this);
         mMapCtrler = mMapView.getController();
-        mMapCtrler.setOnInforWindowClickListener(new OnInforWindowClickListener() {
-            @Override
-            public void onInforWindowClick(Marker marker) {
-                Toast.makeText(GoToFightAty.this, marker.getTitle(), Toast.LENGTH_LONG).show();
-            }
-        });
+
         mMapCtrler.setOnMarkerClickListener(new OnMarkerPressListener() {
             Marker lastMarker = null;
             @Override

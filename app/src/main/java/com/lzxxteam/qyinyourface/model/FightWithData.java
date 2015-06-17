@@ -3,6 +3,9 @@ package com.lzxxteam.qyinyourface.model;
 import com.lzxxteam.qyinyourface.R;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by Elvis on 15/5/22.
  */
@@ -28,11 +31,15 @@ public class FightWithData {
     }
 
     @JsonProperty("time")
-    public void setFightTime(String fightTime) {
-        this.fightTime = fightTime;
+    public void setFightTime(long fightTime)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("", Locale.SIMPLIFIED_CHINESE);
+        sdf.applyPattern("yyyy-MM-dd");
+
+        this.fightTime = sdf.format(fightTime);
     }
 
-    @JsonProperty("space")
+    @JsonProperty("court")
     public void setFightSpace(String fightSpace) {
         this.fightSpace = fightSpace;
     }

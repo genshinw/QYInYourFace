@@ -25,7 +25,6 @@ public abstract class BaseAty extends ActionBarActivity {
         actionBar.setHomeButtonEnabled(true);
         actionBar.setBackgroundDrawable(FlatUI.getActionBarDrawable(this,R.array.myredtheme,false));
 
-
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
     }
 
@@ -40,4 +39,5 @@ public abstract class BaseAty extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

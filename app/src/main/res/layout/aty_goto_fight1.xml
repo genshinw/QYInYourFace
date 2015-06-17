@@ -33,29 +33,33 @@
                 android:src="@drawable/ic_filter_loc"
 
                 />
-            <TextView
+            <com.cengalabs.flatui.views.FlatTextView
                 android:layout_marginLeft="20dp"
                 android:id="@+id/id_aty_goto_fight_gym_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="深圳体育馆"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
                 android:textColor="@color/mygreylighter2"
                 android:padding="4dp"
                 android:textSize="15sp"
                 />
 
-            <TextView
+            <com.cengalabs.flatui.views.FlatTextView
                 android:layout_below="@id/id_aty_goto_fight_gym_name"
                 android:id="@+id/id_aty_goto_fight_gym_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="这是坐落在xxxx地方的体育馆，场地漂亮"
                 android:textColor="@color/mygreylighter"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
                 android:padding="4dp"
                 android:textSize="12sp"
                 />
             <com.cengalabs.flatui.views.FlatButton
-                android:id="@+id/button_block"
+                android:id="@+id/id_sel_the_gym_time"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:text="选择该场地+"

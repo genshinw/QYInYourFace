@@ -38,7 +38,7 @@ public class ChatWithFgmt extends BaseFgmt {
         listView.add(view2);
         viewPagerFactory.addViewPagerViews(listView, null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"私信","通讯录"},false);
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"私信","通讯录"});
 
 
         return container;
