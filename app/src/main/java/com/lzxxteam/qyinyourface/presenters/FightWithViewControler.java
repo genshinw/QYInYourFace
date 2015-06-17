@@ -24,11 +24,13 @@ import android.widget.RelativeLayout;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
 import com.lzxxteam.qyinyourface.model.FightWithData;
+import com.lzxxteam.qyinyourface.model.NetPackData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
 import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
@@ -39,6 +41,7 @@ import com.lzxxteam.qyinyourface.ui.RefreshLayout;
 
 import org.apache.http.Header;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -132,7 +135,7 @@ public class FightWithViewControler {
     }
 
     public void getDataFromNet(final boolean isRefresh) {
-        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testFightWith.json", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
+        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"fightlist.json", new BaseJsonHttpResponseHandler<ArrayList<FightWithData>>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, ArrayList<FightWithData> response) {
 
@@ -157,11 +160,24 @@ public class FightWithViewControler {
                 //刷新则要将数据清空
                 if (isRefresh)
                     datas.clear();
-
-                while (jp.nextToken() == JsonToken.START_OBJECT) {
-
-                    datas.add(mapper.readValue(jp, FightWithData.class));
+                while (jp.nextToken() != JsonToken.END_OBJECT) {
+                    String fieldName = jp.getCurrentName();
+                    // Let's move to value
+                    jp.nextToken();
+                    if (fieldName.equals("head")) {
+                        NetPackData netPackData = mapper.readValue(jp, NetPackData.class);
+                    } else if (fieldName.equals("data")) {
+                        while (jp.nextToken() == JsonToken.START_OBJECT) {
+                            /*TreeNode nodes = mapper.readTree(jp);
+                            nodes.get("packHead");*/
+                            datas.add(mapper.readValue(jp, FightWithData.class));
+                        }
+                    } else { // ignore, or signal error?
+                        throw new IOException("Unrecognized field '"+fieldName+"'");
+                    }
                 }
+                jp.close(); // im
+
                 return datas;
             }
         });

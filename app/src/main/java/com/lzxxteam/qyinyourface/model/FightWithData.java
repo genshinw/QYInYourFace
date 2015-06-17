@@ -1,5 +1,6 @@
 package com.lzxxteam.qyinyourface.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lzxxteam.qyinyourface.R;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,12 +10,13 @@ import java.util.Locale;
 /**
  * Created by Elvis on 15/5/22.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FightWithData {
 
     public static int minId;
     private int id;
-    private String fightSpace;
-    private String fightTime;
+    private String[] fightSpace;
+    private long[] fightTime;
     private String userName;
 
 
@@ -31,26 +33,52 @@ public class FightWithData {
     }
 
     @JsonProperty("time")
-    public void setFightTime(long fightTime)
+    public void setFightTime(long[] fightTime)
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("", Locale.SIMPLIFIED_CHINESE);
-        sdf.applyPattern("yyyy-MM-dd");
+        this.fightTime = fightTime;
 
-        this.fightTime = sdf.format(fightTime);
     }
 
     @JsonProperty("court")
-    public void setFightSpace(String fightSpace) {
+    public void setFightSpace(String[] fightSpace) {
         this.fightSpace = fightSpace;
     }
 
 
-    public String getFightTime() {
+    public long[] getFightTime() {
         return fightTime;
     }
 
-    public String getFightSpace() {
+    public String getFightTimeStr()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("", Locale.SIMPLIFIED_CHINESE);
+        sdf.applyPattern("MM-dd");
+
+        String fightTimeString = null;
+        for(int i=0;i<fightTime.length;i++) {
+            if(i==0)
+                fightTimeString = sdf.format(fightTime[i]);
+            else
+                fightTimeString = "/"+fightTimeString;
+        }
+
+        return fightTimeString;
+    }
+
+    public String[] getFightSpace() {
         return fightSpace;
+    }
+
+
+    public String getFightSpaceStr() {
+        String fightSpaceStr="";
+        for (int i = 0; i < fightSpace.length; i++) {
+            if(i==0)
+                fightSpaceStr+=fightSpace[i];
+            else
+                fightSpaceStr="/"+fightSpaceStr;
+        }
+        return fightSpaceStr;
     }
 
     public String getUserName() {

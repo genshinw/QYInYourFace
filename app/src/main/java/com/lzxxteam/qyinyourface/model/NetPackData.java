@@ -43,6 +43,7 @@ public class NetPackData {
      */
     private int status = STATUS_ERROR;
     private String otherData;
+    private int type;
 
     @JsonProperty("status")
     public void setStatus(int status) {
@@ -54,6 +55,16 @@ public class NetPackData {
     public void setOtherData(String otherData) {
         this.otherData = otherData;
     }
+
+    @JsonProperty("type")
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public String getOtherData() {
         return otherData;
     }
