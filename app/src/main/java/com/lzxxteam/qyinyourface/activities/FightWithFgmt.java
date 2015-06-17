@@ -3,6 +3,7 @@ package com.lzxxteam.qyinyourface.activities;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -42,7 +43,6 @@ public class FightWithFgmt extends BaseFgmt {
     private ViewGroup fightWithView;
 
     private TencentLocationManager mLocationManager;
-    private Listener_Location lisloc;
     private FightWithViewControler fvc;
     private View selCity;
     private IndicaterViewPagerFactory viewPagerFactory;
@@ -138,30 +138,15 @@ public class FightWithFgmt extends BaseFgmt {
         super.onStart();
         fvc.getDataFromNet(true);
         fvc2.getDataFromNet(true);
-    }
 
+    }
 
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        mLocationManager.removeUpdates(lisloc);
     }
 
-    class Listener_Location implements TencentLocationListener {
-
-        @Override
-        public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
-            if (error == TencentLocation.ERROR_OK) {
-                Toast.makeText(atyToAttach, "loc" + tencentLocation.getAddress(),Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @Override
-        public void onStatusUpdate(String s, int i, String s1) {
-
-        }
-    }
 
 
 

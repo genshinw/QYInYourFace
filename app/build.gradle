@@ -35,6 +35,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
     compile files('libs/TencentLocationSDK_v4.1.1_r175129.jar')
     compile files('libs/libammsdk.jar')
+    compile files('libs/TencentSearch1.1.1.jar')
     compile 'com.getbase:floatingactionbutton:1.9.1'
-
+    compile files('libs/RasterSDKv1.1.0.15299.jar')
 }

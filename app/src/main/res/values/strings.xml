@@ -8,6 +8,7 @@
     <string name="aty_name_register">注册</string>
     <string name="aty_name_fight_with_detail">约战信息</string>
     <string name="aty_name_gyms_detail">球场信息</string>
+    <string name="aty_name_go_to_fight">发起约战</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

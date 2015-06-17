@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myrealwhite"
+    android:weightSum="14"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        >
+        <com.tencent.tencentmap.mapsdk.map.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mygreydarkertransparent"
+            android:padding="15dp"
+            >
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_filter_loc"
+
+                />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/id_aty_goto_fight_gym_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="深圳体育馆"
+                android:textColor="@color/mygreylighter2"
+                android:padding="4dp"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:layout_below="@id/id_aty_goto_fight_gym_name"
+                android:id="@+id/id_aty_goto_fight_gym_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这是坐落在xxxx地方的体育馆，场地漂亮"
+                android:textColor="@color/mygreylighter"
+                android:padding="4dp"
+                android:textSize="12sp"
+                />
+            <com.cengalabs.flatui.views.FlatButton
+                android:id="@+id/button_block"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="选择该场地+"
+                android:alpha="0.9"
+                android:textSize="10sp"
+                flatui:fl_textAppearance="fl_none"
+                flatui:fl_theme="@array/myredtheme"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:padding="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+
+            >
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_fight_with_detail_loc" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_marginLeft="4dp"
+                android:text="约战地点："
+                android:textColor="@color/myred" />
+
+
+        </LinearLayout>
+
+        <com.cengalabs.flatui.views.FlatTextView
+            style="@style/style_tv2_user_centre"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="8dp"
+            android:text="未选择（从地图选择）"
+            android:textColor="@color/mygreydarker" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+
+            >
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_fight_with_detail_time" />
+
+            <com.cengalabs.flatui.views.FlatTextView
+                style="@style/style_tv2_user_centre"
+                flatui:fl_fontFamily="ygy"
+                flatui:fl_fontWeight="light"
+                android:layout_marginLeft="4dp"
+                android:text="约战时间："
+                android:textColor="@color/myred" />
+
+
+        </LinearLayout>
+
+        <com.cengalabs.flatui.views.FlatTextView
+            style="@style/style_tv2_user_centre"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_margin="8dp"
+            android:text="未选择"
+            android:textColor="@color/mygreydarker" />
+    </LinearLayout>
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:id="@+id/id_aty_goto_fight_next1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="下一步"
+        android:layout_margin="10dp"
+        flatui:fl_theme="@array/myredtheme"
+        android:layout_weight="1"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        />
+</LinearLayout>

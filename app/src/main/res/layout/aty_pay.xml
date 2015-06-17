@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mywhite"
+    android:gravity="center_horizontal"
+    android:padding="15dp"
+    >
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:padding="10dp"
+        android:text="￥60"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/myred"
+        android:background="@drawable/oval_red"
+        android:layout_margin="15dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="业务名称：球约约战保证金"
+        android:textColor="@color/mygreydarker"
+        android:layout_margin="10dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/weixin_logo"
+            android:id="@+id/imageView2" />
+
+        <com.cengalabs.flatui.views.FlatTextView
+            android:id="@+id/id_tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="微信支付"
+            android:textColor="@color/myred"
+            android:textSize="15sp"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_alignTop="@id/imageView2"
+            android:layout_toRightOf="@id/imageView2"
+             />
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_alignBottom="@id/imageView2"
+            android:layout_toRightOf="@id/imageView2"
+            android:layout_below="@id/id_tv_1"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="适用于已开通微信支付的用户"
+            android:textColor="@color/mygrey"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/id_tv_1"
+            android:gravity="center_horizontal"
+            flatui:fl_size="20dp"
+
+            />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/line"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/qq_logo"
+            android:id="@+id/imageView3" />
+
+        <com.cengalabs.flatui.views.FlatTextView
+            android:id="@+id/id_tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="银联支付"
+            android:textColor="@color/myred"
+            android:textSize="15sp"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_alignTop="@id/imageView3"
+            android:layout_toRightOf="@id/imageView3"
+            />
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_alignBottom="@id/imageView3"
+            android:layout_toRightOf="@id/imageView3"
+            android:layout_below="@id/id_tv_2"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="适用于银联用户"
+            android:textColor="@color/mygrey"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            />
+        <com.cengalabs.flatui.views.FlatRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/id_tv_2"
+            android:gravity="center_horizontal"
+            flatui:fl_size="20dp"
+
+            />
+    </RelativeLayout>
+
+
+    <com.cengalabs.flatui.views.FlatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认支付"
+        android:layout_margin="10dp"
+        flatui:fl_theme="@array/myredtheme"
+
+        />
+</LinearLayout>

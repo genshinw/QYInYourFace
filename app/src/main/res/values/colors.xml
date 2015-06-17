@@ -32,6 +32,7 @@
 
     <color name="black_semi_transparent">#B2000000</color>
 
-
+    <color name="mdtp_accent_color">#009688</color>
+    <color name="mdtp_accent_color_dark">#00796b</color>
     <drawable name="image_holder_color">#ff676767</drawable>
 </resources>

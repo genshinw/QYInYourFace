@@ -7,53 +7,53 @@
 
 
     <RelativeLayout
-        android:id="@+id/id_rl_indicater_tab"
+    android:id="@+id/id_rl_indicater_tab"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:background="@color/mygreylighter2"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/mygreylighter2"
+        android:layout_height="match_parent"
+
         >
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.cengalabs.flatui.views.FlatTextView
+            android:id="@+id/id_tv_indicater_gyms"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:text="场馆"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/myred"
+            />
 
-            >
-            <com.cengalabs.flatui.views.FlatTextView
-                android:id="@+id/id_tv_indicater_gyms"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="场馆"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/myred"
-                />
+        <com.cengalabs.flatui.views.FlatTextView
+            android:id="@+id/id_tv_indicater_teams"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="球队"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/mygreylighter"
 
-            <com.cengalabs.flatui.views.FlatTextView
-                android:id="@+id/id_tv_indicater_teams"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="球队"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/mygreylighter"
-
-                />
+            />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
-            <ImageView
+    <ImageView
 
-                android:layout_alignParentBottom="true"
-                android:id="@+id/id_iv_move_line"
-                android:layout_width="200dp"
-                android:layout_height="5dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/line_red"
-                />
+        android:layout_alignParentBottom="true"
+        android:id="@+id/id_iv_move_line"
+        android:layout_width="200dp"
+        android:layout_height="5dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/line_red"
+        />
 
 
-    </RelativeLayout>
+</RelativeLayout>
 
     <android.support.v4.view.ViewPager
         android:background="@color/mygreylighter2"

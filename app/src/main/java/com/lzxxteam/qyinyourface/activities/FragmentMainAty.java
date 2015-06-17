@@ -139,20 +139,23 @@ public  class FragmentMainAty extends BaseAty{
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
 
-        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(FragmentMainAty.this, "再按一次退出程序", Toast.LENGTH_SHORT)
+                        .show();
+                mExitTime = System.currentTimeMillis();
 
-            Toast.makeText(FragmentMainAty.this,"再按一次退出程序", Toast.LENGTH_SHORT)
-                    .show();
-            mExitTime = System.currentTimeMillis();
+            }
+            //在该界面2秒内点击两次返回则退出app
+            else {
 
-        }
-        //在该界面2秒内点击两次返回则退出app
-        else {
+                finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
 
-            finish();
-            android.os.Process.killProcess(android.os.Process.myPid());
         }
         return true;
+
     }
 }

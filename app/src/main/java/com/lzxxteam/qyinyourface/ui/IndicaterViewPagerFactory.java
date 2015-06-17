@@ -1,6 +1,7 @@
 package com.lzxxteam.qyinyourface.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.activities.GoToFightAty;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 
 import java.util.ArrayList;
@@ -55,6 +57,15 @@ public class IndicaterViewPagerFactory {
                 .inflate(R.layout.vpindicater, null);
         if (isShowFloatBottom) {
             container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
+            View goToFreeBtn = container.findViewById(R.id.action_a);
+            goToFreeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context, GoToFightAty.class);
+                    context.startActivity(intent);
+                }
+            });
         }
      /*   View floatButton =  LayoutInflater.from(context)
                 .inflate(R.layout.fgmt_fight_with, null);

@@ -32,7 +32,7 @@
         <meta-data android:name="TencentMapSDK" android:value="WZFBZ-ADYAD-T4M4M-PJWZ2-PFZLS-ZQBZV" />
 
         <activity
-            android:name=".activities.LoginAty"
+            android:name=".activities.FragmentMainAty"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.FragmentMainAty"
+        <activity android:name=".activities.LoginAty"
             android:label="@string/app_name"></activity>
         <activity
             android:name=".activities.RegisterAty"
@@ -55,6 +55,9 @@
         <activity
             android:name=".activities.GymsDetailAty"
             android:label="@string/aty_name_gyms_detail" ></activity>
+        <activity
+            android:name=".activities.GoToFightAty"
+            android:label="@string/aty_name_go_to_fight" ></activity>
 
     </application>
 

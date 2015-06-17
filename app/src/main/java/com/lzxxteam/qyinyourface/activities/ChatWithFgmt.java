@@ -1,5 +1,6 @@
 package com.lzxxteam.qyinyourface.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
+import com.tencent.tencentmap.mapsdk.map.MapView;
 
 import java.util.ArrayList;
 
@@ -34,8 +36,7 @@ public class ChatWithFgmt extends BaseFgmt {
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
         listView.add(view2);
-
-        viewPagerFactory.addViewPagerViews(listView,null);
+        viewPagerFactory.addViewPagerViews(listView, null);
 
         container = viewPagerFactory.getIndicaterViewPager(new String[]{"私信","通讯录"},false);
 
