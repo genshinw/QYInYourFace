@@ -98,7 +98,7 @@ public class TeamListViewControler {
     }
 
     public void getDataFromNet(final boolean isRefresh) {
-        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testTeamList.json", new BaseJsonHttpResponseHandler<ArrayList<TeamBaseData>>() {
+        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testTeamList.json", null,new BaseJsonHttpResponseHandler<ArrayList<TeamBaseData>>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse,ArrayList<TeamBaseData> response) {
 

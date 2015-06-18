@@ -118,8 +118,7 @@ public class RegisterAty extends BaseAty{
                     progDialog = new MyProgressDialog(RegisterAty.this,"正在验证...");
                     progDialog.show();
                     RequestParams rps = new RequestParams(registMap);
-                    postCilent.setRequestParm(rps,true);
-                    postCilent.execRequest("login/register", new BaseJsonHttpResponseHandler<NetPackData>() {
+                    postCilent.execRequest("login/register",rps, new BaseJsonHttpResponseHandler<NetPackData>() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
                             Toast.makeText(RegisterAty.this,response.getStatus()+"",Toast.LENGTH_LONG).show();
@@ -177,8 +176,7 @@ public class RegisterAty extends BaseAty{
                 e.printStackTrace();
             }
             PutHttpCilent putCilent = new PutHttpCilent(RegisterAty.this);
-            putCilent.setRequestParams(fileParam);
-            putCilent.execRequest("data/", new AsyncHttpResponseHandler() {
+            putCilent.execRequest("data/",fileParam, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 

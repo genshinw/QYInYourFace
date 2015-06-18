@@ -11,12 +11,12 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
  */
 public class WxHelper {
 
-    public final String WX_APP_ID = AppConstantValue.WX_APP_ID;
+    private final String WX_APP_ID = "wx1fed8f96579c224e";
     private IWXAPI api;
 
     public WxHelper(Context context){
-        api = WXAPIFactory.createWXAPI(context, AppConstantValue.WX_APP_ID, true);
-        api.registerApp(AppConstantValue.WX_APP_ID);
+        api = WXAPIFactory.createWXAPI(context, WX_APP_ID, true);
+        api.registerApp(WX_APP_ID);
     }
 
 

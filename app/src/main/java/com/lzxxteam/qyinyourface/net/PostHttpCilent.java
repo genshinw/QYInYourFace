@@ -22,8 +22,8 @@ public class PostHttpCilent extends BaseHttpCilent {
 
     private HttpEntity entity;
 
-    private RequestParams requestParm;
-    private String requestType;
+    //默认post的都是json
+    private String requestType = RequestParams.APPLICATION_JSON;
 
     /**
      * 构造函数传入context变量便于控制
@@ -35,15 +35,16 @@ public class PostHttpCilent extends BaseHttpCilent {
     }
 
     @Override
-    public RequestHandle executeRequest(AsyncHttpClient client, String URL, Header[] headers, ResponseHandlerInterface responseHandler) {
+    public RequestHandle executeRequest(AsyncHttpClient client, String URL,RequestParams rps, Header[] headers, ResponseHandlerInterface responseHandler) {
 
-        if(requestParm==null){
-            Log.e(LOG_TAG,"You must set RequetsParam first");
-            return null;
-        }
+
         String postURl = getServerUrl()+URL;
-        Log.i(LOG_TAG, "POST To " + postURl + " ,Data: " + requestParm.toString());
-        return  client.post(context,postURl,headers,requestParm,requestType,responseHandler);
+        Log.i(LOG_TAG, "POST To " + postURl + " ,Data: " + (rps==null?"":rps.toString()));
+
+        if(requestType==RequestParams.APPLICATION_JSON)
+            rps.setUseJsonStreamer(true);
+
+        return  client.post(context,postURl,headers,rps,requestType,responseHandler);
     }
 
 
@@ -68,14 +69,12 @@ public class PostHttpCilent extends BaseHttpCilent {
         return PROTOCOL+URL_SERVER;
     }
 
-    public void setRequestParm(RequestParams requestParm,boolean isJson) {
+    public void setRequestType(boolean isJson) {
         if(isJson) {
             requestType = RequestParams.APPLICATION_JSON;
-            requestParm.setUseJsonStreamer(true);
         }
         else {
             requestType = RequestParams.APPLICATION_OCTET_STREAM;
         }
-        this.requestParm = requestParm;
     }
 }

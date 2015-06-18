@@ -3,35 +3,25 @@ package com.lzxxteam.qyinyourface.activities;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.presenters.TeamListViewControler;
-import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
 import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
 import com.lzxxteam.qyinyourface.presenters.FightWithViewControler;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
-import com.lzxxteam.qyinyourface.ui.ViewPagerAdapter;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -57,7 +47,7 @@ public class FightWithFgmt extends BaseFgmt {
 
         //避免每次重新replace这个fragment的资源的重新申请，都对nul进行判断
         if(fvc==null)
-            fvc = new FightWithViewControler(atyToAttach);
+            fvc = new FightWithViewControler(atyToAttach,1,0);
 
         if (fightWithView==null)
             fightWithView =  fvc.getFightWithView();
@@ -114,7 +104,7 @@ public class FightWithFgmt extends BaseFgmt {
 
 
         }else{
-            LogMsgUtil.e("Fragment's activity not actionBarActivity");
+            LogUtil.e("Fragment's activity not actionBarActivity");
         }
 
 

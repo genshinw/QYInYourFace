@@ -52,13 +52,11 @@ public class LoginAty extends ActionBarActivity {
                     progDialog = new MyProgressDialog(LoginAty.this,"正在登陆...");
                     progDialog.show();
                     RequestParams rps = new RequestParams(loginMap);
-                    rps.put("type",1);
-                    postCilent.setRequestParm(rps, true);
-                    postCilent.execRequest("login/start", new BaseJsonHttpResponseHandler<NetPackData>() {
+                    postCilent.execRequest("login/start",rps, new BaseJsonHttpResponseHandler<NetPackData>() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
                             if(response.getStatus()==101) {
-                                Toast.makeText(LoginAty.this,"登陆id"+response.getOtherData(),
+                                Toast.makeText(LoginAty.this,"登陆id"+response.getHeadOtherData(),
                                         Toast.LENGTH_LONG).show();
                                 progDialog.dismiss();
                                 Intent intent = new Intent(LoginAty.this, FragmentMainAty.class);

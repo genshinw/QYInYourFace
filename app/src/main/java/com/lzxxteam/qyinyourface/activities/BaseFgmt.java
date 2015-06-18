@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
 import com.lzxxteam.qyinyourface.R;
-import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
 
 /**
  * Created by Elvis on 2015/6/11.
@@ -30,7 +30,7 @@ public abstract class BaseFgmt extends Fragment{
                     .setText(actionBarTileName);
 
         }else{
-            LogMsgUtil.e("Fragment's activity not actionBarActivity");
+            LogUtil.e("Fragment's activity not actionBarActivity");
         }
 
     }

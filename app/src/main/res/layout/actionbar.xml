@@ -46,7 +46,7 @@
         android:id="@+id/id_iv_sel_area_indicate"
         android:layout_width="15dp"
         android:layout_height="20dp"
-        android:src="@drawable/sanjiao"
+        android:src="@drawable/ic_free_area_anchor"
         android:layout_toRightOf="@id/id_tv_sel_fight_area"
         android:layout_centerVertical="true"
         />

@@ -8,8 +8,8 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LogMsgUtil {
-    private static final boolean DEBUG = true;
+public class LogUtil {
+    private static final boolean DEBUG = AppGlobalMgr.APP_IS_DEBUG;
 
     public static void d(String TAG, String method, String msg) {
         Log.d(TAG, "[" + method + "]" + msg);

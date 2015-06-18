@@ -94,6 +94,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="jackson-core-2.5.3" level="project" />
     <orderEntry type="library" exported="" name="RasterSDKv1.1.0.15299" level="project" />
+    <orderEntry type="library" exported="" name="bugly_1.2.0.1_release" level="project" />
     <orderEntry type="library" exported="" name="libammsdk" level="project" />
     <orderEntry type="library" exported="" name="flatui-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />

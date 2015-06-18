@@ -3,17 +3,12 @@ package com.lzxxteam.qyinyourface.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
-import com.lzxxteam.qyinyourface.tools.LogMsgUtil;
 import com.lzxxteam.qyinyourface.presenters.UserCentreViewControl;
 
 /**

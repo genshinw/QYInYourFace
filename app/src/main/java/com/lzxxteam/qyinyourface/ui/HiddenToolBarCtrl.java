@@ -1,4 +1,4 @@
-package com.lzxxteam.qyinyourface.tools;
+package com.lzxxteam.qyinyourface.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -29,6 +29,7 @@ public class HiddenToolBarCtrl {
         this.filterView = filterView;
         this.listView = listView;
         this.contxet = context;
+        //滚动过多少距离后才开始计算是否隐藏/显示头尾元素。这里用了默认touchslop的0.9倍。
         touchSlop = (int) (ViewConfiguration.get(contxet).getScaledTouchSlop() * 0.9);
     }
 

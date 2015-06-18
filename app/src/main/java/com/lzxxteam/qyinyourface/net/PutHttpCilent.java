@@ -16,7 +16,6 @@ import org.apache.http.Header;
 public class PutHttpCilent extends BaseHttpCilent{
 
 
-    private RequestParams requestParams;
     /**
      * 构造函数传入context变量便于控制
      *
@@ -27,20 +26,20 @@ public class PutHttpCilent extends BaseHttpCilent{
     }
 
     @Override
-    public RequestHandle executeRequest(AsyncHttpClient client, String URL, Header[] headers, ResponseHandlerInterface responseHandler) {
+    public RequestHandle executeRequest
+            (AsyncHttpClient client, String URL,
+             RequestParams rps,Header[] headers, ResponseHandlerInterface responseHandler) {
 
-        if(requestParams==null){
+        if(rps==null){
             Log.e(LOG_TAG,"You must set requestParams first");
             return  null;
         }
         String putUrl = getServerUrl()+URL;
-        Log.i(LOG_TAG,"PUT to "+putUrl+" data: "+requestParams.toString());
-        return client.put(context,putUrl,requestParams,responseHandler);
+        Log.i(LOG_TAG, "PUT to " + putUrl + " data: " + rps.toString());
+        return client.put(context,putUrl,rps,responseHandler);
     }
 
-    public void setRequestParams(RequestParams requestParams) {
-        this.requestParams = requestParams;
-    }
+
 
     @Override
     public String getServerUrl() {

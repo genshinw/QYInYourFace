@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
-import com.lzxxteam.qyinyourface.tools.HiddenToolBarCtrl;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;

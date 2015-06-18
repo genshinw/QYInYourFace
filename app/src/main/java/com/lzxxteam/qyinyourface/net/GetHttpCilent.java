@@ -1,9 +1,11 @@
 package com.lzxxteam.qyinyourface.net;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 
 import org.apache.http.Header;
@@ -34,9 +36,14 @@ public class GetHttpCilent extends BaseHttpCilent{
      */
     @Override
     public RequestHandle executeRequest(
-            AsyncHttpClient client, String URL, Header[] headers, ResponseHandlerInterface responseHandler) {
+            AsyncHttpClient client, String URL, RequestParams rps,Header[] headers, ResponseHandlerInterface responseHandler) {
 
-        return  client.get(context,getServerUrl()+URL,headers,null,responseHandler);
+        String getUrl = getServerUrl()+URL;
+
+        Log.i(LOG_TAG, "GET " + getUrl + " ,Data: " +( rps==null?"":rps.toString()));
+
+        //get方法默认是添加到url中
+        return  client.get(context,getUrl,headers,rps,responseHandler);
 
     }
 

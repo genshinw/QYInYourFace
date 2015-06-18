@@ -21,6 +21,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 public class AppGlobalMgr extends Application{
 
     private  static AppGlobalMgr instance;
+    public static final boolean APP_IS_DEBUG = true;
 
     @Override
     public void onCreate() {
@@ -31,6 +32,8 @@ public class AppGlobalMgr extends Application{
         FlatUI.initDefaultValues(this);
         FlatUI.setDefaultTheme(FlatUI.CANDY);
 
+        //初始化bugly
+        BuglyHelper.initBugly(this);
     }
 
     public static AppGlobalMgr getAppContext(){

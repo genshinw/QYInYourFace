@@ -102,8 +102,8 @@ public class FightWithAdapter extends BaseAdapter {
             GetImageFromNet.setProfileToImageView( data.getUserName() + ".png", portrait);
 
             userName.setText(data.getUserName());
-            fightSpace.setText(data.getFightSpace());
-            fightTime.setText(data.getFightTime());
+            fightSpace.setText(data.getFightSpaceStr());
+            fightTime.setText(data.getFightTimeStr());
          }
 
     }

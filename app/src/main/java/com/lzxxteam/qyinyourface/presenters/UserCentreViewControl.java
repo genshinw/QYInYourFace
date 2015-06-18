@@ -61,7 +61,7 @@ public class UserCentreViewControl {
 
     public void getDataFromNet(){
 
-        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testUserData.json", new BaseJsonHttpResponseHandler<UserData>() {
+        new GetHttpCilent(context).execRequest(AppConstantValue.URL_TEST_DIR+"testUserData.json",null, new BaseJsonHttpResponseHandler<UserData>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, UserData response) {
                 

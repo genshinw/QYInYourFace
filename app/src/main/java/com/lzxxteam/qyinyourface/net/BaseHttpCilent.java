@@ -8,6 +8,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpRequest;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 
@@ -141,12 +142,13 @@ public abstract class BaseHttpCilent implements  HttpServeable{
      * @param url
      * @param responseHandlerInterface
      */
-    public void execRequest(String url,ResponseHandlerInterface responseHandlerInterface) {
+    public void execRequest(String url,RequestParams rps,ResponseHandlerInterface responseHandlerInterface) {
 
         lastRequestHandle = executeRequest(
                 getAsyncHttpClient(),
                 url,
-                getRequestHeaders(url),
+                rps,
+                null,
                 responseHandlerInterface
         );
         if (lastRequestHandle==null) {

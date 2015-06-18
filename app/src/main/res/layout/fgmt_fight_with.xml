@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <com.lzxxteam.qyinyourface.ui.RefreshLayout
         android:id="@+id/id_refl_fight_with"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></com.lzxxteam.qyinyourface.ui.RefreshLayout>
+        android:layout_height="match_parent"></com.lzxxteam.qyinyourface.ui.RefreshLayout>
 
     <LinearLayout
         android:id="@+id/id_ll_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/mygreylighter2"
+        android:orientation="vertical"
+        android:focusable="true"
         >
 
-        <LinearLayout
-            style="@style/fight_with_filter_line">
+        <LinearLayout style="@style/fight_with_filter_line">
 
             <LinearLayout
-                android:layout_width="70dp"
-                android:layout_height="wrap_content">
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+
+                >
 
                 <ImageView
-                    android:layout_gravity="center"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/ic_filter_loc" />
 
                 <TextView
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="地点"
                     android:textColor="@color/myred"
-                    android:layout_weight="1"
                     android:textSize="13sp"
 
                     />
@@ -51,64 +50,64 @@
                     android:src="@drawable/line_red"
 
                     />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="8"
-                android:layout_marginLeft="20dp"
-                android:weightSum="4">
-
                 <TextView
+                    android:id="@+id/id_tv_fliter_loc_noflit"
+                    android:layout_marginLeft="15dp"
+                    style="@style/fight_with_filter_item"
+                    android:layout_width="wrap_content"
                     android:text="不限"
-                    style="@style/fight_with_filter_item"
+                    android:layout_gravity="center"
                     android:background="@drawable/bg_pink_rectangle"
-                    android:textColor="@color/myrealwhite"
+                    android:textColor="@color/mygreydarker"
+
+
                     />
-
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="罗湖区" />
-
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="南山区" />
-
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="盐田区" />
-
             </LinearLayout>
 
+            <ViewSwitcher
+                android:id="@+id/id_vs_filter_district"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="85"
+                >
+
+
+            </ViewSwitcher>
+
+            <ImageView
+                android:id="@+id/id_iv_filter_district_next"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:src="@drawable/ic_star" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
             style="@style/fight_with_filter_line"
-            android:orientation="horizontal">
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            >
 
             <LinearLayout
-                android:layout_width="70dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_gravity="center"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/ic_filter_time" />
 
                 <TextView
-                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="时间"
                     android:textColor="@color/myred"
-                    android:layout_weight="1"
                     android:textSize="13sp"
 
                     />
@@ -119,35 +118,36 @@
                     android:src="@drawable/line_red"
 
                     />
+
+                <TextView
+                    android:id="@+id/id_tv_fliter_time_noflit"
+                    android:layout_marginLeft="15dp"
+                    style="@style/fight_with_filter_item"
+                    android:layout_width="wrap_content"
+                    android:text="不限"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_pink_rectangle"
+                    android:textColor="@color/mygreydarker"
+                    />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+
+            <GridView
+                android:id="@+id/id_gv_filter_time"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="8"
-                android:layout_marginLeft="20dp"
-                android:weightSum="4">
+                android:layout_weight="85"
+                android:numColumns="3"
+                android:gravity="center"
+                ></GridView>
 
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="不限" />
+            <ImageView
 
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="三天内" />
-
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="一周内" />
-
-                <TextView
-                    style="@style/fight_with_filter_item"
-                    android:text="一个月内" />
-
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:layout_weight="5" />
             </LinearLayout>
-
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

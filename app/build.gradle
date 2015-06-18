@@ -38,4 +38,5 @@ dependencies {
     compile files('libs/TencentSearch1.1.1.jar')
     compile 'com.getbase:floatingactionbutton:1.9.1'
     compile files('libs/RasterSDKv1.1.0.15299.jar')
+    compile files('libs/bugly_1.2.0.1_release.jar')
 }
