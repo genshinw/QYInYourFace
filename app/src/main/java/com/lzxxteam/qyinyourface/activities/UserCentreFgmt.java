@@ -47,7 +47,6 @@ public class UserCentreFgmt extends BaseFgmt {
     public void onStart() {
         super.onStart();
 
-       ucvc.getDataFromNet();
     }
 
 

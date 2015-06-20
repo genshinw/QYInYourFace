@@ -54,18 +54,7 @@ public class IndicaterViewPagerFactory {
     }
 
 
-    public void showSearchBtn() {
-        if (container!=null) {
-            View search = container.findViewById(R.id.action_search);
-            search.setVisibility(View.VISIBLE);
-            search.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                }
-            });
-        }
-    }
     public void init() {
 
         container = (ViewGroup) LayoutInflater.from(context)

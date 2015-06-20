@@ -18,9 +18,9 @@
 
         <com.lzxxteam.qyinyourface.ui.CircularImageView
             android:id="@+id/id_aty_fight_detail_profile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:padding="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/profile" />
 

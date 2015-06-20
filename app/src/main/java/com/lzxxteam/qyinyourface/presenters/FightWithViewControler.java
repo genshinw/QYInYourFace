@@ -175,7 +175,7 @@ public class FightWithViewControler {
 
         fliterTime = (GridView) basePraent.findViewById(R.id.id_gv_filter_time);
         fliterTime.setAdapter(new ArrayAdapter<String>(context, R.layout.gv_filter_item
-                , new String[]{"三天内", "一天内", "一周内"}));
+                , new String[]{"三天内", "一周内", "一个内"}));
         fliterTime.setOnItemClickListener(new TimeScopeSel());
 
 
@@ -304,7 +304,7 @@ public class FightWithViewControler {
             @Override
             public void run() {
                 postHttpCilent.execRequest
-                        (AppConstantValue.URL_TEST_DIR+"testFightLlstFree.json", rp, new FightWithDataHandler());
+                        ("fight/getlist", rp, new FightWithDataHandler());
             }
         },1000);
 
@@ -318,12 +318,14 @@ public class FightWithViewControler {
     }
 
     public void setTimescope(int timescope) {
+
         this.timescope = timescope;
         getDataFromNet(true);
 
     }
 
     public void setRule(int rule) {
+
         this.rule = rule;
         getDataFromNet(true);
 
@@ -389,22 +391,29 @@ public class FightWithViewControler {
 
                 //若是0的话代表没有偏移即是刷新
                 nowpos = Integer.valueOf(response.getHeadOtherData());
-                if(nowpos==0) {
+                if(isRefresh) {
                     datas.clear();
                 }
-                datas.addAll((ArrayList<FightWithData>)response.getData());
+                datas.addAll((ArrayList<FightWithData>) response.getData());
 
-                if (refreshLayout.isRefreshing())
-                    refreshLayout.setRefreshing(false);
-
-                refreshLayout.setLoading(false);
 
                 refreshView();
                 LogUtil.d("加载约战列表");
 
-            }else{
+            }else if(response.getType()==207) {
+                Toast.makeText(context, "没有数据",Toast.LENGTH_LONG).show();
+
+                datas.clear();
+                refreshView();
+            }
+            else{
                 Toast.makeText(context, "获取列表异常",Toast.LENGTH_LONG).show();
             }
+
+            if (refreshLayout.isRefreshing())
+                refreshLayout.setRefreshing(false);
+
+            refreshLayout.setLoading(false);
         }
 
         @Override

@@ -15,7 +15,8 @@
         android:layout_height="250dp"
         android:background="@color/myblack"
         >
-        <ImageView
+        <com.tencent.tencentmap.mapsdk.map.MapView
+            android:id="@+id/id_map_aty_gym_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/gym5"
@@ -32,7 +33,7 @@
             >
 
             <TextView
-
+                android:id="@+id/id_map_aty_gym_detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="深圳体育馆"
@@ -42,6 +43,7 @@
                 />
 
             <TextView
+                android:id="@+id/id_map_aty_gym_detail_addr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="这是坐落在xxxx地方的体育馆，场地漂亮"
@@ -64,12 +66,13 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="10dp"
+            android:background="@drawable/bg_wb_cor_change"
             >
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_user_centre_record" />
+                android:src="@drawable/ic_filter_time" />
 
             <com.cengalabs.flatui.views.FlatTextView
                 style="@style/style_tv2_user_centre"
@@ -85,16 +88,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:background="@drawable/bg_wb_cor_change"
+            android:autoLink="phone"
+
 
             >
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_user_centre_safe" />
+                android:src="@drawable/ic_gyms_addr" />
             <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/id_map_aty_gym_detail_phone"
                 style="@style/style_tv2_user_centre"
                 android:padding="10dp"
-                android:text="地点：南山区桃园路（查看地图）"
+                android:text="TEL：南山区桃园路（查看地图）"
                 flatui:fl_fontFamily="ygy"
                 flatui:fl_fontWeight="light"
                 />
@@ -106,11 +113,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:background="@drawable/bg_wb_cor_change"
+
             >
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_user_centre_set" />
+                android:src="@drawable/ic_gyms_area" />
             <com.cengalabs.flatui.views.FlatTextView
                 style="@style/style_tv2_user_centre"
                 android:padding="10dp"
@@ -125,6 +134,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:background="@drawable/bg_wb_cor_change"
+
             >
             <ImageView
                 android:layout_width="30dp"

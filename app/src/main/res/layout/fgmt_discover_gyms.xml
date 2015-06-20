@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:waterfall="http://schemas.android.com/apk/res-auto"
-    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:background="@color/myrealwhite"
-    android:orientation="vertical"
     >
     <LinearLayout
         android:id="@+id/id_ll_gyms_fliter"
@@ -144,6 +143,7 @@
     </LinearLayout>
     <org.solo.waterfall.WaterfallSmartView
         android:id="@+id/waterfall"
+        android:layout_below="@id/id_ll_gyms_fliter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp"
@@ -157,4 +157,22 @@
             android:orientation="horizontal"></LinearLayout>
 
     </org.solo.waterfall.WaterfallSmartView>
-</LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_load_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        fab:fab_colorNormal="@color/mywhite"
+        fab:fab_colorPressed="@color/mygreylighter2"
+        fab:fab_icon="@drawable/ic_load_more"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_size="mini"
+        fab:fab_title="加载更多" />
+
+</RelativeLayout>

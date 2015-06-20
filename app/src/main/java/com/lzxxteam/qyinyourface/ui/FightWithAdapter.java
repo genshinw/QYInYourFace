@@ -99,9 +99,9 @@ public class FightWithAdapter extends BaseAdapter {
             TextView fightTime = (TextView) convertView.findViewById(R.id.plist_game_time);
             TextView fightSpace = (TextView) convertView.findViewById(R.id.plist_game_space);
             if(listype==1)
-                GetImageFromNet.setProfileToImageView( data.getFaqiUserId()%15+ "u.png", portrait);
+                GetImageFromNet.setProfileToImageView( data.getFaqiUserId()%50+ "u.png", portrait);
             else
-                GetImageFromNet.setProfileToImageView(data.getFaqiUserId()%15 + "t.png", portrait);
+                GetImageFromNet.setProfileToImageView(data.getFaqiUserId()%50 + "t.png", portrait);
 
 
             userName.setText(data.getFaqiUserName());

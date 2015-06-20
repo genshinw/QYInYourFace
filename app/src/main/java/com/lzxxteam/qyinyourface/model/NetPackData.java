@@ -51,6 +51,8 @@ public class NetPackData {
 
 
     public final static  int TYPE_FIGHT_LIST = 6;
+    public final static  int TYPE_GYM_LIST = 3;
+    public final static  int TYPE_GYM_DETAIl = 4;
 
 
 

@@ -2,6 +2,7 @@ package com.lzxxteam.qyinyourface.presenters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,12 @@ public class UserCentreViewControl {
             }
         });
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getDataFromNet();
+            }
+        },300);
         return userCentreView;
     }
 

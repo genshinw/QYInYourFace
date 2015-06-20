@@ -12,19 +12,34 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.model.FightWithData;
+import com.lzxxteam.qyinyourface.model.GymData;
+import com.lzxxteam.qyinyourface.model.NetPackData;
+import com.lzxxteam.qyinyourface.net.PostHttpCilent;
+import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import org.apache.http.Header;
 import org.solo.waterfall.WaterfallSmartView;
 
-import java.lang.reflect.Field;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +56,9 @@ public class DiscoverFgmt extends BaseFgmt {
     private WaterfallSmartView mWaterfall;
     private DisplayImageOptions mOptions;
     private Handler mHandler;
-
+    private PostHttpCilent postHttpClient;
+    ArrayList<GymData> gymListDatas = new ArrayList<GymData>();
+    private int nowpos = 0;
 
     @Nullable
     @Override
@@ -49,22 +66,28 @@ public class DiscoverFgmt extends BaseFgmt {
 
         setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_discover));
 
-        viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        View view1 = inflater.inflate(R.layout.fgmt_discover_gyms, null);
-        View view2 = inflater.inflate(R.layout.pageview3, null);
-        View gymFliterView = view1.findViewById(R.id.id_ll_gyms_fliter);
-        ArrayList<View> listView = new ArrayList<View>();
+//        viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
+        View gymListView = inflater.inflate(R.layout.fgmt_discover_gyms, null);
+        View gymFliterView = gymListView.findViewById(R.id.id_ll_gyms_fliter);
+        gymListView.findViewById(R.id.action_load_more).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDataFromNet();
+            }
+        });
+
+
+      /*  ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
         listView.add(view2);
 
         viewPagerFactory.addViewPagerViews(listView, null);
 
         container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地", "附近场地"});
-        viewPagerFactory.showSearchBtn();
-
+*/
         mHandler = new Handler();
         mAdapter = new PhotoAdapter(atyToAttach);
-        mWaterfall = (WaterfallSmartView) view1.findViewById(R.id.waterfall);
+        mWaterfall = (WaterfallSmartView) gymListView.findViewById(R.id.waterfall);
         mWaterfall.setAdapter(mAdapter);
         mWaterfall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,12 +96,106 @@ public class DiscoverFgmt extends BaseFgmt {
                 startActivity(intent);
             }
         });
+
         mImageLoader = GetImageFromNet.getInstance();
         mOptions = GetImageFromNet.getOptions();
-        loadUrl(urls);
-        return container;
+        postHttpClient = new PostHttpCilent(atyToAttach);
+        getDataFromNet();
+        return gymListView;
     }
+    private void getDataFromNet(){
 
+
+        RequestParams rps = new RequestParams();
+        rps.put("offset", nowpos);
+        rps.put("district", 0);
+        postHttpClient.execRequest("fight/courtlist", rps, new BaseJsonHttpResponseHandler<NetPackData>() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
+                if(response.getType()==NetPackData.TYPE_GYM_LIST
+                        && response.getStatus()==NetPackData.STATUS_SUCC){
+                    for(int i=nowpos;i<gymListDatas.size();i++) {
+                        mImageLoader.loadImage(
+                                "http://"+
+                                AppConstantValue.URL_SERVER +
+                                        AppConstantValue.URL_TEST_DIR +
+                                        "profile/" +
+                                        (gymListDatas.get(i).getId()%30+1) + "c.png",
+                                mImageLoadingListener
+                        );
+                    }
+
+                    nowpos = Integer.valueOf(response.getHeadOtherData());
+
+
+                    LogUtil.d("加载约战列表");
+
+                }else if(response.getType()==207) {
+                    Toast.makeText(atyToAttach, "没有数据", Toast.LENGTH_LONG).show();
+
+                }
+                else{
+                    Toast.makeText(atyToAttach, "获取列表异常",Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, NetPackData errorResponse) {
+
+            }
+
+            @Override
+            protected NetPackData parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+
+
+                ObjectMapper mapper = new ObjectMapper();
+                JsonParser jp = new JsonFactory().createParser(rawJsonData);
+                jp.nextToken();//跳过{
+
+                NetPackData netPackData = null;
+
+                //刷新则要将数据清空
+                while (jp.nextToken() != JsonToken.END_OBJECT) {
+
+                    String fieldName = jp.getCurrentName();
+               /* if(fieldName==null)
+                    continue;
+*/
+                    jp.nextToken();//进入到键所对应的值的对象中
+
+                    if (fieldName.equals("head")) {
+                        netPackData = mapper.readValue(jp, NetPackData.class);
+                    } else if (fieldName.equals("data")) {
+                        if(jp.getValueAsString()!=null && jp.getValueAsString().equals("")) {
+                            LogUtil.d("has null data");
+                            continue;
+                        }
+
+                        while (jp.nextToken() == JsonToken.START_OBJECT) {
+                            GymData data = mapper.readValue(jp, GymData.class);
+                            if(data!=null)
+                                gymListDatas.add(data);
+                            else
+                                LogUtil.d("has null data");
+                        }
+                    } else {
+                        throw new IOException("Unrecognized field '"+fieldName+"'");
+                    }
+                }
+                jp.close();
+
+
+                if(netPackData!=null){
+                    netPackData.setData(gymListDatas);
+                }
+                return netPackData;
+
+            }
+        });
+
+    }
     class PhotoAdapter extends ArrayAdapter<String> {
         private LayoutInflater inflater;
 
@@ -93,12 +210,28 @@ public class DiscoverFgmt extends BaseFgmt {
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = inflater.inflate(R.layout.photo_item, parent, false);
-                holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+                holder.imageView = (ImageView) convertView.findViewById(R.id.id_gym_list_photo);
+                holder.nameTextView = (TextView) convertView.findViewById(R.id.id_gym_list_name);
+                holder.addrTextView = (TextView) convertView.findViewById(R.id.id_gym_list_addr);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            mImageLoader.displayImage((String) getItem(position), holder.imageView, mOptions);
+            final GymData gymData = gymListDatas.get(position);
+            if(gymData!=null) {
+                mImageLoader.displayImage((String) getItem(position),holder.imageView,mOptions );
+
+                holder.nameTextView.setText(gymData.getName());
+                holder.addrTextView.setText(gymData.getGymAddr());
+            }
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(atyToAttach, GymsDetailAty.class);
+                    intent.putExtra("gymId",gymData.getId());
+                    startActivity(intent);
+                }
+            });
             return convertView;
         }
 
@@ -108,40 +241,16 @@ public class DiscoverFgmt extends BaseFgmt {
             mWaterfall.addItem(object, weight, height);
         }
 
+
     }
 
     class ViewHolder {
         ImageView imageView;
+        TextView nameTextView;
+        TextView addrTextView;
     }
 
-    private void loadUrl(String[] urls) {
-        for (final String url : toList(urls)) {
-            mImageLoader.loadImage(url, mImageLoadingListener);
-        }
-    }
 
-    // Show slowly how it work
-    private void loadUrlSlow(String[] urls) {
-        long time = 0L;
-        for (final String url : toList(urls)) {
-            mHandler.postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    mImageLoader.loadImage(url, mImageLoadingListener);
-                }
-            }, time);
-            time += 1000L;
-        }
-    }
-
-    private List<String> toList(String[] strings) {
-        List<String> list = new ArrayList<String>(strings.length);
-        for (String s : strings) {
-            list.add(s);
-        }
-        return list;
-    }
 
 
     ImageLoadingListener mImageLoadingListener = new ImageLoadingListener() {
@@ -166,15 +275,7 @@ public class DiscoverFgmt extends BaseFgmt {
 
     };
 
-    private static String[] urls = {
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym1.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym2.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym3.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym4.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym3.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym2.png",
-            "http://119.29.58.57/inyourface/data/appTestFile/examplegyms/gym4.png"
+    
 
-    };
 }
 
