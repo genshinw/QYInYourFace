@@ -11,12 +11,15 @@ import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.presenters.UserCentreViewControl;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Elvis on 2015/5/31.
  */
 public class UserCentreFgmt extends BaseFgmt {
 
     private UserCentreViewControl ucvc;
+    private View userCentreView;
 
 
     @Override
@@ -33,8 +36,10 @@ public class UserCentreFgmt extends BaseFgmt {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_user_centre));
-        
-        return ucvc.getUserCentreView();
+        if(userCentreView==null)
+            userCentreView = ucvc.getUserCentreView();
+
+        return userCentreView;
 
     }
 

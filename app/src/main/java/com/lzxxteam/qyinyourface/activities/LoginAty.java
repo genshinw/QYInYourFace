@@ -15,6 +15,7 @@ import com.loopj.android.http.RequestParams;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.model.NetPackData;
 import com.lzxxteam.qyinyourface.net.PostHttpCilent;
+import com.lzxxteam.qyinyourface.net.UserSession;
 import com.lzxxteam.qyinyourface.ui.MyProgressDialog;
 
 import org.apache.http.Header;
@@ -24,7 +25,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class LoginAty extends ActionBarActivity {
+public class LoginAty extends BaseAty {
 
     private View login;
     private View btnRegister;
@@ -37,7 +38,6 @@ public class LoginAty extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aty_login);
-        getSupportActionBar().hide();
 
         login = findViewById(R.id.id_btn_login_in);
 
@@ -58,9 +58,9 @@ public class LoginAty extends ActionBarActivity {
                             if(response.getStatus()==101) {
                                 Toast.makeText(LoginAty.this,"登陆id"+response.getHeadOtherData(),
                                         Toast.LENGTH_LONG).show();
+                                UserSession.setUserId(Integer.valueOf(response.getHeadOtherData()));
                                 progDialog.dismiss();
-                                Intent intent = new Intent(LoginAty.this, FragmentMainAty.class);
-                                startActivity(intent);
+
                                 finish();
                             }else{
                                 Toast.makeText(LoginAty.this,"登陆失败"+response.getStatus(),

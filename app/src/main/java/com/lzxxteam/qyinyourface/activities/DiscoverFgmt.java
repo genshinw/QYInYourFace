@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.solo.waterfall.WaterfallSmartView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +50,8 @@ public class DiscoverFgmt extends BaseFgmt {
         setActionBarTitle(AppGlobalMgr.getResString(R.string.fgmt_name_discover));
 
         viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        View view1 = inflater.inflate(R.layout.fgmt_discover_gyms,null);
-        View view2 = inflater.inflate(R.layout.pageview3,null);
+        View view1 = inflater.inflate(R.layout.fgmt_discover_gyms, null);
+        View view2 = inflater.inflate(R.layout.pageview3, null);
         View gymFliterView = view1.findViewById(R.id.id_ll_gyms_fliter);
         ArrayList<View> listView = new ArrayList<View>();
         listView.add(view1);
@@ -58,7 +59,7 @@ public class DiscoverFgmt extends BaseFgmt {
 
         viewPagerFactory.addViewPagerViews(listView, null);
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地","附近场地"});
+        container = viewPagerFactory.getIndicaterViewPager(new String[]{"热门场地", "附近场地"});
         viewPagerFactory.showSearchBtn();
 
         mHandler = new Handler();
@@ -77,6 +78,7 @@ public class DiscoverFgmt extends BaseFgmt {
         loadUrl(urls);
         return container;
     }
+
     class PhotoAdapter extends ArrayAdapter<String> {
         private LayoutInflater inflater;
 
@@ -107,14 +109,17 @@ public class DiscoverFgmt extends BaseFgmt {
         }
 
     }
+
     class ViewHolder {
         ImageView imageView;
     }
+
     private void loadUrl(String[] urls) {
         for (final String url : toList(urls)) {
             mImageLoader.loadImage(url, mImageLoadingListener);
         }
     }
+
     // Show slowly how it work
     private void loadUrlSlow(String[] urls) {
         long time = 0L;
@@ -129,6 +134,7 @@ public class DiscoverFgmt extends BaseFgmt {
             time += 1000L;
         }
     }
+
     private List<String> toList(String[] strings) {
         List<String> list = new ArrayList<String>(strings.length);
         for (String s : strings) {
@@ -171,3 +177,4 @@ public class DiscoverFgmt extends BaseFgmt {
 
     };
 }
+

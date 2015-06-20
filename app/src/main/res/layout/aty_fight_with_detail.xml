@@ -16,12 +16,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
-        <ImageView
+        <com.lzxxteam.qyinyourface.ui.CircularImageView
             android:id="@+id/id_aty_fight_detail_profile"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:padding="10dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/picnone" />
+            android:src="@drawable/profile" />
 
         <com.cengalabs.flatui.views.FlatButton
             android:id="@+id/button_block"
@@ -33,7 +34,20 @@
             android:textSize="10sp"
             flatui:fl_textAppearance="fl_none"
             flatui:fl_theme="@array/grass" />
+        <com.cengalabs.flatui.views.FlatTextView
+            android:id="@+id/id_tv_aty_fight_detail_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/id_aty_fight_detail_profile"
+            android:layout_centerHorizontal="true"
+            android:text="User"
+            android:textColor="@color/mygreydarker2"
+            android:textSize="14sp"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
 
+            />
     </RelativeLayout>
 
     <View
@@ -81,11 +95,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/id_ll_aty_fight_detail"
     >
 
-<include layout="@layout/ll_detail_fight_with_item" />
-<include layout="@layout/ll_detail_fight_with_item" />
-<include layout="@layout/ll_detail_fight_with_item" />
 </LinearLayout>
     </ScrollView>
 

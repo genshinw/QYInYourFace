@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.tools.LogUtil;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Elvis on 2015/6/11.
  */
@@ -31,6 +33,23 @@ public abstract class BaseFgmt extends Fragment{
 
         }else{
             LogUtil.e("Fragment's activity not actionBarActivity");
+        }
+
+    }
+
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        try {
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+            childFragmentManager.setAccessible(true);
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
 
     }

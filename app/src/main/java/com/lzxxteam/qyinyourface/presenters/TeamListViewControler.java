@@ -93,7 +93,7 @@ public class TeamListViewControler {
 
             }
         });
-
+        getDataFromNet(true);
         return refreshLayout;
     }
 

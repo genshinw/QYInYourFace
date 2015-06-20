@@ -6,6 +6,7 @@
     <string name="fgmt_name_discover">发现</string>
     <string name="fgmt_name_chat_with">私信</string>
     <string name="aty_name_register">注册</string>
+    <string name="aty_name_login">登陆</string>
     <string name="aty_name_fight_with_detail">约战信息</string>
     <string name="aty_name_gyms_detail">球场信息</string>
     <string name="aty_name_go_to_fight">发起约战</string>

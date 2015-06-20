@@ -1,14 +1,20 @@
 package com.lzxxteam.qyinyourface.activities;
 
+import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.model.GymData;
 import com.lzxxteam.qyinyourface.presenters.FightGymTimeSelControler;
 import com.lzxxteam.qyinyourface.tools.LBSHelper;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
+import com.lzxxteam.qyinyourface.ui.ViewPagerAdapter;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
@@ -18,11 +24,13 @@ import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.tencentmap.mapsdk.map.MapController;
 import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.OnInforWindowClickListener;
 import com.tencent.tencentmap.mapsdk.map.OnLoadedListener;
 import com.tencent.tencentmap.mapsdk.map.OnMarkerPressListener;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Elvis on 2015/6/16.
@@ -36,12 +44,101 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
     private MapController mMapCtrler;
     private TextView gymName;
     private TextView gymDesc;
+    private ViewGroup goToFightPage1,goToFightPage0;
+    private ViewPager viewpager;
+    private List<View> viewpagerListView;
+    private ViewGroup indicatorViews;
+    private String date;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.aty_goto_fight1);
-        findViewById(R.id.id_aty_goto_fight_next1).setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.aty_goto_fight);
+        indicatorViews = (ViewGroup)findViewById(R.id.id_ll_vp_indicate);
+        viewpager = (ViewPager)findViewById(R.id.id_vp_aty_go_to_fight);
+        viewpagerListView = new ArrayList<View>();
+        viewpagerListView.add(initPage0());
+        viewpagerListView.add(initPage1(bundle));
+        viewpagerListView.add(initPage2());
+        viewpagerListView.add(initPage3());
+
+
+        viewpager.setAdapter(new ViewPagerAdapter(viewpagerListView));
+        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            ImageView lastView = null;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(lastView!=null){
+                    lastView.setImageResource(R.drawable.line_grey);
+                }
+                lastView  = (ImageView)indicatorViews.getChildAt(position);
+                lastView.setImageResource(R.drawable.line_red);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private ViewGroup initPage0(){
+        goToFightPage0 =(ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight0,null);
+        final TextView yearMonthTextView  = (TextView) goToFightPage0.findViewById(R.id.ic_tv_aty_gtf_set_date_yearmonth);
+        final TextView dayTextView  = (TextView) goToFightPage0.findViewById(R.id.ic_tv_aty_gtf_set_date_day);
+        goToFightPage0.findViewById(R.id.ic_ll_aty_gtf_set_date).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet
+                                    (DatePickerDialog datePickerDialog,
+                                     int year, int monthOfYear, int dayOfMonth) {
+                                String month="";
+                                String day = "";
+                                String yearSyr ="";
+                                if(++monthOfYear<10)
+                                     month+="0"+monthOfYear+"";
+                                else
+                                    month=""+monthOfYear;
+
+
+                                if(dayOfMonth<10)
+                                    day+="0"+dayOfMonth;
+                                else
+                                    day  = ""+dayOfMonth;
+
+                                yearSyr+= ""+year;
+
+                                dayTextView.setText(day);
+                                yearMonthTextView.setText(yearSyr+"年"+month+"日");
+                                date = yearSyr.substring(yearSyr.length()-2,yearSyr.length())+month+day;
+                                LogUtil.d("SelDate:"+date);
+
+                            }
+                        },
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(),"daate");
+            }
+        });
+
+        return goToFightPage0;
+    }
+
+    private ViewGroup initPage1(Bundle bundle) {
+        goToFightPage1 = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.aty_goto_fight1,null);
+        goToFightPage1.findViewById(R.id.id_aty_goto_fight_next1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.aty_goto_fight2);
@@ -53,7 +150,7 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
                 });
             }
         });
-        findViewById(R.id.id_sel_the_gym_time).setOnClickListener(new View.OnClickListener() {
+        goToFightPage1.findViewById(R.id.id_sel_the_gym_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new FightGymTimeSelControler(GoToFightAty.this).showGymTimeDialog();
@@ -69,13 +166,26 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
         //南图书馆球场
         gymdatas.add(new GymData("南图书馆球场", 22.527480, 113.929940));
         gymdatas.add(new GymData("北图书馆篮球场", 22.533020, 113.933090));
-        gymdatas.add(new GymData("西南球场",22.527560,113.931350));
+        gymdatas.add(new GymData("西南球场", 22.527560, 113.931350));
 
 
-        gymName = (TextView) findViewById(R.id.id_aty_goto_fight_gym_name);
-        gymDesc = (TextView) findViewById(R.id.id_aty_goto_fight_gym_desc);
-        mMapView = (MapView)findViewById(R.id.mapview);
+        gymName = (TextView) goToFightPage1.findViewById(R.id.id_aty_goto_fight_gym_name);
+        gymDesc = (TextView) goToFightPage1.findViewById(R.id.id_aty_goto_fight_gym_desc);
+        mMapView = (MapView)goToFightPage1.findViewById(R.id.mapview);
         mMapView.onCreate(bundle);
+
+        return goToFightPage1;
+    }
+    private ViewGroup initPage2(){
+        return (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight2,null);
+    }
+    private ViewGroup initPage3(){
+        return (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight3,null);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         mMapView.getController().setZoom(15);
         mMapView.setScalControlsEnable(true);
         mLocationManager = TencentLocationManager.getInstance(this);
@@ -83,9 +193,10 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
 
         mMapCtrler.setOnMarkerClickListener(new OnMarkerPressListener() {
             Marker lastMarker = null;
+
             @Override
             public void onMarkerPressed(Marker marker) {
-                if(lastMarker!=null)
+                if (lastMarker != null)
                     lastMarker.setIcon(BitmapDescriptorFactory.fromAsset("cur_loc.png"));
 
                 lastMarker = marker;

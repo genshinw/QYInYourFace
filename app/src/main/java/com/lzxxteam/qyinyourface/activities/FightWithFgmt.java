@@ -10,17 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.presenters.TeamListViewControler;
+import com.lzxxteam.qyinyourface.tools.LBSHelper;
 import com.lzxxteam.qyinyourface.tools.LogUtil;
 import com.lzxxteam.qyinyourface.ui.CitySelectorPopUp;
 import com.lzxxteam.qyinyourface.presenters.FightWithViewControler;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
 import com.tencent.map.geolocation.TencentLocationManager;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
@@ -29,34 +34,54 @@ import java.util.ArrayList;
 public class FightWithFgmt extends BaseFgmt {
 
 
-
-    private ViewGroup fightWithView;
+    private ViewGroup fightWithViewFormal;
 
     private TencentLocationManager mLocationManager;
-    private FightWithViewControler fvc;
+    private FightWithViewControler fvcFormal;
     private View selCity;
     private IndicaterViewPagerFactory viewPagerFactory;
     private View selArea;
-    private TeamListViewControler fvc2;
+    private TeamListViewControler tvc;
     private ViewGroup teamListView;
-
+    private ViewGroup fightListFormal;
+    private ViewSwitcher viewswitch;
+    private FightWithViewControler fvcFree;
+    private ViewGroup fightWithViewFree;
+    private ArrayList<View> viewPagerViewArray;
+    private int freeOrFormal = 1;//一开始是自由区页面
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         //避免每次重新replace这个fragment的资源的重新申请，都对nul进行判断
-        if(fvc==null)
-            fvc = new FightWithViewControler(atyToAttach,1,0);
 
-        if (fightWithView==null)
-            fightWithView =  fvc.getFightWithView();
 
-        if(fvc2==null)
-            fvc2 = new TeamListViewControler(atyToAttach);
+        //正式区的应战列表和球队列表
+        if (fvcFormal == null)
+            fvcFormal = new FightWithViewControler(atyToAttach, 2, 0);
 
-        if (teamListView==null)
-            teamListView =  fvc2.getTeamLsitView();
+
+
+        if (tvc == null)
+            tvc = new TeamListViewControler(atyToAttach);
+
+
+        viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
+
+        //自由区的应战列表
+        if (fvcFree == null)
+            fvcFree = new FightWithViewControler(atyToAttach, 1, 0);
+
+
+        viewPagerViewArray = new ArrayList<View>();
+
 
     }
 
@@ -64,8 +89,8 @@ public class FightWithFgmt extends BaseFgmt {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if(atyToAttach instanceof ActionBarActivity) {
-            ActionBar actionBar = ((ActionBarActivity) atyToAttach).getSupportActionBar();
+        if (atyToAttach instanceof ActionBarActivity) {
+            final ActionBar actionBar = ((ActionBarActivity) atyToAttach).getSupportActionBar();
             actionBar.setCustomView(R.layout.actionbar);
             selCity = actionBar.getCustomView().findViewById(R.id.id_city_select);
             selCity.setOnClickListener(new View.OnClickListener() {
@@ -78,67 +103,91 @@ public class FightWithFgmt extends BaseFgmt {
                     PopupWindow mPopuWindow = new CitySelectorPopUp(atyToAttach).getPopUpWindow();
                     mPopuWindow.showAsDropDown(selCity);
                 }
-             });
-            selArea = actionBar.getCustomView().findViewById(R.id.id_tv_sel_fight_area);
-            final View selAreaIndicate = actionBar.getCustomView()
-                    .findViewById(R.id.id_iv_sel_area_indicate);
-
+            });
+            selArea = actionBar.getCustomView().findViewById(R.id.id_ll_sel_fight_area);
             selArea.setOnClickListener(new View.OnClickListener() {
+                ImageView selAreaIndicate = (ImageView) actionBar.getCustomView()
+                        .findViewById(R.id.id_iv_sel_area_indicate);
+                TextView selAreaName = (TextView) actionBar.getCustomView()
+                        .findViewById(R.id.id_tv_sel_area_name);
+
                 @Override
                 public void onClick(View v) {
-                    PopupWindow popwin = new PopupWindow(atyToAttach);
-                    popwin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
-                    popwin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-                    popwin.setOutsideTouchable(true);
-                    popwin.setFocusable(true);
+                    if (viewswitch != null) {
 
-                    popwin.setContentView(
-                            LayoutInflater.from(atyToAttach)
-                                    .inflate(R.layout.popup_sel_fight_area, null)
-                    );
-                    popwin.update();
-                    popwin.showAsDropDown(selArea);
+                        viewswitch.showNext();
+                        switch (freeOrFormal) {
+                            //若此时是自由区
+                            case 1:
+                                selAreaIndicate.setImageResource(R.drawable.ic_formal_area_anchor);
+                                freeOrFormal = 2;
+                                selAreaName.setText("正式区");
+                                break;
+                            //若此时是正式区
+                            case 2:
+                                selAreaIndicate.setImageResource(R.drawable.ic_free_area_anchor);
+                                freeOrFormal = 1;
+                                selAreaName.setText("自由区");
+
+
+                                break;
+
+                        }
+                    }
 
                 }
             });
 
 
-        }else{
+        } else {
             LogUtil.e("Fragment's activity not actionBarActivity");
         }
 
+            if (viewswitch == null) {
+                viewswitch = new ViewSwitcher(atyToAttach);
+                viewswitch.setFactory(new ViewSwitcher.ViewFactory() {
+                    @Override
+                    public View makeView() {
 
-        viewPagerFactory = new IndicaterViewPagerFactory(atyToAttach);
-        ArrayList<View> listView = new ArrayList<View>();
-        listView.add(fightWithView);
-        listView.add(teamListView);
+                        if(freeOrFormal==1) {
+                            if (fightWithViewFree == null)
+                                fightWithViewFree = fvcFree.getFightWithView();
 
+                            freeOrFormal = 2;
+                            return fightWithViewFree;
+                        }
 
-        viewPagerFactory.addViewPagerViews(listView,null);
+                        if (fightListFormal == null) {
 
-        container = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息","球队列表"});
-        viewPagerFactory.showGoToFightBtn();
+                            if (fightWithViewFormal == null) {
+                                fightWithViewFormal = fvcFormal.getFightWithView();
+                                viewPagerViewArray.add(fightWithViewFormal);
 
+                            }
+                            if (teamListView == null) {
+                                teamListView = tvc.getTeamLsitView();
+                                viewPagerViewArray.add(teamListView);
+                            }
 
-        return container;
-    }
+                            viewPagerFactory.addViewPagerViews(viewPagerViewArray, null);
+                            fightListFormal = viewPagerFactory.getIndicaterViewPager(new String[]{"约战信息", "球队列表"});
+                        }
+                        freeOrFormal = 1;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        fvc.getDataFromNet(true);
-        fvc2.getDataFromNet(true);
+                        return fightListFormal;
+                    }
+                });
+//                viewswitch.addView(fightListFormal);
+                viewswitch.setInAnimation(AnimationUtils.loadAnimation(atyToAttach,
+                        android.R.anim.slide_in_left));
+                viewswitch.setOutAnimation(AnimationUtils.loadAnimation(atyToAttach,
+                        android.R.anim.slide_out_right));
+            }
 
-    }
+            container = viewswitch;
 
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-
-
+            return container;
+        }
 
 
 }

@@ -12,6 +12,7 @@ import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.ui.IndicaterViewPagerFactory;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**

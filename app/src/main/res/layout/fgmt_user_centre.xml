@@ -314,9 +314,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/id_ll_aty_uc_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/bg_wb_cor_change"
                 android:padding="10dp"
                 >
                 <ImageView

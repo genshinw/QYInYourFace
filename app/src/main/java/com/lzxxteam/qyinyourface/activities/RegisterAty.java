@@ -58,7 +58,6 @@ public class RegisterAty extends BaseAty{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aty_register);
 
-        wxHelper = new WxHelper(this);
 
         
         View btn = findViewById(R.id.id_btn_regist);

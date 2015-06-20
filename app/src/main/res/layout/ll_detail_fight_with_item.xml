@@ -26,6 +26,7 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/id_aty_fight_detail_item_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -52,6 +53,7 @@
                 android:src="@drawable/ic_fight_with_detail_time" />
 
             <TextView
+                android:id="@+id/id_aty_fight_detail_item_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22:00"
@@ -72,6 +74,7 @@
                 android:src="@drawable/ic_fight_with_detail_loc" />
 
             <TextView
+                android:id="@+id/id_aty_fight_detail_item_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="深圳体育馆"
@@ -104,6 +107,7 @@
                 android:src="@drawable/ic_fight_with_detail_service" />
 
             <TextView
+                android:id="@+id/id_aty_fight_detail_item_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="矿泉水12只，专业裁判"

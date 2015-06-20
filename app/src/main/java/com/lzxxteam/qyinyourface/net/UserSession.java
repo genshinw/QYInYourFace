@@ -5,7 +5,7 @@ package com.lzxxteam.qyinyourface.net;
  */
 public class UserSession {
 
-    private static int userId;
+    private static int userId = -1;
     private static int userDistruct= 440305;
 
     public static int getUserId() {

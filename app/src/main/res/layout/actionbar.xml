@@ -29,8 +29,18 @@
             android:layout_centerVertical="true"
          />
 
+    <LinearLayout
+        android:id="@+id/id_ll_sel_fight_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        >
+
         <com.cengalabs.flatui.views.FlatTextView
-            android:id="@+id/id_tv_sel_fight_area"
+            android:id="@+id/id_tv_sel_area_name"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="自由区"
@@ -39,16 +49,16 @@
             flatui:fl_fontFamily="ygy"
             flatui:fl_fontWeight="light"
             android:textSize="20sp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+          />
 
-    <ImageView
-        android:id="@+id/id_iv_sel_area_indicate"
-        android:layout_width="15dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_free_area_anchor"
-        android:layout_toRightOf="@id/id_tv_sel_fight_area"
-        android:layout_centerVertical="true"
-        />
+        <ImageView
+            android:id="@+id/id_iv_sel_area_indicate"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_free_area_anchor"
+            android:layout_gravity="center"
+             />
+    </LinearLayout>
 
-    </RelativeLayout>
+
+</RelativeLayout>

@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
+
+import java.util.ArrayList;
 
 /**
  * Created by Elvis on 2015/6/18.
@@ -15,33 +18,49 @@ import com.lzxxteam.qyinyourface.R;
 public class DistrictAdapter extends BaseAdapter{
 
     private final Context context;
-    private  String[] districtStrings;
+    private ArrayList<String> districtStrings;
     private int  screentSum;
-    private int screenNo = 0;
+    private int screenNo = -1;
 
-    public DistrictAdapter(Context context, String[] objects) {
+    public DistrictAdapter(Context context,ArrayList<String> districtStrings) {
         this.context =context;
-        this.districtStrings = objects;
-        if( objects.length % 3==0) {
-            screentSum =objects.length /3;
+        setDistrictStrings(districtStrings);
+
+    }
+
+    public void setDistrictStrings(ArrayList<String> districtStrings) {
+        this.districtStrings = districtStrings;
+        if( districtStrings.size() % 3==0) {
+            screentSum =districtStrings.size() /3;
         }
         else {
-            screentSum =objects.length / 3+1;
+            screentSum =districtStrings.size() / 3+1;
         }
+        LogUtil.d("screenSum"+screentSum);
+        notifyDataSetChanged();
 
     }
 
     @Override
     public int getCount() {
-        if(screenNo==screentSum-1 && districtStrings.length % 3!=0){
-            return districtStrings.length % 3;
+        if(districtStrings.size()==0){
+
+            return 0;
+        }
+
+        if(screenNo==screentSum-1 && districtStrings.size() % 3!=0){
+            return districtStrings.size() % 3;
         }
         return 3;
     }
 
     @Override
     public String getItem(int position) {
-        return districtStrings[screenNo*3+position];
+        /*String district = districtStrings.get(screenNo*3+position);
+        LogUtil.d("disrict:"+screenNo*3+position+district);
+
+        return district;*/
+        return "";
     }
 
 
@@ -55,19 +74,20 @@ public class DistrictAdapter extends BaseAdapter{
         if(convertView==null){
             convertView = LayoutInflater.from(context).inflate(R.layout.gv_filter_item,null);
         }
-        ((TextView)convertView).setText(getItem(position));
+
+        ((TextView) convertView).setText(districtStrings.get(screenNo*3+position));
         return convertView;
     }
 
 
     public boolean next(){
+
         if (screenNo<screentSum-1) {
             screenNo++;
-            return true;
-        }else if(screenNo>0) {
-            screenNo--;
-            return true;
+        }else  {
+            screenNo = 0;
         }
-        return   false;
+        LogUtil.d("nowScreenNO"+screenNo);
+        return true;
     }
 }

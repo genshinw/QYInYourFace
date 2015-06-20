@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -14,8 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,11 +29,13 @@ import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.activities.FightWithDetailAty;
+import com.lzxxteam.qyinyourface.activities.GoToFightAty;
 import com.lzxxteam.qyinyourface.model.FightWithData;
 import com.lzxxteam.qyinyourface.model.NetPackData;
 import com.lzxxteam.qyinyourface.net.PostHttpCilent;
 import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
+import com.lzxxteam.qyinyourface.tools.LBSHelper;
 import com.lzxxteam.qyinyourface.ui.DistrictAdapter;
 import com.lzxxteam.qyinyourface.ui.HiddenToolBarCtrl;
 import com.lzxxteam.qyinyourface.tools.LogUtil;
@@ -91,7 +92,9 @@ public class FightWithViewControler {
     private DistrictAdapter districtAdapter;
     private ViewSwitcher viewSwitcher;
     private GridView fliterTime;
-    private View locNoFlit,timeNoFlit;
+    private View locNoFlit;
+    private GridView fliterRace;
+    private ArrayList<String> areasStr = new ArrayList<String>();
 
 
     /**
@@ -107,11 +110,24 @@ public class FightWithViewControler {
         this.listType = listType;
         this.district = district;
 
+
+
     }
 
     public ViewGroup getFightWithView() {
         basePraent = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.fgmt_fight_with,null);
 
+
+//        basePraent.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
+        View goToFreeBtn = basePraent.findViewById(R.id.action_a);
+        goToFreeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, GoToFightAty.class);
+                context.startActivity(intent);
+            }
+        });
         filterView = basePraent.findViewById(R.id.id_ll_filter);
         int w = View.MeasureSpec.makeMeasureSpec(0,
                 View.MeasureSpec.UNSPECIFIED);
@@ -119,62 +135,69 @@ public class FightWithViewControler {
                 View.MeasureSpec.UNSPECIFIED);
         filterView.measure(w, h);
         int height = filterView.getMeasuredHeight();
-        viewSwitcher = (ViewSwitcher) basePraent.findViewById(R.id.id_vs_filter_district);
-        String[] areasStr = new String[]{"南山区","福田区","盐田区","罗湖区","宝安区","龙岗区"};
-        districtAdapter = new DistrictAdapter(context, areasStr);
+        if (listType==1){
+            height+=height/3;
+        }
 
+        if(listType==1) {
+            basePraent.findViewById(R.id.id_ll_fliter_race).setVisibility(View.VISIBLE);
+            fliterRace = (GridView) basePraent.findViewById(R.id.id_gv_filter_race_rule);
+            fliterRace.setAdapter(new ArrayAdapter<String>(context, R.layout.gv_filter_item
+                    , new String[]{"三人场", "五人场"}));
+
+//        fliterRace.setOnItemClickListener(new TimeScopeSel());
+        }
+
+
+
+        viewSwitcher = (ViewSwitcher) basePraent.findViewById(R.id.id_vs_filter_district);
+
+        districtAdapter = new DistrictAdapter(context, areasStr);
 
         viewSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
                 gridView = (GridView) LayoutInflater.from(context).inflate(R.layout.gv_fliter, null);
-                gridView.setAdapter(districtAdapter);
                 return gridView;
             }
         });
+
+
         viewSwitcher.setInAnimation(AnimationUtils.loadAnimation(context,
                 android.R.anim.slide_in_left));
         viewSwitcher.setOutAnimation(AnimationUtils.loadAnimation(context,
                 android.R.anim.slide_out_right));
 
 
-        basePraent.findViewById(R.id.id_iv_filter_district_next).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (districtAdapter.next())
-                    viewSwitcher.showNext();
-            }
-        });
 
         locNoFlit = basePraent.findViewById(R.id.id_tv_fliter_loc_noflit);
-        timeNoFlit = basePraent.findViewById(R.id.id_tv_fliter_time_noflit);
+
 
         fliterTime = (GridView) basePraent.findViewById(R.id.id_gv_filter_time);
         fliterTime.setAdapter(new ArrayAdapter<String>(context, R.layout.gv_filter_item
                 , new String[]{"三天内", "一天内", "一周内"}));
-        fliterTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            View lastView = null;
-            Drawable pinkRect = AppGlobalMgr.getResImg(R.drawable.bg_pink_rectangle);
-            Drawable transparentRect = AppGlobalMgr.getResImg(R.drawable.transparent);
+        fliterTime.setOnItemClickListener(new TimeScopeSel());
 
+
+        LBSHelper.getDistrict(context, new LBSHelper.DealerAfterGetDistrict() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                timeNoFlit.setBackgroundDrawable(transparentRect);
-                ((TextView)timeNoFlit).setTextColor(AppGlobalMgr.getResColor(R.color.mygreylighter));
-
-                if (lastView != null) {
-                    lastView.setBackgroundDrawable(transparentRect);
-                    ((TextView)lastView).setTextColor(AppGlobalMgr.getResColor(R.color.mygreylighter));
-
-                }
-                lastView = view;
-                view.setBackgroundDrawable(pinkRect);
-                ((TextView)view).setTextColor(AppGlobalMgr.getResColor(R.color.mygreydarker));
-
-                setTimescope(position + 1);
+            public void dealer(ArrayList<String> distrcitArray) {
+                districtAdapter.setDistrictStrings(distrcitArray);
+                districtAdapter.next();
+                ((GridView)viewSwitcher.getNextView()).setAdapter(districtAdapter);
+                viewSwitcher.showNext();
             }
         });
-        adapter = new FightWithAdapter(context,datas);
+        basePraent.findViewById(R.id.id_iv_filter_district_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                districtAdapter.next();
+                ((GridView)viewSwitcher.getNextView()).setAdapter(districtAdapter);
+                viewSwitcher.showNext();
+            }
+        });
+
+        adapter = new FightWithAdapter(context,datas,listType);
         if(fightWithView==null) {
             fightWithView = new ListView(context);
             AbsListView.LayoutParams layoutParams2 = new AbsListView.LayoutParams(
@@ -201,6 +224,16 @@ public class FightWithViewControler {
                 if(i==0)
                     return;
                Intent intent = new Intent((Activity) context, FightWithDetailAty.class);
+                Bundle bundle = new Bundle();
+                FightWithData theData = datas.get(i-1);
+                bundle.putString("userName",theData.getFaqiUserName());
+                bundle.putString("fightDate",theData.getFightDateStr());
+                bundle.putString("fightTime",theData.getFightTimeStr());
+                bundle.putString("fightArea",theData.getFightSpaceStr());
+                bundle.putInt("fightid", theData.getId());
+                bundle.putInt("userid", theData.getFaqiUserId());
+                bundle.putInt("listtype", listType);
+                intent.putExtras(bundle);
                 ((Activity) context).startActivity(intent);
 
             }
@@ -230,15 +263,23 @@ public class FightWithViewControler {
         fightWithView.setOnTouchListener(hiddenToolBar.onTouchListener);
         fightWithView.setOnScrollListener(hiddenToolBar.onScrollListener);
 
-
+        getDataFromNet(true);
         return basePraent;
     }
 
-
+    /**
+     * 刷新列表
+     */
     public void refreshView(){
 
         adapter.notifyDataSetChanged();
     }
+
+
+    /**
+     * 从网络中加载数据
+     * @param isRefresh
+     */
 
     public void getDataFromNet(boolean isRefresh) {
         this.isRefresh = isRefresh;
@@ -263,7 +304,7 @@ public class FightWithViewControler {
             @Override
             public void run() {
                 postHttpCilent.execRequest
-                        (AppConstantValue.URL_TEST_DIR + "fightlist.json", rp, new FightWithDataHandler());
+                        (AppConstantValue.URL_TEST_DIR+"testFightLlstFree.json", rp, new FightWithDataHandler());
             }
         },1000);
 
@@ -288,6 +329,54 @@ public class FightWithViewControler {
 
     }
 
+    //对时间筛选器的控制
+    class TimeScopeSel implements AdapterView.OnItemClickListener {
+        View lastView = null;
+        View timeNoFlit = basePraent.findViewById(R.id.id_tv_fliter_time_noflit);
+        Drawable pinkRect = AppGlobalMgr.getResImg(R.drawable.bg_pink_rectangle);
+        Drawable transparentRect = AppGlobalMgr.getResImg(R.drawable.transparent);
+        int curTextColor = AppGlobalMgr.getResColor(R.color.mygreylighter);
+        int selTextColor = AppGlobalMgr.getResColor(R.color.mygreydarker);
+
+        public TimeScopeSel() {
+            initTimeNoFlitColor();
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            timeNoFlit.setBackgroundDrawable(transparentRect);
+            ((TextView) timeNoFlit).setTextColor(curTextColor);
+
+            if (lastView != null) {
+                lastView.setBackgroundDrawable(transparentRect);
+                ((TextView) lastView).setTextColor(curTextColor);
+            }
+            lastView = view;
+            view.setBackgroundDrawable(pinkRect);
+            ((TextView) view).setTextColor(selTextColor);
+
+            setTimescope(position + 1);
+        }
+
+        public void resetView(){
+            if(lastView!=null){
+                lastView.setBackgroundDrawable(transparentRect);
+                ((TextView)lastView).setTextColor(curTextColor);
+            }
+        }
+
+        public void initTimeNoFlitColor(){
+            timeNoFlit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    timeNoFlit.setBackgroundDrawable(pinkRect);
+                    ((TextView) timeNoFlit).setTextColor(selTextColor);
+                    resetView();
+                    setTimescope(0);
+                }
+            });
+        }
+    }
     class  FightWithDataHandler  extends BaseJsonHttpResponseHandler<NetPackData> {
 
 

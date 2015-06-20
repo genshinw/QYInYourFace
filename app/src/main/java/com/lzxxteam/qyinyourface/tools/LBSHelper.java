@@ -16,6 +16,8 @@ import com.tencent.mapsdk.raster.model.GeoPoint;
 
 import org.apache.http.Header;
 
+import java.util.ArrayList;
+
 /**
  * Created by Elvis on 2015/6/16.
  */
@@ -43,32 +45,34 @@ public class LBSHelper {
 
 
 
-    public void getDistrict(final Context context){
+    public static void  getDistrict(final Context context,final DealerAfterGetDistrict dealer ){
         TencentSearch api = new TencentSearch(AppGlobalMgr.getAppContext());
         final int id = 440000;//广东id
         final int GUANGZHOU_ID = 440100;
         final int SHEN_ZHEN_ID = 440300;
         final int HUIZHOU_ID = 441300;
-        DistrictChildrenParam param = new DistrictChildrenParam().id(SHEN_ZHEN_ID);
+        LogUtil.d("isError0");
+
+        DistrictChildrenParam param = new DistrictChildrenParam().id(GUANGZHOU_ID);
         api.getDistrictChildren(param, new HttpResponseListener() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, BaseObject object) {
                 // TODO Auto-generated method stub
+                LogUtil.d("isError");
                 if(object != null){
-                    String result = "根据行政区划id获取具体子行政区划，为空时返回所有省市区划\n\n";
-                    result += "当前id为110000，北京市id\n";
 
                     DistrictResultObject oj = (DistrictResultObject)object;
+                    ArrayList<String> districtList = new ArrayList<String>();
                     if(oj.result != null && oj.result.size() > 0){
 
                         for(DistrictResultObject.DistrictResult r : oj.result.get(0)){
-                            Log.v("demo", "location:" + r.fullname);
-                            result += r.fullname+" "+r.id+"\n";
+                            districtList.add(r.fullname);
+                            Log.v("demo", "location:" + r.fullname+r.id);
                         }
+                        dealer.dealer(districtList);
 
                     }
-                    new AlertDialog.Builder(context).setTitle("行政区").setMessage(result).create().show();
                 }
             }
 
@@ -76,8 +80,14 @@ public class LBSHelper {
             public void onFailure(int statusCode, Header[] headers,
                                   String responseString, Throwable throwable) {
                 // TODO Auto-generated method stub
+                LogUtil.d("isError2");
+
                 new AlertDialog.Builder(context).setTitle("error").setMessage(responseString).create().show();
             }
         });
+    }
+
+    public interface DealerAfterGetDistrict{
+        public  void dealer(ArrayList<String> distrcitArray);
     }
 }

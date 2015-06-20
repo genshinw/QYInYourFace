@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lzxxteam.qyinyourface.R;
 import com.lzxxteam.qyinyourface.activities.GoToFightAty;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
+import com.lzxxteam.qyinyourface.tools.LogUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,20 +52,7 @@ public class IndicaterViewPagerFactory {
 
         return container;
     }
-    public void showGoToFightBtn(){
-        if(container!=null) {
-            container.findViewById(R.id.float_button).setVisibility(View.VISIBLE);
-            View goToFreeBtn = container.findViewById(R.id.action_a);
-            goToFreeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    Intent intent = new Intent(context, GoToFightAty.class);
-                    context.startActivity(intent);
-                }
-            });
-        }
-    }
 
     public void showSearchBtn() {
         if (container!=null) {
@@ -82,10 +70,7 @@ public class IndicaterViewPagerFactory {
 
         container = (ViewGroup) LayoutInflater.from(context)
                 .inflate(R.layout.vpindicater, null);
-     /*   View floatButton =  LayoutInflater.from(context)
-                .inflate(R.layout.fgmt_fight_with, null);
 
-        container.addView(floatButton);*/
         indicaterLine = (ImageView) container.findViewById(R.id.id_iv_move_line);
         indicaterText1 = (TextView)container.findViewById(R.id.id_tv_indicater_gyms);
         indicaterText1.setText(indicateNames[0]);
@@ -95,7 +80,6 @@ public class IndicaterViewPagerFactory {
                 viewPager.arrowScroll(View.FOCUS_BACKWARD);
             }
         });
-
 
         indicaterText2 = (TextView)container.findViewById(R.id.id_tv_indicater_teams);
         indicaterText2.setText(indicateNames[1]);

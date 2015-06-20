@@ -8,7 +8,7 @@
     android:descendantFocusability="blocksDescendants"
     android:padding="10dp">
 
-    <ImageView
+    <com.lzxxteam.qyinyourface.ui.CircularImageView
         android:id="@+id/plist_logo"
         android:layout_width="50dp"
         android:layout_height="50dp"

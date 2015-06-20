@@ -37,6 +37,7 @@
 
         <activity
             android:name=".activities.FragmentMainAty"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,21 +47,26 @@
         </activity>
 
         <activity android:name=".activities.LoginAty"
-            android:label="@string/app_name"></activity>
+            android:theme="@style/Theme.AppCompat"
+            android:label="@string/aty_name_login"></activity>
         <activity
             android:name=".activities.RegisterAty"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/aty_name_register" ></activity>
 
 
 
         <activity
             android:name=".activities.FightWithDetailAty"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/aty_name_fight_with_detail" ></activity>
         <activity
             android:name=".activities.GymsDetailAty"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/aty_name_gyms_detail" ></activity>
         <activity
             android:name=".activities.GoToFightAty"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/aty_name_go_to_fight" ></activity>
 
     </application>

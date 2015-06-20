@@ -1,5 +1,6 @@
 package com.lzxxteam.qyinyourface.presenters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.lzxxteam.qyinyourface.model.UserData;
 import com.lzxxteam.qyinyourface.net.GetHttpCilent;
 import com.lzxxteam.qyinyourface.tools.AppConstantValue;
 import com.lzxxteam.qyinyourface.tools.GetImageFromNet;
+import com.lzxxteam.qyinyourface.tools.WxHelper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.apache.http.Header;
@@ -53,7 +55,13 @@ public class UserCentreViewControl {
             userGameTimesText = (TextView)userCentreView.findViewById(R.id.id_tv_user_centre_gametimes);
             userProfileImage = (ImageView) userCentreView.findViewById(R.id.id_iv_user_centre_profile);
         }
+        userCentreView.findViewById(R.id.id_ll_aty_uc_share).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                WxHelper.sendWebpageToWx(context);
+            }
+        });
 
         return userCentreView;
     }

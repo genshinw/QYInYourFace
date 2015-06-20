@@ -7,11 +7,11 @@
 
 
     <RelativeLayout
-    android:id="@+id/id_rl_indicater_tab"
-    android:layout_width="match_parent"
-    android:layout_height="35dp"
-    android:background="@color/mygreylighter2"
-    >
+        android:id="@+id/id_rl_indicater_tab"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/mygreylighter2"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,47 +63,7 @@
         android:layout_height="match_parent">
 
     </android.support.v4.view.ViewPager>
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
 
-        android:id="@+id/float_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        fab:fab_addButtonColorNormal="@color/mywhite"
-        fab:fab_addButtonColorPressed="@color/mywhite"
-        fab:fab_addButtonPlusIconColor="@color/myblack"
-        fab:fab_addButtonSize="mini"
-        fab:fab_labelStyle="@style/menu_labels_style"
-        android:visibility="gone"
-
-        >
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_icon="@drawable/ic_free"
-            fab:fab_colorNormal="@color/mywhite"
-            fab:fab_colorPressed="@color/mygreylighter2"
-            fab:fab_size="mini"
-            fab:fab_title="发起自由区约战" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_colorNormal="@color/mywhite"
-            fab:fab_colorPressed="@color/mygreylighter2"
-            fab:fab_icon="@drawable/ic_normal"
-            fab:fab_size="mini"
-            fab:fab_title="发起正式区约战" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/action_search"
