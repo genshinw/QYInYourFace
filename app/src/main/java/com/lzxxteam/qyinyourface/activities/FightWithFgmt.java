@@ -1,6 +1,7 @@
 package com.lzxxteam.qyinyourface.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -49,6 +50,9 @@ public class FightWithFgmt extends BaseFgmt {
     private ViewGroup fightWithViewFree;
     private ArrayList<View> viewPagerViewArray;
     private int freeOrFormal = 1;//一开始是自由区页面
+    final int GUANGZHOU_ID = 440100;
+    final int SHEN_ZHEN_ID = 440300;
+    private AlertDialog mAlert;
 
     @Override
     public void onAttach(Activity activity) {
@@ -92,16 +96,45 @@ public class FightWithFgmt extends BaseFgmt {
         if (atyToAttach instanceof ActionBarActivity) {
             final ActionBar actionBar = ((ActionBarActivity) atyToAttach).getSupportActionBar();
             actionBar.setCustomView(R.layout.actionbar);
+
+            ViewGroup dialogView = (ViewGroup) LayoutInflater.from(atyToAttach)
+                    .inflate(R.layout.aty_sel_provice, null);
+            dialogView.findViewById(R.id.id_sel_shenzhen).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fvcFree.changeProvice(SHEN_ZHEN_ID);
+                    ((TextView)selCity).setText("深圳");
+                    mAlert.dismiss();
+
+                }
+            });
+            dialogView.findViewById(R.id.id_sel_guangzhou).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fvcFree.changeProvice(GUANGZHOU_ID);
+                    ((TextView)selCity).setText("广州");
+                    mAlert.dismiss();
+
+                }
+            });
+            mAlert = new AlertDialog.Builder(atyToAttach).setView(dialogView)
+                    .create();
+
+
             selCity = actionBar.getCustomView().findViewById(R.id.id_city_select);
             selCity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ColorDrawable cd = new ColorDrawable(0x000000);
+                    /*ColorDrawable cd = new ColorDrawable(0x000000);
                     WindowManager.LayoutParams lp = atyToAttach.getWindow().getAttributes();
                     lp.alpha = 0.4f;
                     atyToAttach.getWindow().setAttributes(lp);
                     PopupWindow mPopuWindow = new CitySelectorPopUp(atyToAttach).getPopUpWindow();
-                    mPopuWindow.showAsDropDown(selCity);
+                    mPopuWindow.showAsDropDown(selCity);*/
+                    mAlert.show();
+                    //fvcFree.changeProvice(SHEN_ZHEN_ID);
+
+                    //((TextView)selCity).setText("深圳");;
                 }
             });
             selArea = actionBar.getCustomView().findViewById(R.id.id_ll_sel_fight_area);
@@ -150,8 +183,11 @@ public class FightWithFgmt extends BaseFgmt {
                     public View makeView() {
 
                         if(freeOrFormal==1) {
-                            if (fightWithViewFree == null)
+                            if (fightWithViewFree == null) {
                                 fightWithViewFree = fvcFree.getFightWithView();
+                                fvcFree.changeProvice(SHEN_ZHEN_ID);
+
+                            }
 
                             freeOrFormal = 2;
                             return fightWithViewFree;

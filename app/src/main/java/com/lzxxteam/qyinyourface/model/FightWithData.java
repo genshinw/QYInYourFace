@@ -20,6 +20,7 @@ public class FightWithData {
     private String[] fightTime;
     private String[] userNames;
     private int[] userids;
+    private  int[] spaceids;
 
     @JsonProperty("name")
     public void setUserName(String[] userNames) {
@@ -129,5 +130,23 @@ public class FightWithData {
 
     public int getId() {
         return id;
+    }
+
+    public int[] getSpaceids() {
+        return spaceids;
+    }
+    @JsonProperty("courtids")
+    public void setSpaceids(int[] spaceids) {
+        this.spaceids = spaceids;
+    }
+
+    public int getSpaceIdOne(){
+
+        if(spaceids==null)
+            return 0;
+        if(spaceids.length>0)
+            return spaceids[0];
+
+        return 0 ;
     }
 }

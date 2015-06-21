@@ -17,11 +17,11 @@
         android:src="@drawable/profile" />
     <TextView
         android:id="@+id/plist_user_name"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_below="@id/plist_logo"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
         android:layout_alignLeft="@id/plist_logo"
         android:text="User"
         android:textColor="@color/myblack"
@@ -34,6 +34,7 @@
         android:layout_toRightOf="@id/plist_user_name"
         />
     <ImageView
+        android:alpha="0.8"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/nop"

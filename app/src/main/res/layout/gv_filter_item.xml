@@ -3,5 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/fight_with_filter_item"
     android:text="盐田区"
+    android:background="@drawable/sel_fliter_item"
 
     />

@@ -30,6 +30,7 @@ public class FightWithDetailAty extends BaseAty{
     private PostHttpCilent postHttpCilent;
     private String userName;
     private int listtype;
+    private int fightAreaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class FightWithDetailAty extends BaseAty{
         TextView userNameView = (TextView)findViewById(R.id.id_tv_aty_fight_detail_user_name);
 
         fightWithDetailItemId = getIntent().getIntExtra("fightid",0);
+        fightAreaId = getIntent().getIntExtra("fightAreaId",0);
         userName = getIntent().getStringExtra("userName");
         listtype = getIntent().getIntExtra("listtype", 0);
         postHttpCilent = new PostHttpCilent(this) ;
@@ -54,13 +56,23 @@ public class FightWithDetailAty extends BaseAty{
 
         TextView timeTextView = (TextView)fightTimeViewGroup
                 .findViewById(R.id.id_aty_fight_detail_item_time);
+
+        fightTimeViewGroup.findViewById(R.id.id_ll_aty_fight_detail_item_space_detail)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(FightWithDetailAty.this, GymsDetailAty.class);
+                        intent.putExtra("gymId",fightAreaId);
+                        startActivity(intent);
+                    }
+                });
         ((LinearLayout)findViewById(R.id.id_ll_aty_fight_detail)).addView(fightTimeViewGroup);
 
         if(listtype==1) {
-            GetImageFromNet.setProfileToImageView(getIntent().getIntExtra("userid", 0) + "u.png",
+            GetImageFromNet.setProfileToImageView(getIntent().getIntExtra("userid", 0)%50 + "u.png",
                     (ImageView) findViewById(R.id.id_aty_fight_detail_profile));
         }else{
-            GetImageFromNet.setProfileToImageView(getIntent().getIntExtra("userid", 0) + "t.png",
+            GetImageFromNet.setProfileToImageView(getIntent().getIntExtra("userid", 0)%15 + "t.png",
                     (ImageView) findViewById(R.id.id_aty_fight_detail_profile));
         }
 

@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by Elvis on 2015/6/16.
  */
@@ -49,6 +51,8 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
     private List<View> viewpagerListView;
     private ViewGroup indicatorViews;
     private String date;
+    private ViewGroup gotToFightPage2;
+    private ViewGroup goToFightPage3;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -132,7 +136,12 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
                 dpd.show(getFragmentManager(),"daate");
             }
         });
-
+        goToFightPage0.findViewById(R.id.id_aty_goto_fight_next0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewpager.arrowScroll(View.FOCUS_FORWARD);
+            }
+        });
         return goToFightPage0;
     }
 
@@ -148,6 +157,14 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
                         setContentView(R.layout.aty_goto_fight3);
                     }
                 });
+            }
+        });
+        goToFightPage1.findViewById(R.id.id_aty_goto_fight_next1).
+        setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewpager.arrowScroll(View.FOCUS_FORWARD);
+
             }
         });
         goToFightPage1.findViewById(R.id.id_sel_the_gym_time).setOnClickListener(new View.OnClickListener() {
@@ -177,10 +194,49 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
         return goToFightPage1;
     }
     private ViewGroup initPage2(){
-        return (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight2,null);
+       gotToFightPage2 =  (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight2,null);
+        gotToFightPage2.findViewById(R.id.id_aty_goto_fight_next2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewpager.arrowScroll(View.FOCUS_FORWARD);
+
+            }
+        });
+        return gotToFightPage2;
     }
     private ViewGroup initPage3(){
-        return (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight3,null);
+        goToFightPage3 = (ViewGroup)LayoutInflater.from(this).inflate(R.layout.aty_goto_fight3,null);
+        goToFightPage3.findViewById(R.id.id_aty_goto_fight_finish).
+        setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SweetAlertDialog(GoToFightAty.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("提醒")
+                        .setContentText("是否确定发起约战")
+                        .setConfirmText("确定")
+                        .setCancelText("取消")
+                        .showCancelButton(true)
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.setContentText("战帖已发出")
+                                        .setConfirmText("确定")
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                sweetAlertDialog.dismiss();
+                                                finish();
+                                            }
+                                        })
+                                        .showCancelButton(false)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        }).show();
+
+            }
+        });
+
+        return goToFightPage3;
     }
 
     @Override
@@ -205,12 +261,25 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
                 gymDesc.setText(marker.getSnippet());
             }
         });
-        mMapCtrler.setOnMapLoadedListener(new OnLoadedListener() {
-            @Override
-            public void onMapLoaded() {
-                startLocation();
-            }
-        });
+//        mMapCtrler.setOnMapLoadedListener(new OnLoadedListener() {
+
+//            @Override
+//            public void onMapLoaded() {
+//                startLocation();
+//            }
+//        });
+
+        mMapView.getController().animateTo(LBSHelper.of(22.532597,113.936940));
+        for(int i=0;i<gymdatas.size();i++) {
+            GymData gymData = gymdatas.get(i);
+            Marker markerFix = mMapView.addMarker(new MarkerOptions()
+                    .position(gymData.getLatLng())
+                    .title(gymData.getName())
+                    .snippet("室内,位于深圳大学("+gymData.getLat()+","+gymData.getLng()+")")
+                    .anchor(0.5f, 0.5f)
+                    .icon(BitmapDescriptorFactory.fromAsset("cur_loc.png"))
+                    .draggable(false));
+        }
     }
 
     @Override
@@ -236,7 +305,7 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
         if (error == TencentLocation.ERROR_OK) {
             mLocation = tencentLocation;
             // 更新 location 图层
-            mMapView.getController().animateTo(LBSHelper.of(mLocation),400,null);
+            mMapView.getController().animateTo(LBSHelper.of(22.532597,113.936940));
             for(int i=0;i<gymdatas.size();i++) {
                 GymData gymData = gymdatas.get(i);
                 Marker markerFix = mMapView.addMarker(new MarkerOptions()
@@ -270,7 +339,6 @@ public class GoToFightAty extends BaseAty implements TencentLocationListener{
     @Override
     protected void onPause() {
         super.onPause();
-        stopLocation();
     }
 
 

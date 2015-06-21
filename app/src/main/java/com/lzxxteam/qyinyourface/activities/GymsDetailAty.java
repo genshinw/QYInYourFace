@@ -149,16 +149,10 @@ public class GymsDetailAty extends BaseAty{
                             jp.nextToken();//进入到键所对应的值的对象中
 
                             if (fieldName.equals("data")) {
-                                if(jp.getValueAsString()!=null && jp.getValueAsString().equals("")) {
-                                    LogUtil.d("has null data");
-                                    continue;
-                                }
-
-                                while (jp.nextToken() == JsonToken.START_OBJECT) {
+                                    jp.nextToken();
                                     gymData = mapper.readValue(jp, GymData.class);
-                                    break;
 
-                                }
+
                             } else  if (fieldName.equals("head")) {
                                 netPackData = mapper.readValue(jp, NetPackData.class);
                             }

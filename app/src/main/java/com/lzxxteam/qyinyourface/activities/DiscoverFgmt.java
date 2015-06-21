@@ -89,10 +89,11 @@ public class DiscoverFgmt extends BaseFgmt {
         mAdapter = new PhotoAdapter(atyToAttach);
         mWaterfall = (WaterfallSmartView) gymListView.findViewById(R.id.waterfall);
         mWaterfall.setAdapter(mAdapter);
-        mWaterfall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      mWaterfall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(atyToAttach, GymsDetailAty.class);
+                intent.putExtra("gymId",gymListDatas.get(position).getId());
                 startActivity(intent);
             }
         });
@@ -224,14 +225,7 @@ public class DiscoverFgmt extends BaseFgmt {
                 holder.nameTextView.setText(gymData.getName());
                 holder.addrTextView.setText(gymData.getGymAddr());
             }
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(atyToAttach, GymsDetailAty.class);
-                    intent.putExtra("gymId",gymData.getId());
-                    startActivity(intent);
-                }
-            });
+
             return convertView;
         }
 

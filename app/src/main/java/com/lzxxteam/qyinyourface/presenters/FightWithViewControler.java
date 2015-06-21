@@ -136,7 +136,7 @@ public class FightWithViewControler {
         filterView.measure(w, h);
         int height = filterView.getMeasuredHeight();
         if (listType==1){
-            height+=height/3;
+            height+=height/3+2;
         }
 
         if(listType==1) {
@@ -179,15 +179,6 @@ public class FightWithViewControler {
         fliterTime.setOnItemClickListener(new TimeScopeSel());
 
 
-        LBSHelper.getDistrict(context, new LBSHelper.DealerAfterGetDistrict() {
-            @Override
-            public void dealer(ArrayList<String> distrcitArray) {
-                districtAdapter.setDistrictStrings(distrcitArray);
-                districtAdapter.next();
-                ((GridView)viewSwitcher.getNextView()).setAdapter(districtAdapter);
-                viewSwitcher.showNext();
-            }
-        });
         basePraent.findViewById(R.id.id_iv_filter_district_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,7 +198,7 @@ public class FightWithViewControler {
             fightWithView.setLayoutParams(layoutParams2);
 
         }
-        fightWithView.setAdapter(adapter);
+
 
 
         header = new View(context);
@@ -215,7 +206,7 @@ public class FightWithViewControler {
                 height));
         header.setBackgroundColor(Color.parseColor("#00000000"));
         fightWithView.addHeaderView(header);
-
+        fightWithView.setAdapter(adapter);
 
 
         fightWithView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -229,7 +220,8 @@ public class FightWithViewControler {
                 bundle.putString("userName",theData.getFaqiUserName());
                 bundle.putString("fightDate",theData.getFightDateStr());
                 bundle.putString("fightTime",theData.getFightTimeStr());
-                bundle.putString("fightArea",theData.getFightSpaceStr());
+                bundle.putInt("fightAreaId", theData.getSpaceIdOne());
+                bundle.putString("fightArea", theData.getFightSpaceStr());
                 bundle.putInt("fightid", theData.getId());
                 bundle.putInt("userid", theData.getFaqiUserId());
                 bundle.putInt("listtype", listType);
@@ -263,7 +255,10 @@ public class FightWithViewControler {
         fightWithView.setOnTouchListener(hiddenToolBar.onTouchListener);
         fightWithView.setOnScrollListener(hiddenToolBar.onScrollListener);
 
-        getDataFromNet(true);
+        if(listType==2)
+            getDataFromNet(true);
+
+
         return basePraent;
     }
 
@@ -300,18 +295,56 @@ public class FightWithViewControler {
         if(postHttpCilent ==null)
             postHttpCilent = new PostHttpCilent(context);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                postHttpCilent.execRequest
-                        ("fight/getlist", rp, new FightWithDataHandler());
-            }
-        },1000);
-
+        if(listType==1)
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    postHttpCilent.execRequest
+                            ("fight/getlist", rp, new FightWithDataHandler());
+                }
+            },1000);
+        else
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    postHttpCilent.execRequest
+                            (AppConstantValue.URL_TEST_DIR+"testFightLFormal.json", rp, new FightWithDataHandler());
+                }
+            },1000);
 
 
     }
 
+    public void changeProvice(int proviceId){
+
+        LBSHelper.getDistrict(context,proviceId, new LBSHelper.DealerAfterGetDistrict() {
+            @Override
+            public void dealer(ArrayList<String> distrcitArray) {
+                districtAdapter.setDistrictStrings(distrcitArray);
+                districtAdapter.next();
+                ((GridView)viewSwitcher.getNextView()).setAdapter(districtAdapter);
+                ((GridView)viewSwitcher.getNextView()).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        ((TextView)view).setTextColor(AppGlobalMgr.getResColor(R.color.myblack));
+                        LogUtil.d(position+"");
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                viewSwitcher.showNext();
+            }
+        });
+        if(proviceId==440300){
+            setDistrict(0);
+        }
+        if(proviceId==440100){
+            setDistrict(1);
+        }
+    }
     public void setDistrict(int district) {
         this.district = district;
         getDataFromNet(true);
@@ -407,7 +440,9 @@ public class FightWithViewControler {
                 refreshView();
             }
             else{
-                Toast.makeText(context, "获取列表异常",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "没有更多数据",Toast.LENGTH_LONG).show();
+
+//                Toast.makeText(context, "获取列表异常",Toast.LENGTH_LONG).show();
             }
 
             if (refreshLayout.isRefreshing())

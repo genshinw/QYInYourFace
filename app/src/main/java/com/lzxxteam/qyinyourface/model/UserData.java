@@ -1,10 +1,12 @@
 package com.lzxxteam.qyinyourface.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Elvis on 2015/5/30.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserData {
 
 
@@ -15,10 +17,10 @@ public class UserData {
     private int height;
     private int weight;
 
-    private String team;
-    private String userAddr;
-    private String userName;
-    private String email;
+    private String team="";
+    private String userAddr="";
+    private String userName="";
+    private String email="";
 
     public String getUserName() {
         return userName;

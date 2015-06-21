@@ -4,10 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 
+import com.lzxxteam.qyinyourface.net.UserSession;
 import com.tencent.lbssearch.TencentSearch;
 import com.tencent.lbssearch.httpresponse.BaseObject;
 import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.object.Location;
 import com.tencent.lbssearch.object.param.Address2GeoParam;
 import com.tencent.lbssearch.object.param.DistrictChildrenParam;
 import com.tencent.lbssearch.object.result.Address2GeoResultObject;
@@ -47,7 +47,7 @@ public class LBSHelper {
 
 
 
-    public static void  getDistrict(final Context context,final DealerAfterGetDistrict dealer ){
+    public static void  getDistrict(final Context context, final int provinceId,final DealerAfterGetDistrict dealer ){
         TencentSearch api = new TencentSearch(AppGlobalMgr.getAppContext());
         final int id = 440000;//广东id
         final int GUANGZHOU_ID = 440100;
@@ -55,7 +55,7 @@ public class LBSHelper {
         final int HUIZHOU_ID = 441300;
         LogUtil.d("isError0");
 
-        DistrictChildrenParam param = new DistrictChildrenParam().id(GUANGZHOU_ID);
+        DistrictChildrenParam param = new DistrictChildrenParam().id(provinceId);
         api.getDistrictChildren(param, new HttpResponseListener() {
 
             @Override
@@ -70,6 +70,9 @@ public class LBSHelper {
 
                         for(DistrictResultObject.DistrictResult r : oj.result.get(0)){
                             districtList.add(r.fullname);
+                            UserSession.userProvice = provinceId;
+                            UserSession.distictToIdMap.clear();
+                            UserSession.distictToIdMap.put(r.fullname,r.id);
                             Log.v("demo", "location:" + r.fullname+r.id);
                         }
                         dealer.dealer(districtList);

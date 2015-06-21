@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flatui="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/myrealwhite"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        >
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_fight_with_detail_loc" />
+
+        <com.cengalabs.flatui.views.FlatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            flatui:fl_fontFamily="ygy"
+            flatui:fl_fontWeight="light"
+            android:layout_marginLeft="4dp"
+            android:text="选择城市"
+            android:textColor="@color/myred" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@drawable/line_red"
+        />
+    <com.cengalabs.flatui.views.FlatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="11sp"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        android:text="目前只支持以下城市"
+        android:textColor="@color/mygrey" />
+
+    <RadioGroup
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <com.cengalabs.flatui.views.FlatRadioButton
+        android:id="@+id/id_sel_shenzhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_margin="4dp"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        android:text="深圳"
+        flatui:fl_theme="@array/grass"
+        android:textColor="@color/myred" />
+    <com.cengalabs.flatui.views.FlatRadioButton
+        android:id="@+id/id_sel_guangzhou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:textSize="15sp"
+        flatui:fl_fontFamily="ygy"
+        flatui:fl_fontWeight="light"
+        android:text="广州"
+        flatui:fl_theme="@array/grass"
+        />
+    </RadioGroup>
+</LinearLayout>

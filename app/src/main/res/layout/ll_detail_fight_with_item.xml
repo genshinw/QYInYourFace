@@ -61,6 +61,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/id_ll_aty_fight_detail_item_space_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"

@@ -1,6 +1,7 @@
 package com.lzxxteam.qyinyourface.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lzxxteam.qyinyourface.R;
+import com.lzxxteam.qyinyourface.net.UserSession;
 import com.lzxxteam.qyinyourface.tools.AppGlobalMgr;
 import com.lzxxteam.qyinyourface.presenters.UserCentreViewControl;
 
@@ -20,7 +22,8 @@ public class UserCentreFgmt extends BaseFgmt {
 
     private UserCentreViewControl ucvc;
     private View userCentreView;
-
+    private ViewGroup nologinView,hasloginView;
+    private boolean isGetData = false;
 
     @Override
     public void onAttach(Activity activity) {
@@ -39,6 +42,16 @@ public class UserCentreFgmt extends BaseFgmt {
         if(userCentreView==null)
             userCentreView = ucvc.getUserCentreView();
 
+        nologinView =(ViewGroup) userCentreView.findViewById(R.id.ll_user_centre_no_login);
+        nologinView.findViewById(R.id.id_btn_user_centre_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(atyToAttach, LoginAty.class);
+                startActivity(intent);
+            }
+        });
+        hasloginView = (ViewGroup)userCentreView.findViewById(R.id.ll_user_centre_has_login);
+
         return userCentreView;
 
     }
@@ -46,8 +59,26 @@ public class UserCentreFgmt extends BaseFgmt {
     @Override
     public void onStart() {
         super.onStart();
-
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(UserSession.getUserId()==-1){
+            if(nologinView.getVisibility()==View.GONE)
+                nologinView.setVisibility(View.VISIBLE);
+            if(hasloginView.getVisibility()==View.VISIBLE)
+                hasloginView.setVisibility(View.GONE);
+        }else{
+            if(hasloginView.getVisibility()==View.GONE)
+                hasloginView.setVisibility(View.VISIBLE);
 
+            if(nologinView.getVisibility()==View.VISIBLE)
+                nologinView.setVisibility(View.GONE);
+
+
+            if(!isGetData)
+                ucvc.getDataFromNet(UserSession.getUserId());
+        }
+    }
 }

@@ -95,7 +95,7 @@ public class TeamListAdapter extends BaseAdapter {
             TextView teamName = (TextView) convertView.findViewById(R.id.id_tv_team_list_name);
             TextView winTimes = (TextView) convertView.findViewById(R.id.id_tv_team_list_wintimes);
             ImageView teamLevel = (ImageView) convertView.findViewById(R.id.id_iv_team_list_level);
-            GetImageFromNet.setProfileToImageView(data.getId() + ".png", teamPortrait);
+            GetImageFromNet.setProfileToImageView((data.getId()%15+1) + "t.png", teamPortrait);
             teamLevel.setImageDrawable(AppGlobalMgr.getResImg(levelDraws[data.getTeamLevel()]));
             teamName.setText(data.getTeamName());
             winTimes.setText("获胜率：" + data.getTeamWinLevel() + "%");

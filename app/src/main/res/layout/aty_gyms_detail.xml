@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:flatui="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/myrealwhite"
     >
 <LinearLayout
@@ -72,7 +72,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_filter_time" />
+                android:src="@drawable/ic_gym_time" />
 
             <com.cengalabs.flatui.views.FlatTextView
                 style="@style/style_tv2_user_centre"
@@ -89,19 +89,20 @@
             android:orientation="horizontal"
             android:padding="10dp"
             android:background="@drawable/bg_wb_cor_change"
-            android:autoLink="phone"
 
 
             >
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_gyms_addr" />
+                android:src="@drawable/ic_gym_phone" />
             <com.cengalabs.flatui.views.FlatTextView
                 android:id="@+id/id_map_aty_gym_detail_phone"
                 style="@style/style_tv2_user_centre"
                 android:padding="10dp"
                 android:text="TEL：南山区桃园路（查看地图）"
+                android:autoLink="phone"
+                android:clickable="true"
                 flatui:fl_fontFamily="ygy"
                 flatui:fl_fontWeight="light"
                 />
@@ -119,7 +120,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_gyms_area" />
+                android:src="@drawable/ic_gym_detail" />
             <com.cengalabs.flatui.views.FlatTextView
                 style="@style/style_tv2_user_centre"
                 android:padding="10dp"
@@ -140,7 +141,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_star" />
+                android:src="@drawable/ic_gym_like" />
             <com.cengalabs.flatui.views.FlatTextView
                 style="@style/style_tv2_user_centre"
                 android:padding="10dp"

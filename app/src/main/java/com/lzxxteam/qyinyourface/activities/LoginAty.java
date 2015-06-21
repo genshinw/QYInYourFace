@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -55,7 +56,7 @@ public class LoginAty extends BaseAty {
                     postCilent.execRequest("login/start",rps, new BaseJsonHttpResponseHandler<NetPackData>() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, NetPackData response) {
-                            if(response.getStatus()==101) {
+                            if(response.getStatus()==NetPackData.STATUS_SUCC) {
                                 Toast.makeText(LoginAty.this,"登陆id"+response.getHeadOtherData(),
                                         Toast.LENGTH_LONG).show();
                                 UserSession.setUserId(Integer.valueOf(response.getHeadOtherData()));
@@ -63,6 +64,7 @@ public class LoginAty extends BaseAty {
 
                                 finish();
                             }else{
+                                progDialog.dismiss();
                                 Toast.makeText(LoginAty.this,"登陆失败"+response.getStatus(),
                                         Toast.LENGTH_LONG).show();
                             }
@@ -80,12 +82,22 @@ public class LoginAty extends BaseAty {
                         protected NetPackData parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
                             ObjectMapper mapper = new ObjectMapper();
                             JsonParser jp = new JsonFactory().createParser(rawJsonData);
-                            try {
-                                TimeUnit.SECONDS.sleep(2);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                            jp.nextToken();//跳过{
+
+                            NetPackData netPackData = null;
+
+                            //刷新则要将数据清空
+                            while (jp.nextToken() != JsonToken.END_OBJECT) {
+
+                                String fieldName = jp.getCurrentName();
+
+                                jp.nextToken();//进入到键所对应的值的对象中
+
+                                if (fieldName.equals("head")) {
+                                    netPackData = mapper.readValue(jp, NetPackData.class);
+                                }
                             }
-                            return mapper.readValues(jp, NetPackData.class).next();
+                                return netPackData;
                         }
                     });
 

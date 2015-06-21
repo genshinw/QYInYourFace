@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:numColumns="3"
     android:gravity="center"
+    android:choiceMode="singleChoice"
+
     >
 
 
